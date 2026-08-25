@@ -85,15 +85,7 @@ public:
   // Draw the buffer out to the LCD if any content has changed.
   static void refresh();
 
-  static void setDisplayState(DisplayState state) {
-    if (state != displayState) {
-      displayState    = state;
-      screenBuffer[1] = (state == ON) ? OLED_ON : OLED_OFF;
-      // Dump the screen state change out _now_
-      // I2C_CLASS::Transmit(DEVICEADDR_OLED, screenBuffer, FRAMEBUFFER_START - 1);
-      osDelay(TICKS_10MS);
-    }
-  }
+  static void setDisplayState(DisplayState state);
 
   // Set the rotation for the screen
   static void setRotation(bool leftHanded);
