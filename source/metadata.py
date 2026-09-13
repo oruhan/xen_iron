@@ -8,7 +8,7 @@ import subprocess
 import sys
 
 # Creates an index metadata json file of the hexfiles folder
-# This is used by automation like the Pinecil updater
+# This is used by firmware release automation.
 
 if len(sys.argv) < 2 or len(sys.argv) > 3:
     print("Usage: metadata.py OUTPUT_FILE [model]")
@@ -16,7 +16,7 @@ if len(sys.argv) < 2 or len(sys.argv) > 3:
         "  OUTPUT_FILE      - the name of output file in json format with meta info about binary files"
     )
     print(
-        "  model [optional] - name of the model (as for `make model=NAME`) to scan files for explicitly (all files in source/Hexfile by default otherwise)"
+        "  model [optional] - name of the model (as for `make model=NAME`) to scan files for explicitly (all files in source/hexfile by default otherwise)"
     )
     exit(1)
 
@@ -30,9 +30,9 @@ if len(sys.argv) == 3:
 
 HERE = Path(__file__).resolve().parent
 
-HexFileFolder = os.path.join(HERE, "Hexfile")
+HexFileFolder = os.path.join(HERE, "hexfile")
 OutputJSONPath = os.path.join(HexFileFolder, sys.argv[1])
-TranslationsFilesPath = os.path.join(HERE.parent, "Translations")
+TranslationsFilesPath = os.path.join(HERE.parent, "translations")
 
 
 def load_json(filename: str):

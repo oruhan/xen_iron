@@ -33,7 +33,7 @@ OUT_DIR=$(OUT)
 else
 OUT_DIR=$(CURDIR)/BUILDS
 endif
-OUT_HEX=$(CURDIR)/source/Hexfile
+OUT_HEX=$(CURDIR)/source/hexfile
 
 
 ### global static variables
@@ -51,10 +51,10 @@ DOCKER_CMD=$(DOCKER_BIN)  -f $(DOCKER_YML)  run  --rm  builder
 # MkDocs config
 MKDOCS_YML=$(CURDIR)/scripts/IronOS-mkdocs.yml
 
-# supported models
-MODELS=TS100 TS80 TS80P Pinecil MHP30 Pinecilv2 S60 TS101 S60P T55 # target names & dir names
-MODELS_ML=Pinecil  Pinecilv2 # target names
-MODELS_MULTILANG=Pinecil_multi-lang  Pinecilv2_multi-lang # dir names
+# supported model
+MODELS=TS101 # target and directory name
+MODELS_ML=
+MODELS_MULTILANG=
 
 # zip command (to pack artifacts)
 ZIP=zip -q -j -r
@@ -100,12 +100,12 @@ list:
 	@echo " $$ make firmware-LANG_ID model=MODEL_ID"
 	@echo
 	@echo "Full list of current supported IDs:"
-	@echo "  * LANG_ID: $(shell echo "`ls Translations/ | grep -e "^translation_.*.json$$" | sed -e 's,^translation_,,g; s,\.json$$,,g; ' | tr '\n' ' '`")"
+	@echo "  * LANG_ID: $(shell echo "`ls translations/ | grep -e "^translation_.*.json$$" | sed -e 's,^translation_,,g; s,\.json$$,,g; ' | tr '\n' ' '`")"
 	@echo "  * MODEL_ID: $(MODELS)"
 	@echo
-	@echo "For example, to make a local build of IronOS firmware for TS100 with English language, just type:"
+	@echo "For example, to make a local English build for TS101, just type:"
 	@echo
-	@echo " $$ make firmware-EN model=TS100"
+	@echo " $$ make firmware-EN"
 	@echo
 
 # detect availability of docker
@@ -137,11 +137,11 @@ docker-clean-cache:
 docker-clean: docker-clean-image  docker-clean-cache
 
 # generate docs in site/ directory (DIR for -d is relative to mkdocs.yml file location, hence use default name/location site by setting up ../site)
-docs: $(MKDOCS_YML)  Documentation/*  Documentation/Flashing/*  Documentation/images/*
+docs: $(MKDOCS_YML)  documentation/*  documentation/flashing/*  documentation/images/*
 	$(MKDOCS)  build  -f $(MKDOCS_YML)  -d ../site
 
 # deploy docs to gh-pages branch of current repo automagically using ReadTheDocs framework
-docs-deploy: $(MKDOCS_YML)  Documentation/*  Documentation/Flashing/*  Documentation/images/*
+docs-deploy: $(MKDOCS_YML)  documentation/*  documentation/flashing/*  documentation/images/*
 	$(MKDOCS)  gh-deploy  -f $(MKDOCS_YML)  -d ../site
 
 # routine check to verify documentation
@@ -163,11 +163,11 @@ test-py:
 	@echo ""
 	@echo "---- Checking python code... ----"
 	@echo ""
-	flake8  Translations
-	black  --diff  --check  Translations
-	@$(MAKE)  -C source/  Objects/host/brieflz/libbrieflz.so
-	./Translations/brieflz_test.py
-	./Translations/make_translation_test.py
+	flake8  translations
+	black  --diff  --check  translations
+	@$(MAKE)  -C source/  objects/host/brieflz/libbrieflz.so
+	./translations/brieflz_test.py
+	./translations/make_translation_test.py
 
 # clang-format check for C/C++ code style
 test-ccpp:
@@ -196,7 +196,7 @@ build-all:
 	done;
 	@echo "Resulting output directory: $(OUT_DIR)"
 
-# target to build multilang supported builds for Pinecil & PinecilV2
+# Optional multi-language packaging target (currently disabled for TS101).
 build-multilang:
 	@for modelml in $(MODELS_ML); do \
 		$(MAKE)  -C source/  -j2  model=$${modelml}  firmware-multi_compressed_European  firmware-multi_compressed_Belarusian+Bulgarian+Russian+Serbian+Ukrainian  firmware-multi_Chinese+Japanese ; \

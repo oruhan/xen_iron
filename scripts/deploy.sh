@@ -20,14 +20,14 @@ usage()
 	echo -e "\tclean - delete created docker image for IronOS & its build cache objects\n"
 	echo "CMD (helper routines):"
 	echo -e "\tdocs - high level target to run docs_readme and docs_history (see below)\n"
-	echo -e "\tdocs_readme - generate & OVERWRITE(!) README.md inside Documentation/ based on nav section from mkdocs.yml if it changed\n"
+	echo -e "\tdocs_readme - generate & OVERWRITE(!) README.md inside documentation/ based on nav section from mkdocs.yml if it changed\n"
 	echo -e "\tdocs_history - check if History.md has the changelog for the latest stable release\n"
 	echo -e "\tcheck_style_file SRC - run code style checks based on clang-format & custom parsers for source code file SRC\n"
 	echo -e "\tcheck_style_log - run clang-format using source/Makefile and generate gcc-compatible error log in source/check-style.log\n"
 	echo -e "STORAGE NOTICE: for \"shell\" and \"build\" commands extra files will be downloaded so make sure that you have ~5GB of free space.\n"
 }
 
-# Documentation/README.md automagical generation routine
+# documentation/README.md automagical generation routine
 docs_readme()
 {
 	# WARNING: ON RUN Documentaion/README.md MAY BE OVERWRITTEN WITHOUT ANY WARNINGS / CONFIRMATIONS !!!
@@ -35,8 +35,8 @@ docs_readme()
 	## 0 to the environment & silence - if there are no any changes in README.md nor updates in mkdocs.yml
 	## 1 to the environment (as error) & note message - if the update of README.md in repo is required
 	yml="scripts/IronOS-mkdocs.yml"
-	md_old="Documentation/README.md"
-	md_new="Documentation/README"
+	md_old="documentation/README.md"
+	md_new="documentation/README"
 	# ^^^^ hardcoded paths relative to IronOS/ to make this func very trivial
 # file overwritten section looks out of style but hoping to make shellcheck happy
 cat << EOF > "${md_new}"
@@ -49,7 +49,7 @@ cat << EOF > "${md_new}"
 
 EOF
 	# it probably will become unexplainable in a few months but so far it works:
-	sed '1,/^nav/d; /^ *$/,$d; s,- ,- [,; s,: ,](../Documentation/,; s,.md,.md),; s,:$,],; s,/Pinecil ,/Pinecil%20,; /^  - \[.*\]$/ s,\[,,; s,]$,,' "${yml}" >> "${md_new}"
+	sed '1,/^nav/d; /^ *$/,$d; s,- ,- [,; s,: ,](../documentation/,; s,.md,.md),; s,:$,],; s,/Pinecil ,/Pinecil%20,; /^  - \[.*\]$/ s,\[,,; s,]$,,' "${yml}" >> "${md_new}"
 	ret=0
 	if [ -z "$(diff -q "${md_old}" "${md_new}")" ]; then
 		rm "${md_new}"
@@ -73,10 +73,10 @@ EOF
 	return "${ret}"
 }
 
-# Documentation/History.md automagical changelog routine
+# documentation/History.md automagical changelog routine
 docs_history()
 {
-	md="Documentation/History.md"
+	md="documentation/History.md"
 	ver_md="$(sed -ne 's/^## //1p' "${md}" | head -1)"
 	echo "Latest changelog: ${ver_md}"
 	ver_git="$(git tag -l | sort | grep -e "^v" | grep -v "rc" | tail -1)"
@@ -105,36 +105,36 @@ docs_links()
 	return "${ret}"
 }
 
-# source/Makefile:ALL_LANGUAGES & Translations/*.json automagical routine
+# source/Makefile:ALL_LANGUAGES & translations/*.json automagical routine
 build_langs()
 {
 	mk="../source/Makefile"
-	cd Translations/ || (echo "deploy.sh: build_langs: ERROR with the project directory structure!" && exit 1)
+	cd translations/ || (echo "deploy.sh: build_langs: ERROR with the project directory structure!" && exit 1)
 	langs="$(echo "$(find ./*.json | sed -ne 's,^\./translation_,,; s,\.json$,,; /[A-Z]/p' ; sed -ne 's/^ALL_LANGUAGES=//p;' "${mk}")" | sed 's, ,\n,g; s,\r,,g' | sort | uniq -u)"
 	if [ -n "${langs}" ]; then
 		echo "It seems there is mismatch between supported languages and enabled builds."
-		echo "Please, check files in Translations/ and ALL_LANGUAGES variable in source/Makefile for:"
+		echo "Please, check files in translations/ and ALL_LANGUAGES variable in source/Makefile for:"
 		echo "${langs}"
 		return 1
 	fi;
 	cd ..
 	
 	echo -ne "\n"
-	grep -nH $'\11' Translations/translation*.json
+	grep -nH $'\11' translations/translation*.json
 	ret="${?}"
 	if [ "${ret}" -eq 0 ]; then
 		echo -ne "\t^^^^\t^^^^\n"
-		echo "Please, remove any tabs as indention from json file(s) in Translations/ directory (see the exact files & lines in the list above)."
+		echo "Please, remove any tabs as indention from json file(s) in translations/ directory (see the exact files & lines in the list above)."
 		echo "Use spaces only to indent in the future, please."
 		echo -ne "\n"
 		return 1
 	fi;
 	
-	grep -nEH -e "^( {1}| {3}| {5}| {7}| {9}| {11})[^ ]" Translations/translation*.json
+	grep -nEH -e "^( {1}| {3}| {5}| {7}| {9}| {11})[^ ]" translations/translation*.json
 	ret="${?}"
 	if [ "${ret}" -eq 0 ]; then
 		echo -ne "\t^^^^\t^^^^\n"
-		echo "Please, remove any odd amount of extra spaces as indention from json file(s) in Translations/ directory (see the exact files & lines in the list above)."
+		echo "Please, remove any odd amount of extra spaces as indention from json file(s) in translations/ directory (see the exact files & lines in the list above)."
 		echo "Use even amount of spaces to indent in the future, please (two actual spaces per one indent, not tab)."
 		echo -ne "\n"
 		return 1

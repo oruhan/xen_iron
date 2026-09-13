@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -e
-TRANSLATION_DIR="../Translations"
+TRANSLATION_DIR="../translations"
 #TRANSLATION_SCRIPT="make_translation.py"
 
 # AVAILABLE_LANGUAGES will be calculating according to json files in $TRANSLATION_DIR
 AVAILABLE_LANGUAGES=()
 BUILD_LANGUAGES=()
-AVAILABLE_MODELS=("TS100" "TS80" "TS80P" "Pinecil" "MHP30" "Pinecilv2" "S60" "S60P" "T55" "TS101")
+AVAILABLE_MODELS=("TS101")
 BUILD_MODELS=()
 OPTIONS=()
 
@@ -14,7 +14,7 @@ builder_info() {
     echo -e "
 ********************************************
                IronOS Firmware
-        builder for Miniware + Pine64
+             TS101 firmware builder
 
                                     by Ralim
 ********************************************"
@@ -38,13 +38,12 @@ Parameters :
     -h           : Show this help message
 
 Example : 
-    $(basename "$0") -l EN -m TS100                     (Build one language and model)
-    $(basename "$0") -l EN -m \"TS100 MHP30\"             (Build one language and multi models)
-    $(basename "$0") -l \"DE EN\" -m \"TS100 MHP30\"        (Build multi languages and models)
-    $(basename "$0") -l EN -m Pinecilv2 -o ws2812b_enable=1
+    $(basename "$0") -l TR                            (Build Turkish firmware)
+    $(basename "$0") -l \"DE EN TR\"                    (Build selected languages)
+    $(basename "$0")                                  (Build every available language)
 
 INFO : 
-    By default, without parameters, the build is for all platforms and all languages
+    The only supported model is TS101. Without parameters, all languages are built.
 
 " 1>&2
     exit 1
@@ -141,9 +140,7 @@ echo -n "Requested models : "
 if ((${#margs[@]})); then
     for i in "${margs[@]}"; do
 
-        if [[ "$i" != "Pinecil" ]] && [[ "$i" != "Pinecilv2" ]]; then # Dirty. Need to adapt the Build process to use upper cases only
-            i=$(echo "${i}" | tr '[:lower:]' '[:upper:]')
-        fi
+        i=$(echo "${i}" | tr '[:lower:]' '[:upper:]')
 
         if isInArray "$i" "${AVAILABLE_MODELS[@]}"; then
             echo -n "$i "
@@ -178,8 +175,8 @@ echo "********************************************"
 
 if [ ${#BUILD_LANGUAGES[@]} -gt 0 ] && [ ${#BUILD_MODELS[@]} -gt 0 ]; then
     echo "Cleaning previous builds"
-    rm -rf Hexfile/ >/dev/null
-    rm -rf Objects/ >/dev/null
+    rm -rf hexfile/ >/dev/null
+    rm -rf objects/ >/dev/null
     make clean >/dev/null
     checkLastCommand
 

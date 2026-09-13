@@ -15,7 +15,7 @@ WORKDIR /build/ironos
 ## - clang (required for clang-format to check C++ code formatting)
 ## - shellcheck (to check sh scripts)
 
-ARG APK_COMPS="gcc-riscv-none-elf g++-riscv-none-elf gcc-arm-none-eabi g++-arm-none-eabi newlib-riscv-none-elf newlib-arm-none-eabi"
+ARG APK_COMPS="gcc-arm-none-eabi g++-arm-none-eabi newlib-arm-none-eabi"
 ARG APK_PYTHON="python3 py3-pip black"
 ARG APK_MISC="findutils make git diffutils zip"
 ARG APK_DEV="musl-dev clang bash clang-extra-tools shellcheck"
