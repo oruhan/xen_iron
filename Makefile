@@ -34,6 +34,7 @@ else
 OUT_DIR=$(CURDIR)/BUILDS
 endif
 OUT_HEX=$(CURDIR)/source/hexfile
+OLED_PREVIEW_DIR?=$(CURDIR)/development_resources/oled_previews
 
 
 ### global static variables
@@ -89,6 +90,8 @@ list:
 	@echo "  * docs               - generate \"site\"/ directory with documentation in a form of static html files using ReadTheDocs framework and $(MKDOCS_YML) local config file"
 	@echo "  * docs-deploy        - generate & deploy docs online to gh-pages branch of current github repo"
 	@echo "  * tests              - run set of checks, linters & tests (equivalent of github CI IronOS project settings for push trigger)"
+	@echo "  * oled-preview       - render representative 128x32 OLED states as PNG files"
+	@echo "  * test-oled-preview  - verify the dependency-free OLED renderer"
 	@echo "  * clean-build        - delete generated files & dirs produced during builds EXCEPT docker image & its build cache"
 	@echo "  * clean-full         - delete generated files & dirs produced during builds INCLUDING docker image & its build cache"
 	@echo ""
@@ -169,6 +172,12 @@ test-py:
 	./translations/brieflz_test.py
 	./translations/make_translation_test.py
 
+test-oled-preview:
+	python3 tools/oled_preview.py --self-test
+
+oled-preview:
+	python3 tools/oled_preview.py --output-dir "$(OLED_PREVIEW_DIR)"
+
 # clang-format check for C/C++ code style
 test-ccpp:
 	@echo ""
@@ -239,7 +248,8 @@ clean-full: clean-build  docker-clean
 # phony targets
 .PHONY:  help  list
 .PHONY:  docker-check  docker-shell  docker-build  docker-clean-image  docker-clean-cache  docker-clean
-.PHONY:  docs  docs-deploy
+.PHONY:  docs  docs-deploy  oled-preview
 .PHONY:  test-md  test-sh  test-py  test-ccpp  tests
+.PHONY:  test-oled-preview
 .PHONY:  build-all  build-multilang  ci
 .PHONY:  clean-build  clean-full

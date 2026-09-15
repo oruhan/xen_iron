@@ -83,10 +83,11 @@ void startPIDTask(void const *argument __unused) {
 
       PIDTempTarget = currentTempTargetDegC;
       if (PIDTempTarget > 0) {
-        // Cap the max set point to 450C
-        if (PIDTempTarget > 450) {
+        // Enforce the configured hard ceiling regardless of the active mode or
+        // any value restored from older firmware.
+        if (PIDTempTarget > MAX_TEMP_C) {
           // Maximum allowed output
-          PIDTempTarget = 450;
+          PIDTempTarget = MAX_TEMP_C;
         }
         // Safety check that not aiming higher than current tip can measure
         if (PIDTempTarget > TipThermoModel::getTipMaxInC()) {
@@ -330,6 +331,11 @@ void setOutputx10WattsViaFilters(int32_t x10WattsOut) {
     x10WattsOut = 0;
   }
   if (heaterThermalRunawayCounter > 8) {
+    x10WattsOut = 0;
+  }
+  // Final independent guard after keep-awake pulses and PID filtering. Stop
+  // energising the heater as soon as the measured tip reaches the hard limit.
+  if (TipThermoModel::getTipInC() >= MAX_TEMP_C) {
     x10WattsOut = 0;
   }
 #ifdef SLEW_LIMIT

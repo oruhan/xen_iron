@@ -97,6 +97,50 @@ static uint16_t easeInOutTiming(uint16_t t) { return t * t * (300 - 2 * t) / 100
  */
 static uint16_t lerp(uint16_t a, uint16_t b, uint16_t t) { return a + t * (b - a) / 100; }
 
+static uint32_t readPageColumn(uint8_t *const pages[4], const uint8_t x) {
+  return uint32_t(pages[0][x]) | (uint32_t(pages[1][x]) << 8) | (uint32_t(pages[2][x]) << 16) | (uint32_t(pages[3][x]) << 24);
+}
+
+static void writePageColumn(uint8_t *const pages[4], const uint8_t x, const uint32_t value) {
+  pages[0][x] = value;
+  pages[1][x] = value >> 8;
+  pages[2][x] = value >> 16;
+  pages[3][x] = value >> 24;
+}
+
+static uint32_t interpolateScrollbar(const uint32_t from, const uint32_t to, const uint8_t progress) {
+  if (from == to) {
+    return to;
+  }
+  if (from == 0 || to == 0) {
+    return progress < 50 ? from : to;
+  }
+
+  uint8_t fromTop = 0;
+  uint8_t toTop   = 0;
+  uint8_t fromEnd = 31;
+  uint8_t toEnd   = 31;
+  while ((from & (UINT32_C(1) << fromTop)) == 0) {
+    fromTop++;
+  }
+  while ((to & (UINT32_C(1) << toTop)) == 0) {
+    toTop++;
+  }
+  while ((from & (UINT32_C(1) << fromEnd)) == 0) {
+    fromEnd--;
+  }
+  while ((to & (UINT32_C(1) << toEnd)) == 0) {
+    toEnd--;
+  }
+
+  const int16_t top    = fromTop + ((int16_t(toTop) - fromTop) * progress) / 100;
+  const int16_t height = (fromEnd - fromTop + 1) + ((int16_t(toEnd - toTop) - int16_t(fromEnd - fromTop)) * progress) / 100;
+  if (height >= 32) {
+    return UINT32_MAX;
+  }
+  return ((UINT32_C(1) << height) - 1) << top;
+}
+
 void i2c_send_command_byte(unsigned char cmd) { I2C_CLASS::I2C_RegisterWrite(DEVICEADDR_OLED, 0x00, cmd); }
 
 void i2c_send_bulk(const uint8_t* buf, int len) {
@@ -195,6 +239,15 @@ void OLED::drawChar(const uint16_t charCode, const FontStyle fontStyle, const ui
     fontHeight  = 16;
     fontWidth   = 12;
     break;
+  case FontStyle::FULLSCREEN:
+    if (charCode <= 0x01) {
+      return;
+    }
+    currentFont = FontSectionInfo.font12_start_ptr;
+    index       = charCode - 2;
+    fontHeight  = 16;
+    fontWidth   = 12;
+    break;
   case FontStyle::SMALL:
   case FontStyle::LARGE:
   default:
@@ -223,6 +276,11 @@ void OLED::drawChar(const uint16_t charCode, const FontStyle fontStyle, const ui
     break;
   }
   const uint8_t *charPointer = currentFont + ((fontWidth * (fontHeight / 8)) * index);
+  if (fontStyle == FontStyle::FULLSCREEN) {
+    drawAreaFullscreen(cursor_x, charPointer);
+    cursor_x += fontWidth * 2;
+    return;
+  }
   drawArea(cursor_x, cursor_y, fontWidth, fontHeight, charPointer);
   cursor_x += fontWidth;
 }
@@ -349,13 +407,18 @@ void OLED::useSecondaryFramebuffer(bool useSecondary) {
  *
  * **This function blocks until the transition has completed or user presses button**
  */
-void OLED::transitionScrollDown(const TickType_t viewEnterTime) {
+void OLED::transitionScrollDown(const TickType_t viewEnterTime, const bool animateScrollbar) {
   TickType_t startDraw       = xTaskGetTickCount();
   bool       buttonsReleased = getButtonState() == BUTTON_NONE;
+  uint8_t   *stripBackPointers[4] = {&secondFrameBuffer[FRAMEBUFFER_START], &secondFrameBuffer[FRAMEBUFFER_START + OLED_WIDTH],
+                                     &secondFrameBuffer[FRAMEBUFFER_START + OLED_WIDTH * 2], &secondFrameBuffer[FRAMEBUFFER_START + OLED_WIDTH * 3]};
+  const uint32_t oldScrollbar = animateScrollbar ? readPageColumn(stripPointers, OLED_WIDTH - 1) : 0;
+  const uint32_t newScrollbar = animateScrollbar ? readPageColumn(stripBackPointers, OLED_WIDTH - 1) : 0;
+  const uint8_t  contentWidth = animateScrollbar ? OLED_WIDTH - 1 : OLED_WIDTH;
 
   for (uint8_t heightPos = 0; heightPos < OLED_HEIGHT; heightPos++) {
     // For each line, we shuffle all bits up a row
-    for (uint8_t xPos = 0; xPos < OLED_WIDTH; xPos++) {
+    for (uint8_t xPos = 0; xPos < contentWidth; xPos++) {
       const uint16_t firstStripPos  = FRAMEBUFFER_START + xPos;
       const uint16_t secondStripPos = firstStripPos + OLED_WIDTH;
       // For 32 pixel high OLED's we have four strips to tailchain
@@ -376,6 +439,10 @@ void OLED::transitionScrollDown(const TickType_t viewEnterTime) {
       secondFrameBuffer[thirdStripPos]  = (secondFrameBuffer[thirdStripPos] >> 1) | ((secondFrameBuffer[fourthStripPos] & 0x01) << 7);
       // Finally on the bottom row; we shuffle it up ready
       secondFrameBuffer[fourthStripPos] >>= 1;
+    }
+    if (animateScrollbar) {
+      const uint8_t progress = easeInOutTiming(((heightPos + 1) * 100) / OLED_HEIGHT);
+      writePageColumn(stripPointers, OLED_WIDTH - 1, interpolateScrollbar(oldScrollbar, newScrollbar, progress));
     }
     buttonsReleased |= getButtonState() == BUTTON_NONE;
     if (getButtonState() != BUTTON_NONE && buttonsReleased) {
@@ -398,13 +465,18 @@ void OLED::transitionScrollDown(const TickType_t viewEnterTime) {
  *
  * **This function blocks until the transition has completed or user presses button**
  */
-void OLED::transitionScrollUp(const TickType_t viewEnterTime) {
+void OLED::transitionScrollUp(const TickType_t viewEnterTime, const bool animateScrollbar) {
   TickType_t startDraw       = xTaskGetTickCount();
   bool       buttonsReleased = getButtonState() == BUTTON_NONE;
+  uint8_t   *stripBackPointers[4] = {&secondFrameBuffer[FRAMEBUFFER_START], &secondFrameBuffer[FRAMEBUFFER_START + OLED_WIDTH],
+                                     &secondFrameBuffer[FRAMEBUFFER_START + OLED_WIDTH * 2], &secondFrameBuffer[FRAMEBUFFER_START + OLED_WIDTH * 3]};
+  const uint32_t oldScrollbar = animateScrollbar ? readPageColumn(stripPointers, OLED_WIDTH - 1) : 0;
+  const uint32_t newScrollbar = animateScrollbar ? readPageColumn(stripBackPointers, OLED_WIDTH - 1) : 0;
+  const uint8_t  contentWidth = animateScrollbar ? OLED_WIDTH - 1 : OLED_WIDTH;
 
   for (uint8_t heightPos = 0; heightPos < OLED_HEIGHT; heightPos++) {
     // For each line, we shuffle all bits down a row
-    for (uint8_t xPos = 0; xPos < OLED_WIDTH; xPos++) {
+    for (uint8_t xPos = 0; xPos < contentWidth; xPos++) {
       const uint16_t firstStripPos  = FRAMEBUFFER_START + xPos;
       const uint16_t secondStripPos = firstStripPos + OLED_WIDTH;
       // For 32 pixel high OLED's we have four strips to tailchain
@@ -421,6 +493,10 @@ void OLED::transitionScrollUp(const TickType_t viewEnterTime) {
       secondFrameBuffer[secondStripPos] = (secondFrameBuffer[secondStripPos] << 1) | ((secondFrameBuffer[firstStripPos] & 0x80) >> 7);
       // Finally on the bottom row; we shuffle it up ready
       secondFrameBuffer[firstStripPos] <<= 1;
+    }
+    if (animateScrollbar) {
+      const uint8_t progress = easeInOutTiming(((heightPos + 1) * 100) / OLED_HEIGHT);
+      writePageColumn(stripPointers, OLED_WIDTH - 1, interpolateScrollbar(oldScrollbar, newScrollbar, progress));
     }
     buttonsReleased |= getButtonState() == BUTTON_NONE;
     if (getButtonState() != BUTTON_NONE && buttonsReleased) {
@@ -563,6 +639,9 @@ void OLED::printSymbolDeg(const FontStyle fontStyle) {
   case FontStyle::LARGE:
     OLED::print(getSettingValue(SettingsOptions::TemperatureInF) ? LargeSymbolDegF : LargeSymbolDegC, fontStyle);
     break;
+  case FontStyle::FULLSCREEN:
+    OLED::drawSymbolFullscreen(getSettingValue(SettingsOptions::TemperatureInF) ? 0 : 1);
+    break;
   case FontStyle::SMALL:
   default:
     OLED::print(getSettingValue(SettingsOptions::TemperatureInF) ? SmallSymbolDegF : SmallSymbolDegC, fontStyle);
@@ -642,6 +721,40 @@ void OLED::debugNumber(int32_t val, FontStyle fontStyle) {
 void OLED::drawSymbol(uint8_t symbolID) {
   // draw a symbol to the current cursor location
   drawChar(symbolID, FontStyle::EXTRAS, 0);
+}
+
+void OLED::drawSymbolFullscreen(uint8_t symbolID) {
+  const uint8_t *symbol = ExtraFontChars + (symbolID * 12 * 2);
+  drawAreaFullscreen(cursor_x, symbol);
+  cursor_x += 24;
+}
+
+// Scale a 12x16 bitmap by two in both directions. Each source bit becomes a
+// 2x2 block, producing a crisp 24x32 glyph without storing another font.
+void OLED::drawAreaFullscreen(int16_t x, const uint8_t *ptr) {
+  for (uint8_t sourcePage = 0; sourcePage < 2; sourcePage++) {
+    for (uint8_t sourceX = 0; sourceX < 12; sourceX++) {
+      uint16_t doubled = ptr[sourcePage * 12 + sourceX];
+      // Spread the eight source bits over the even bits, then duplicate them.
+      // This replaces the per-bit loop with four fixed operations.
+      doubled = (doubled | (doubled << 4)) & 0x0F0F;
+      doubled = (doubled | (doubled << 2)) & 0x3333;
+      doubled = (doubled | (doubled << 1)) & 0x5555;
+      doubled |= doubled << 1;
+
+      const uint8_t upperPage = doubled & 0xFF;
+      const uint8_t lowerPage = doubled >> 8;
+      const int16_t targetX   = x + sourceX * 2;
+      if (targetX >= 0 && targetX < OLED_WIDTH) {
+        stripPointers[sourcePage * 2][targetX]     = upperPage;
+        stripPointers[sourcePage * 2 + 1][targetX] = lowerPage;
+      }
+      if (targetX + 1 >= 0 && targetX + 1 < OLED_WIDTH) {
+        stripPointers[sourcePage * 2][targetX + 1]     = upperPage;
+        stripPointers[sourcePage * 2 + 1][targetX + 1] = lowerPage;
+      }
+    }
+  }
 }
 
 // Draw an area, but y must be aligned on 0/8 offset
@@ -769,9 +882,10 @@ void OLED::drawHeatSymbol(uint8_t state) {
   // the levels masks the symbol nicely
   state /= 31; // 0-> 8 range
   // Then we want to draw down (16-(5+state)
-  uint8_t cursor_x_temp = cursor_x;
+  const uint8_t cursor_x_temp = cursor_x;
+  const uint8_t cursor_y_temp = cursor_y;
   drawSymbol(14);
-  drawFilledRect(cursor_x_temp, 0, cursor_x_temp + 12, 2 + (8 - state), true);
+  drawFilledRect(cursor_x_temp, cursor_y_temp, cursor_x_temp + 12, cursor_y_temp + 2 + (8 - state), true);
 }
 
 bool OLED::isInitDone() { return initDone; }

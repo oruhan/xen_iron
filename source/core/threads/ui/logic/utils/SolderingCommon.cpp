@@ -47,7 +47,8 @@ bool checkExitSoldering(void) {
 int8_t getPowerSourceNumber(void) {
   int8_t sourceNumber = 0;
   if (getIsPoweredByDCIN()) {
-    sourceNumber = 0;
+    // A configured cell count means the DC input is being used as a battery.
+    sourceNumber = getSettingValue(SettingsOptions::MinDCVoltageCells) ? 4 : 0;
   } else {
     // We are not powered via DC, so want to display the appropriate state for PD or QC
     bool poweredbyPD        = false;

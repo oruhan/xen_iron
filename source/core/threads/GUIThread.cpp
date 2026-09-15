@@ -42,11 +42,28 @@ guiContext    context;                                                  // Conte
 
 OperatingMode handle_post_init_state();
 OperatingMode guiHandleDraw(void) {
+  static bool suppressWakeButtonUntilRelease = false;
   OLED::clearScreen(); // Clear ready for render pass
   // Read button state
-  ButtonState buttons = getButtonState();
+  ButtonState buttons                = getButtonState();
+  const bool  physicalButtonPressed = getButtonA() || getButtonB();
+  const bool  displayWasOff         = OLED::getDisplayState() == OLED::DisplayState::OFF;
+  const bool  deviceWasSleeping     = currentOperatingMode == OperatingMode::Sleeping || currentOperatingMode == OperatingMode::Hibernating;
+
+  // A button used to wake the OLED or leave a sleep state must not also act on
+  // the newly visible screen. Keep consuming its short/long event until every
+  // physical button has been released. Motion-only wakeups are unaffected.
+  if (!suppressWakeButtonUntilRelease && physicalButtonPressed && (displayWasOff || deviceWasSleeping)) {
+    suppressWakeButtonUntilRelease = true;
+  }
+  if (suppressWakeButtonUntilRelease) {
+    buttons = BUTTON_NONE;
+    if (!physicalButtonPressed) {
+      suppressWakeButtonUntilRelease = false;
+    }
+  }
   // Enforce screen on if buttons pressed, movement, hot tip etc
-  if (buttons != BUTTON_NONE) {
+  if (buttons != BUTTON_NONE || physicalButtonPressed) {
     OLED::setDisplayState(OLED::DisplayState::ON);
   } else {
     // Buttons are none; check if we can sleep display
@@ -170,7 +187,7 @@ void guiRenderLoop(void) {
     // Now dispatch the transition
     switch (context.transitionMode) {
     case TransitionAnimation::Down:
-      OLED::transitionScrollDown(context.viewEnterTime);
+      OLED::transitionScrollDown(context.viewEnterTime, currentOperatingMode == OperatingMode::SettingsMenu);
       break;
     case TransitionAnimation::Left:
       OLED::transitionSecondaryFramebuffer(false, context.viewEnterTime);
@@ -179,7 +196,7 @@ void guiRenderLoop(void) {
       OLED::transitionSecondaryFramebuffer(true, context.viewEnterTime);
       break;
     case TransitionAnimation::Up:
-      OLED::transitionScrollUp(context.viewEnterTime);
+      OLED::transitionScrollUp(context.viewEnterTime, currentOperatingMode == OperatingMode::SettingsMenu);
 
     case TransitionAnimation::None:
     default:

@@ -7,7 +7,7 @@
       "message": "Kalibrasyon\ntamam!"
     },
     "ResetOKMessage": {
-      "message": "Sıfırlama Tamam"
+      "message": "Sıfırlama\ntamam"
     },
     "SettingsResetMessage": {
       "message": "Ayarlar\nSıfırlandı"
@@ -31,7 +31,7 @@
       "message": "Termal\nKaçak"
     },
     "WarningTipShorted": {
-      "message": "!Uç Kısa Devre!"
+      "message": "Uçta kısa\ndevre!"
     },
     "SettingsCalibrationWarning": {
       "message": "Yeniden başlatmadan önce uç ve sapın oda sıcaklığında olduğundan emin olun!"
@@ -64,7 +64,7 @@
       "message": "Soğuma\n"
     },
     "DeviceFailedValidationWarning": {
-      "message": "Cihazınız büyük olasılıkla sahte!"
+      "message": "Cihaz muhtemelen\nsahte!"
     },
     "TooHotToStartProfileWarning": {
       "message": "Profil başlatmak için\nçok sıcak"
@@ -107,16 +107,16 @@
   },
   "menuValues": {
     "USBPDModeDefault": {
-      "displayText": "Default\nMode"
+      "displayText": "Varsayılan\nmod"
     },
     "USBPDModeNoDynamic": {
-      "displayText": "No\nDynamic"
+      "displayText": "Dinamik\nkapalı"
     },
     "USBPDModeSafe": {
-      "displayText": "Safe\nMode"
+      "displayText": "Güvenli\nmod"
     },
     "TipTypeAuto": {
-      "displayText": "Auto\nSense"
+      "displayText": "Otomatik\nalgıla"
     },
     "TipTypeT12Long": {
       "displayText": "TS100\nLong"
@@ -136,11 +136,11 @@
   },
   "menuOptions": {
     "DCInCutoff": {
-      "displayText": "GÇKYN\n",
+      "displayText": "Güç\nkaynağı",
       "description": "\"Güç Kaynağı\". En düşük çalışma voltajını ayarlar. (DC 10V) (S 3.3V hücre başına)"
     },
     "MinVolCell": {
-      "displayText": "Minimum\nVoltaj",
+      "displayText": "Min.\nvoltaj",
       "description": "Pil hücresi başına izin verilen minimum voltaj (3S: 3 - 3.7V | 4-6S: 2.4 - 3.7V)"
     },
     "QCMaxVoltage": {
@@ -148,31 +148,31 @@
       "description": "Max istenecek QC voltajı"
     },
     "PDNegTimeout": {
-      "displayText": "PD\nTimeout",
+      "displayText": "PD zaman\naşımı",
       "description": "Bazı QC şarj cihazlarıyla uyumluluk için 100ms adımlarında PD pazarlık zaman aşımı"
     },
     "USBPDMode": {
-      "displayText": "PD\nMode",
+      "displayText": "PD\nmodu",
       "description": "PPS & EPR modlarını etkinleştirir"
     },
     "BoostTemperature": {
-      "displayText": "YKSC\n",
+      "displayText": "Takviye\nsıcak.",
       "description": "Yüksek Performans Modu Sıcaklığı"
     },
     "AutoStart": {
-      "displayText": "OTOBAŞ\n",
+      "displayText": "Otomatik\nbaşlat",
       "description": "Güç verildiğinde otomatik olarak lehimleme modunda başlat. (L=Lehimleme Modu | U=Uyku Modu | S=Uyku Modu Oda Sıcaklığı)"
     },
     "TempChangeShortStep": {
-      "displayText": "Sıcaklık değişimi\nkısa",
+      "displayText": "Sıcaklık\nkısa adım",
       "description": "Kısa basışlardaki sıcaklık derecesi atlama oranı"
     },
     "TempChangeLongStep": {
-      "displayText": "Sıcaklık değişimi\nuzun",
+      "displayText": "Sıcaklık\nuzun adım",
       "description": "Uzun başışlardaki sıcaklık derecesi atlama oranı"
     },
     "LockingMode": {
-      "displayText": "Kilitleme\nİzni",
+      "displayText": "Tuş\nkilidi",
       "description": "Lehimleme sırasında, her iki düğmeye basılı tutarak kilitleme modunu değiştirin (B=Sadece performans modu | F=tam kilit)"
     },
     "ProfilePhases": {
@@ -232,19 +232,19 @@
       "description": "Profil modunun sonunda bu hızda soğuma yapın (saniye başına derece)"
     },
     "MotionSensitivity": {
-      "displayText": "HARHAS\n",
+      "displayText": "Hareket\nhassas.",
       "description": "Hareket Hassasiyeti (1=En az duyarlı | ... | 9=En duyarlı)"
     },
     "SleepTemperature": {
-      "displayText": "BKSC\n",
+      "displayText": "Uyku\nsıcak.",
       "description": "Bekleme Modu Sıcaklığı (C)"
     },
     "SleepTimeout": {
-      "displayText": "BMZA\n",
+      "displayText": "Uyku\nsüresi",
       "description": "Bekleme Modu Zaman Aşımı (Dakika | Saniye)"
     },
     "ShutdownTimeout": {
-      "displayText": "KPTZA\n",
+      "displayText": "Kapanma\nsüresi",
       "description": "Kapatma Zaman Aşımı (Dakika)"
     },
     "HallEffSensitivity": {
@@ -256,31 +256,31 @@
       "description": "Hall etkisi eşiğin üzerinde olduğunda \"uyku modu\" başlamadan önceki aralık"
     },
     "TemperatureUnit": {
-      "displayText": "tempUnit\n",
+      "displayText": "Sıcaklık\nbirimi",
       "description": "Sıcaklık Birimi (C=Celsius | F=Fahrenheit)"
     },
     "DisplayRotation": {
-      "displayText": "dispRot\n",
+      "displayText": "Ekran\nyönü",
       "description": "Görüntü Yönlendirme (R=Sağlak | L=Solak | O=Otomatik)"
     },
     "CooldownBlink": {
-      "displayText": "SĞGÖST\n",
+      "displayText": "Soğuma\nyanıp sön",
       "description": "Soğutma ekranında uç hala sıcakken derece gösterilsin."
     },
     "ScrollingSpeed": {
-      "displayText": "scrSpeed\n",
+      "displayText": "Kaydırma\nhızı",
       "description": "Yazıların kayma hızı (Y=Yavaş | H=Hızlı)"
     },
     "ReverseButtonTempChange": {
-      "displayText": "Düğme Yerleri\nRotasyonu",
+      "displayText": "Sıcaklık\ntuşları",
       "description": "\"Düğme Yerleri Rotasyonu\" Sıcaklık ayar düğmelerinin yerini değiştirin"
     },
     "ReverseButtonSettings": {
-      "displayText": "Swap\nA B keys",
-      "description": "Reverse assignment of buttons for Settings menu"
+      "displayText": "Menü\ntuşları",
+      "description": "Ayarlar menüsündeki A ve B tuşlarının görevlerini değiştirir"
     },
     "AnimSpeed": {
-      "displayText": "animSpeed",
+      "displayText": "Animasyon\nhızı",
       "description": "Menüdeki simge animasyonlarının hızı (Y=Yavaş | O=Orta | H=Hızlı)"
     },
     "AnimLoop": {
@@ -296,15 +296,15 @@
       "description": "OLED ekran renklerini ters çevir"
     },
     "LOGOTime": {
-      "displayText": "Boot Logo\nSüresi",
+      "displayText": "Logo\nsüresi",
       "description": "Boot logo süresi (s=saniye)"
     },
     "AdvancedIdle": {
-      "displayText": "AYRBİL\n",
+      "displayText": "Boş ekran\ndetayı",
       "description": "Boş ekranda ayrıntılı bilgileri daha küçük bir yazı tipi ile göster."
     },
     "AdvancedSoldering": {
-      "displayText": "GELLHM\n",
+      "displayText": "Lehimleme\ndetayı",
       "description": "\"Gelişmiş Lehimleme\" Lehimleme yaparken detaylı bilgi göster"
     },
     "BluetoothLE": {
@@ -316,11 +316,11 @@
       "description": "Havyanın kullanacağı en yüksek güç (W=Watts)"
     },
     "CalibrateCJC": {
-      "displayText": "CJC Kalibrasyonu\nSonraki Boot'ta",
+      "displayText": "Uç ortam\nkalib.",
       "description": "Sonraki boot'ta uç Soğuk Nokta Kompansasyonu kalibre edilecek (Delta T < 5°C ise gerekmez)"
     },
     "VoltageCalibration": {
-      "displayText": "VOL KAL?\n",
+      "displayText": "Voltaj\nkalib.",
       "description": "Voltaj Girişi Kalibrasyonu. Düğmeler ayarlar, çıkmak için uzun bas."
     },
     "PowerPulsePower": {
@@ -336,7 +336,7 @@
       "description": "Uyanık tutma darbesi süresi (x 250ms)"
     },
     "SettingsReset": {
-      "displayText": "SIFIRLA?\n",
+      "displayText": "Ayarları\nsıfırla",
       "description": "Bütün ayarları sıfırlar"
     },
     "LanguageSwitch": {
@@ -344,8 +344,8 @@
       "description": ""
     },
     "SolderingTipType": {
-      "displayText": "Soldering\nTip Type",
-      "description": "Select the tip type fitted"
+      "displayText": "Uç\ntürü",
+      "description": "Takılı havya ucu türünü seçin"
     }
   }
 }

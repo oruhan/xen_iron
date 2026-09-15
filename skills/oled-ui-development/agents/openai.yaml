@@ -1,0 +1,4 @@
+interface:
+  display_name: "OLED UI Development"
+  short_description: "Design and verify tiny monochrome OLED interfaces"
+  default_prompt: "Use $oled-ui-development to design and visually verify this monochrome OLED interface."

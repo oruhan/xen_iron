@@ -16,7 +16,7 @@
  */
 
 #define SLEEP_TEMP         150 // Default sleep temperature
-#define BOOST_TEMP         420 // Default boost temp.
+#define BOOST_TEMP         380 // Default boost temp; never exceed the hard temperature limit.
 #define BOOST_MODE_ENABLED 1   // 0: Disable 1: Enable
 
 /**
@@ -138,10 +138,10 @@
 #define MIN_CALIBRATION_OFFSET 100 // Min value for calibration
 #define SOLDERING_TEMP         320 // Default soldering temp is 320.0 °C
 #define PID_TIM_HZ             (8) // Tick rate of the PID loop
-#define MAX_TEMP_C             450 // Max soldering temp selectable °C
-#define MAX_TEMP_F             850 // Max soldering temp selectable °F
-#define MIN_TEMP_C             10  // Min soldering temp selectable °C
-#define MIN_TEMP_F             50  // Min soldering temp selectable °F
+#define MAX_TEMP_C             380 // Hard maximum soldering temperature in °C
+#define MAX_TEMP_F             716 // Fahrenheit equivalent of 380 °C
+#define MIN_TEMP_C             0   // 0 °C disables heating from the temperature-adjust screen
+#define MIN_TEMP_F             32  // Fahrenheit equivalent of 0 °C
 #define MIN_BOOST_TEMP_C       250 // The min settable temp for boost mode °C
 #define MIN_BOOST_TEMP_F       480 // The min settable temp for boost mode °F
 

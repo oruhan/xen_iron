@@ -1,11 +1,11 @@
 # IronOS-TS101-Custom
 
-Custom Miniware TS101 soldering iron.
+Custom Miniware TS101 soldering iron firmware.
 
 "WARNING"
 This is custom firmware. Flashing it might void your warranty.
 
-## Credits
+## Fork
 
 Forked from [IronOS-TS101-FullOLED](https://github.com/vtolvr/IronOS-TS101-FullOLED).
 
@@ -32,7 +32,7 @@ Forked from [IronOS-TS101-FullOLED](https://github.com/vtolvr/IronOS-TS101-FullO
    - The file will rename itself to .RDY if it worked, or .ERR if it didn't
    - If you get .ERR, don't panic. Just copy the file again without deleting the .ERR file. Usually works the second time.
 
-4. Unplug, power it up with your normal power supply, done.
+4. Unplug, power it up with your preferred power supply, done.
 
 ## Building from Source on Fedora
 
@@ -87,6 +87,25 @@ cd source/
 ```
 
 Your firmware ends up in `source/hexfile/TS101_<PREFERRED_LANGUAGE>.hex`.
+
+## 128x32 OLED previews
+
+Render the main soldering states with the same generated bitmap font used by the
+firmware. The renderer uses only Python's standard library:
+
+```bash
+make oled-preview
+make test-oled-preview
+```
+
+PNG files are written to `development_resources/oled_previews/`. A captured raw
+SSD1306 framebuffer can also be rendered directly:
+
+```bash
+python3 tools/oled_preview.py --framebuffer frame.bin --output frame.png
+```
+
+The raw input must contain 512 bytes in the display's four-page layout.
 
 ## Contributing
 

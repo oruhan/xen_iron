@@ -114,6 +114,30 @@ static const SettingConstants settingsConstants[(int)SettingsOptions::SettingsOp
 };
 static_assert((sizeof(settingsConstants) / sizeof(SettingConstants)) == ((int)SettingsOptions::SettingsOptionsLength));
 
+static bool isTemperatureSetting(const SettingsOptions option) {
+  switch (option) {
+  case SettingsOptions::SolderingTemp:
+  case SettingsOptions::SleepTemp:
+  case SettingsOptions::BoostTemp:
+  case SettingsOptions::ProfilePreheatTemp:
+  case SettingsOptions::ProfilePhase1Temp:
+  case SettingsOptions::ProfilePhase2Temp:
+  case SettingsOptions::ProfilePhase3Temp:
+  case SettingsOptions::ProfilePhase4Temp:
+  case SettingsOptions::ProfilePhase5Temp:
+    return true;
+  default:
+    return false;
+  }
+}
+
+static uint16_t getSettingMaximum(const SettingsOptions option) {
+  if (isTemperatureSetting(option)) {
+    return systemSettings.settingsValues[(int)SettingsOptions::TemperatureInF] ? MAX_TEMP_F : MAX_TEMP_C;
+  }
+  return settingsConstants[(int)option].max;
+}
+
 void saveSettings() {
 #ifdef CANT_DIRECT_READ_SETTINGS
   // For these devices flash is not 1:1 mapped, so need to read into staging buffer
@@ -165,6 +189,16 @@ bool sanitiseSettings() {
       dirty                            = true;
     }
   }
+  // Temperature values are stored in the selected unit. The generic table
+  // uses the Fahrenheit maximum, so clamp old Celsius settings separately.
+  for (int i = 0; i < (int)SettingsOptions::SettingsOptionsLength; i++) {
+    const SettingsOptions option = static_cast<SettingsOptions>(i);
+    const uint16_t        maximum = getSettingMaximum(option);
+    if (systemSettings.settingsValues[i] > maximum) {
+      systemSettings.settingsValues[i] = maximum;
+      dirty                            = true;
+    }
+  }
   if (dirty) {
     saveSettings();
   }
@@ -179,13 +213,14 @@ void resetSettings() {
 
 void setSettingValue(const enum SettingsOptions option, const uint16_t newValue) {
   const auto constants        = settingsConstants[(int)option];
+  const auto maximum          = getSettingMaximum(option);
   uint16_t   constrainedValue = newValue;
   if (constrainedValue < constants.min) {
     // If less than min, constrain
     constrainedValue = constants.min;
-  } else if (constrainedValue > constants.max) {
+  } else if (constrainedValue > maximum) {
     // If hit max, constrain
-    constrainedValue = constants.max;
+    constrainedValue = maximum;
   }
   systemSettings.settingsValues[(int)option] = constrainedValue;
 }

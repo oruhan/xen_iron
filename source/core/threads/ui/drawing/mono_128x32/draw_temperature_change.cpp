@@ -2,22 +2,14 @@
 
 #ifdef OLED_128x32
 void ui_draw_temperature_change(void) {
+  constexpr uint8_t TemperatureX = 24;
+  const char       *leftSymbol    = OLED::getRotation() ? LargeSymbolMinus : LargeSymbolPlus;
+  const char       *rightSymbol   = OLED::getRotation() ? LargeSymbolPlus : LargeSymbolMinus;
 
-  OLED::setCursor(8, 8);
-  if (OLED::getRotation()) {
-    OLED::print(getSettingValue(SettingsOptions::ReverseButtonTempChangeEnabled) ? LargeSymbolPlus : LargeSymbolMinus, FontStyle::LARGE);
-  } else {
-    OLED::print(getSettingValue(SettingsOptions::ReverseButtonTempChangeEnabled) ? LargeSymbolMinus : LargeSymbolPlus, FontStyle::LARGE);
-  }
-
-  OLED::print(LargeSymbolSpace, FontStyle::LARGE);
-  OLED::printNumber(getSettingValue(SettingsOptions::SolderingTemp), 3, FontStyle::LARGE);
-  OLED::printSymbolDeg(FontStyle::EXTRAS);
-  OLED::print(LargeSymbolSpace, FontStyle::LARGE);
-  if (OLED::getRotation()) {
-    OLED::print(getSettingValue(SettingsOptions::ReverseButtonTempChangeEnabled) ? LargeSymbolMinus : LargeSymbolPlus, FontStyle::LARGE);
-  } else {
-    OLED::print(getSettingValue(SettingsOptions::ReverseButtonTempChangeEnabled) ? LargeSymbolPlus : LargeSymbolMinus, FontStyle::LARGE);
-  }
+  OLED::setCursor(0, 8);
+  OLED::print(leftSymbol, FontStyle::LARGE);
+  ui_draw_temperature_fullscreen(getSettingValue(SettingsOptions::SolderingTemp), TemperatureX);
+  OLED::setCursor(OLED_WIDTH - 12, 8);
+  OLED::print(rightSymbol, FontStyle::LARGE);
 }
 #endif

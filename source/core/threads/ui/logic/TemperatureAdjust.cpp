@@ -26,7 +26,7 @@ OperatingMode gui_solderingTempAdjust(const ButtonState buttonIn, guiContext *cx
   case BUTTON_BOTH:
     // exit
     saveSettings();
-    cxt->transitionMode = TransitionAnimation::Right;
+    cxt->transitionMode = cxt->previousMode == OperatingMode::Soldering ? TransitionAnimation::None : TransitionAnimation::Right;
     return cxt->previousMode;
   case BUTTON_B_LONG:
     if (xTaskGetTickCount() - (*autoRepeatTimer) + (*autoRepeatAcceleration) > PRESS_ACCEL_INTERVAL_MAX) {
@@ -59,7 +59,8 @@ OperatingMode gui_solderingTempAdjust(const ButtonState buttonIn, guiContext *cx
     delta = -delta;
   }
   if (delta != 0) {
-    // constrain between the set temp limits, i.e. 10-450 C
+    // Constrain between the selectable limits. A 0 °C target is treated by
+    // the PID task as heater-off, which makes it a useful explicit off setting.
     int16_t newTemp = getSettingValue(SettingsOptions::SolderingTemp);
     newTemp += delta;
     // Round to nearest increment of delta
@@ -85,7 +86,7 @@ OperatingMode gui_solderingTempAdjust(const ButtonState buttonIn, guiContext *cx
 
   if (xTaskGetTickCount() - lastButtonTime > (TICKS_SECOND * 3)) {
     saveSettings();
-    cxt->transitionMode = TransitionAnimation::Right;
+    cxt->transitionMode = cxt->previousMode == OperatingMode::Soldering ? TransitionAnimation::None : TransitionAnimation::Right;
     return cxt->previousMode; // exit if user just doesn't press anything for a bit
   }
   return OperatingMode::TemperatureAdjust; // Stay in temp adjust

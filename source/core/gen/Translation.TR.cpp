@@ -26,56 +26,56 @@ const uint8_t USER_FONT_12[] = {
 0x00, 0x00, 0x80, 0x80, 0x80, 0xF0, 0xF0, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00, 0x01, 0x01, 0x01, 0x0F, 0x0F, 0x01, 0x01, 0x01, 0x00, 0x00,//0x14 -> +
 0x00, 0x00, 0x00, 0x00, 0x60, 0xEC, 0xEC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x30, 0x3F, 0x3F, 0x30, 0x30, 0x00, 0x00, 0x00,//0x15 -> i
 0x00, 0x00, 0xE0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00,//0x16 -> n
-0x00, 0x00, 0x00, 0x00, 0x60, 0xE0, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x30, 0x3F, 0x3F, 0x30, 0x30, 0x00, 0x00, 0x00,//0x17 -> ı
+0x00, 0x00, 0xE0, 0xE0, 0xC0, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,//0x17 -> r
 0x00, 0x00, 0x00, 0x00, 0x03, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x30, 0x3F, 0x3F, 0x30, 0x30, 0x00, 0x00, 0x00,//0x18 -> l
-0x00, 0x00, 0xE0, 0xE0, 0xC0, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,//0x19 -> r
-0x00, 0xE0, 0xC0, 0xE0, 0xE0, 0xC0, 0xC0, 0xE0, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x3F, 0x3F, 0x00,//0x1A -> m
-0x00, 0x00, 0xFF, 0xFF, 0x00, 0x80, 0xC0, 0xE0, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x03, 0x07, 0x0F, 0x1C, 0x38, 0x30, 0x00, 0x00,//0x1B -> k
+0x00, 0x00, 0x00, 0x00, 0x60, 0xE0, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x30, 0x3F, 0x3F, 0x30, 0x30, 0x00, 0x00, 0x00,//0x19 -> ı
+0x00, 0x00, 0xFF, 0xFF, 0x00, 0x80, 0xC0, 0xE0, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x03, 0x07, 0x0F, 0x1C, 0x38, 0x30, 0x00, 0x00,//0x1A -> k
+0x00, 0xE0, 0xC0, 0xE0, 0xE0, 0xC0, 0xC0, 0xE0, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x3F, 0x3F, 0x00,//0x1B -> m
 0x00, 0xC0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0x60, 0x40, 0x00, 0x00, 0x00, 0x00, 0x11, 0x33, 0x33, 0x33, 0x33, 0x33, 0x3F, 0x1E, 0x00, 0x00, 0x00,//0x1C -> s
 0x00, 0x60, 0x60, 0xFE, 0xFE, 0x60, 0x60, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x00, 0x00, 0x00,//0x1D -> t
-0x00, 0x80, 0xC0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x0F, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x38, 0x1F, 0x0F, 0x00,//0x1E -> o
-0x00, 0xE0, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0xE0, 0x00, 0x00, 0x0F, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x18, 0x3F, 0x3F, 0x00,//0x1F -> u
+0x00, 0xE0, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE0, 0xE0, 0x00, 0x00, 0x0F, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x18, 0x3F, 0x3F, 0x00,//0x1E -> u
+0x00, 0x80, 0xC0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x0F, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x38, 0x1F, 0x0F, 0x00,//0x1F -> o
 0x00, 0x00, 0x60, 0xE0, 0x80, 0x00, 0x00, 0x80, 0xE0, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x81, 0xE7, 0x7E, 0x1E, 0x07, 0x01, 0x00, 0x00, 0x00,//0x20 -> y
 0x00, 0xE0, 0xE0, 0x0C, 0x0C, 0x00, 0x00, 0x0C, 0x0C, 0xE0, 0xE0, 0x00, 0x00, 0x0F, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x18, 0x3F, 0x3F, 0x00,//0x21 -> ü
 0x00, 0xC0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0x60, 0x40, 0x00, 0x00, 0x00, 0x00, 0x11, 0x33, 0x33, 0xB3, 0xF3, 0x33, 0x3F, 0x1E, 0x00, 0x00, 0x00,//0x22 -> ş
-0x00, 0x3C, 0x7E, 0xE7, 0xC3, 0xC3, 0xC3, 0xC3, 0xC7, 0x8E, 0x0C, 0x00, 0x00, 0x0C, 0x1C, 0x38, 0x30, 0x30, 0x30, 0x30, 0x39, 0x1F, 0x0F, 0x00,//0x23 -> S
-0x00, 0x80, 0xC0, 0xE0, 0x68, 0x64, 0x64, 0x64, 0x68, 0xE0, 0xE0, 0x00, 0x00, 0x03, 0xC7, 0xCE, 0xCC, 0xCC, 0xCC, 0xCC, 0xE6, 0x7F, 0x3F, 0x00,//0x24 -> ğ
-0x00, 0x60, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xE0, 0x60, 0x20, 0x00, 0x00, 0x00, 0x30, 0x38, 0x3C, 0x36, 0x33, 0x31, 0x30, 0x30, 0x30, 0x00, 0x00,//0x25 -> z
+0x00, 0x80, 0xC0, 0xE0, 0x68, 0x64, 0x64, 0x64, 0x68, 0xE0, 0xE0, 0x00, 0x00, 0x03, 0xC7, 0xCE, 0xCC, 0xCC, 0xCC, 0xCC, 0xE6, 0x7F, 0x3F, 0x00,//0x23 -> ğ
+0x00, 0x60, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xE0, 0x60, 0x20, 0x00, 0x00, 0x00, 0x30, 0x38, 0x3C, 0x36, 0x33, 0x31, 0x30, 0x30, 0x30, 0x00, 0x00,//0x24 -> z
+0x00, 0x3C, 0x7E, 0xE7, 0xC3, 0xC3, 0xC3, 0xC3, 0xC7, 0x8E, 0x0C, 0x00, 0x00, 0x0C, 0x1C, 0x38, 0x30, 0x30, 0x30, 0x30, 0x39, 0x1F, 0x0F, 0x00,//0x25 -> S
 0x00, 0x00, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x00, 0x00, 0x00, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x06, 0x00,//0x26 -> =
-0x00, 0xFF, 0xFF, 0xC0, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,//0x27 -> h
-0x00, 0x00, 0x00, 0x01, 0x01, 0x07, 0xFE, 0xFC, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x38, 0x1F, 0x0F, 0x03, 0x00, 0x00, 0x00,//0x28 -> )
-0x00, 0x00, 0x00, 0xF0, 0xFC, 0xFE, 0x07, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x0F, 0x1F, 0x38, 0x20, 0x20, 0x00, 0x00, 0x00,//0x29 -> (
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x38, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00,//0x2A -> .
-0x00, 0x80, 0xC0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x0F, 0x1F, 0xB8, 0xB0, 0xF0, 0xF0, 0x30, 0x38, 0x18, 0x08, 0x00,//0x2B -> ç
-0x00, 0x80, 0xC0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xE0, 0x00, 0x00, 0x03, 0xC7, 0xCE, 0xCC, 0xCC, 0xCC, 0xCC, 0xE6, 0x7F, 0x3F, 0x00,//0x2C -> g
-0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x00,//0x2D -> L
-0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00,//0x2E -> |
-0x00, 0x60, 0xE0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0xE0, 0x60, 0x00, 0x00, 0x00, 0x01, 0x07, 0x1E, 0x38, 0x38, 0x1E, 0x07, 0x01, 0x00, 0x00,//0x2F -> v
-0x00, 0xE0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0xFF, 0xFF, 0x0C, 0x18, 0x18, 0x18, 0x18, 0x1C, 0x0F, 0x07, 0x00,//0x30 -> p
-0x00, 0xFF, 0xFF, 0x03, 0x03, 0x03, 0x03, 0x07, 0x0E, 0xFC, 0xF0, 0x00, 0x00, 0x3F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x38, 0x1C, 0x0F, 0x03, 0x00,//0x31 -> D
-0x00, 0x03, 0x0F, 0x3C, 0xF0, 0xC0, 0xC0, 0xF0, 0x3C, 0x0F, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00,//0x32 -> Y
-0x00, 0xFF, 0xFF, 0xC0, 0xE0, 0xF0, 0x38, 0x1C, 0x0E, 0x07, 0x03, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x01, 0x03, 0x07, 0x0E, 0x1C, 0x38, 0x30, 0x00,//0x33 -> K
-0x00, 0x80, 0xC0, 0xEC, 0x6C, 0x60, 0x60, 0x6C, 0xEC, 0xC0, 0x80, 0x00, 0x00, 0x0F, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x38, 0x1F, 0x0F, 0x00,//0x34 -> ö
-0x00, 0xF0, 0xFC, 0x0E, 0x07, 0x03, 0x03, 0x07, 0x0E, 0xFC, 0xF0, 0x00, 0x00, 0x03, 0x0F, 0x1C, 0x38, 0x30, 0x30, 0x38, 0x1C, 0x0F, 0x03, 0x00,//0x35 -> O
-0x00, 0xF0, 0xFC, 0x0E, 0x07, 0x03, 0x03, 0x03, 0x07, 0x0E, 0x0C, 0x00, 0x00, 0x03, 0x0F, 0x1C, 0x38, 0x30, 0x30, 0x30, 0x38, 0x1C, 0x0C, 0x00,//0x36 -> C
-0x00, 0xFF, 0xFF, 0xC3, 0xC3, 0xC3, 0xC3, 0xE7, 0xFE, 0xBC, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x30, 0x39, 0x1F, 0x0F, 0x00,//0x37 -> B
-0x00, 0x00, 0x00, 0x18, 0x18, 0xF8, 0xFA, 0x18, 0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x30, 0x3F, 0x3F, 0x30, 0x30, 0x00, 0x00, 0x00,//0x38 -> İ
-0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x07, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x38, 0x1F, 0x07, 0x00,//0x39 -> U
-0x00, 0xFF, 0xFF, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00,//0x3A -> H
-0x00, 0xFF, 0xFF, 0x1E, 0x78, 0xE0, 0xE0, 0x78, 0x1E, 0xFF, 0xFF, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x3F, 0x3F, 0x00,//0x3B -> M
-0x00, 0xF0, 0xFC, 0x0E, 0x07, 0x03, 0xC3, 0xC3, 0xC3, 0xC7, 0xC6, 0x00, 0x00, 0x03, 0x0F, 0x1C, 0x38, 0x30, 0x30, 0x30, 0x30, 0x3F, 0x3F, 0x00,//0x3C -> G
-0x00, 0x07, 0x3F, 0xF8, 0xC0, 0x00, 0x00, 0xC0, 0xF8, 0x3F, 0x07, 0x00, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x3E, 0x3E, 0x0F, 0x01, 0x00, 0x00, 0x00,//0x3D -> V
-0x00, 0xFF, 0xFF, 0x83, 0x83, 0x83, 0x83, 0x83, 0xC7, 0xFE, 0x7C, 0x00, 0x00, 0x3F, 0x3F, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00,//0x3E -> P
-0x00, 0xFF, 0xFF, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0x03, 0x03, 0x00, 0x00, 0x3F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x00,//0x3F -> E
-0x00, 0x00, 0x00, 0xE0, 0xFC, 0x1F, 0x1F, 0xFC, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x38, 0x3F, 0x07, 0x06, 0x06, 0x06, 0x06, 0x07, 0x3F, 0x38, 0x00,//0x40 -> A
+0x00, 0x00, 0x00, 0x01, 0x01, 0x07, 0xFE, 0xFC, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x20, 0x38, 0x1F, 0x0F, 0x03, 0x00, 0x00, 0x00,//0x27 -> )
+0x00, 0x00, 0x00, 0xF0, 0xFC, 0xFE, 0x07, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x0F, 0x1F, 0x38, 0x20, 0x20, 0x00, 0x00, 0x00,//0x28 -> (
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x38, 0x38, 0x38, 0x00, 0x00, 0x00, 0x00, 0x00,//0x29 -> .
+0x00, 0x80, 0xC0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x0F, 0x1F, 0xB8, 0xB0, 0xF0, 0xF0, 0x30, 0x38, 0x18, 0x08, 0x00,//0x2A -> ç
+0x00, 0xFF, 0xFF, 0xC0, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,//0x2B -> h
+0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x00,//0x2C -> L
+0x00, 0x60, 0xE0, 0x80, 0x00, 0x00, 0x00, 0x00, 0x80, 0xE0, 0x60, 0x00, 0x00, 0x00, 0x01, 0x07, 0x1E, 0x38, 0x38, 0x1E, 0x07, 0x01, 0x00, 0x00,//0x2D -> v
+0x00, 0x80, 0xC0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xE0, 0x00, 0x00, 0x03, 0xC7, 0xCE, 0xCC, 0xCC, 0xCC, 0xCC, 0xE6, 0x7F, 0x3F, 0x00,//0x2E -> g
+0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00,//0x2F -> |
+0x00, 0x80, 0xC0, 0xEC, 0x6C, 0x60, 0x60, 0x6C, 0xEC, 0xC0, 0x80, 0x00, 0x00, 0x0F, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x38, 0x1F, 0x0F, 0x00,//0x30 -> ö
+0x00, 0x03, 0x0F, 0x3C, 0xF0, 0xC0, 0xC0, 0xF0, 0x3C, 0x0F, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00,//0x31 -> Y
+0x00, 0xFF, 0xFF, 0x03, 0x03, 0x03, 0x03, 0x07, 0x0E, 0xFC, 0xF0, 0x00, 0x00, 0x3F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x38, 0x1C, 0x0F, 0x03, 0x00,//0x32 -> D
+0x00, 0xFF, 0xFF, 0xC3, 0xC3, 0xC3, 0xC3, 0xE7, 0xFE, 0xBC, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x30, 0x39, 0x1F, 0x0F, 0x00,//0x33 -> B
+0x00, 0xF0, 0xFC, 0x0E, 0x07, 0x03, 0x03, 0x07, 0x0E, 0xFC, 0xF0, 0x00, 0x00, 0x03, 0x0F, 0x1C, 0x38, 0x30, 0x30, 0x38, 0x1C, 0x0F, 0x03, 0x00,//0x34 -> O
+0x00, 0xFF, 0xFF, 0xC0, 0xE0, 0xF0, 0x38, 0x1C, 0x0E, 0x07, 0x03, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x01, 0x03, 0x07, 0x0E, 0x1C, 0x38, 0x30, 0x00,//0x35 -> K
+0x00, 0x00, 0x00, 0x18, 0x18, 0xF8, 0xFA, 0x18, 0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x30, 0x3F, 0x3F, 0x30, 0x30, 0x00, 0x00, 0x00,//0x36 -> İ
+0x00, 0xE0, 0xE0, 0x60, 0x60, 0x60, 0x60, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x00, 0xFF, 0xFF, 0x0C, 0x18, 0x18, 0x18, 0x18, 0x1C, 0x0F, 0x07, 0x00,//0x37 -> p
+0x00, 0xFF, 0xFF, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xC0, 0xFF, 0xFF, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00,//0x38 -> H
+0x00, 0xF0, 0xFC, 0x0E, 0x07, 0x03, 0x03, 0x03, 0x07, 0x0E, 0x0C, 0x00, 0x00, 0x03, 0x0F, 0x1C, 0x38, 0x30, 0x30, 0x30, 0x38, 0x1C, 0x0C, 0x00,//0x39 -> C
+0x00, 0x00, 0x00, 0xE0, 0xFC, 0x1F, 0x1F, 0xFC, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x38, 0x3F, 0x07, 0x06, 0x06, 0x06, 0x06, 0x07, 0x3F, 0x38, 0x00,//0x3A -> A
+0x00, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x07, 0x1F, 0x38, 0x30, 0x30, 0x30, 0x30, 0x38, 0x1F, 0x07, 0x00,//0x3B -> U
+0x00, 0xFF, 0xFF, 0x1E, 0x78, 0xE0, 0xE0, 0x78, 0x1E, 0xFF, 0xFF, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x01, 0x01, 0x00, 0x00, 0x3F, 0x3F, 0x00,//0x3C -> M
+0x00, 0xF0, 0xFC, 0x0E, 0x07, 0x03, 0xC3, 0xC3, 0xC3, 0xC7, 0xC6, 0x00, 0x00, 0x03, 0x0F, 0x1C, 0x38, 0x30, 0x30, 0x30, 0x30, 0x3F, 0x3F, 0x00,//0x3D -> G
+0x00, 0x07, 0x3F, 0xF8, 0xC0, 0x00, 0x00, 0xC0, 0xF8, 0x3F, 0x07, 0x00, 0x00, 0x00, 0x00, 0x01, 0x0F, 0x3E, 0x3E, 0x0F, 0x01, 0x00, 0x00, 0x00,//0x3E -> V
+0x00, 0xFF, 0xFF, 0x83, 0x83, 0x83, 0x83, 0x83, 0xC7, 0xFE, 0x7C, 0x00, 0x00, 0x3F, 0x3F, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00,//0x3F -> P
+0x00, 0xFF, 0xFF, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0x03, 0x03, 0x00, 0x00, 0x3F, 0x3F, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x00,//0x40 -> E
 0x00, 0x00, 0x00, 0x3C, 0x3C, 0x00, 0x00, 0x3C, 0x3C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,//0x41 -> "
-0x00, 0x00, 0x00, 0x00, 0x7C, 0xFF, 0xFF, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x33, 0x33, 0x00, 0x00, 0x00, 0x00, 0x00,//0x42 -> !
-0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0xEC, 0xEC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0xE0, 0xC0, 0xC0, 0xFF, 0x7F, 0x00, 0x00, 0x00,//0x43 -> j
-0x00, 0x00, 0x03, 0x03, 0x03, 0xFF, 0xFF, 0x03, 0x03, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00,//0x44 -> T
+0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0xEC, 0xEC, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0xE0, 0xC0, 0xC0, 0xFF, 0x7F, 0x00, 0x00, 0x00,//0x42 -> j
+0x00, 0x00, 0x03, 0x03, 0x03, 0xFF, 0xFF, 0x03, 0x03, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00,//0x43 -> T
+0x00, 0xFF, 0xFF, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0x03, 0x03, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,//0x44 -> F
 0x00, 0xFF, 0xFF, 0x83, 0x83, 0x83, 0x83, 0x83, 0xC7, 0xFE, 0x7C, 0x00, 0x00, 0x3F, 0x3F, 0x01, 0x01, 0x03, 0x07, 0x0F, 0x1D, 0x38, 0x30, 0x00,//0x45 -> R
-0x00, 0xFF, 0xFF, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0x03, 0x03, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,//0x46 -> F
-0x00, 0x03, 0x03, 0x03, 0x03, 0xC3, 0xE3, 0x33, 0x1F, 0x0F, 0x03, 0x00, 0x00, 0x30, 0x3C, 0x3E, 0x33, 0x31, 0x30, 0x30, 0x30, 0x30, 0x30, 0x00,//0x47 -> Z
-0x00, 0xFF, 0xFF, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x3F, 0x3F, 0x1C, 0x06, 0x03, 0x03, 0x06, 0x1C, 0x3F, 0x3F, 0x00,//0x48 -> W
+0x00, 0x03, 0x03, 0x03, 0x03, 0xC3, 0xE3, 0x33, 0x1F, 0x0F, 0x03, 0x00, 0x00, 0x30, 0x3C, 0x3E, 0x33, 0x31, 0x30, 0x30, 0x30, 0x30, 0x30, 0x00,//0x46 -> Z
+0x00, 0xFF, 0xFF, 0x00, 0x00, 0x80, 0x80, 0x00, 0x00, 0xFF, 0xFF, 0x00, 0x00, 0x3F, 0x3F, 0x1C, 0x06, 0x03, 0x03, 0x06, 0x1C, 0x3F, 0x3F, 0x00,//0x47 -> W
+0x00, 0x00, 0x00, 0x00, 0x7C, 0xFF, 0xFF, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x33, 0x33, 0x00, 0x00, 0x00, 0x00, 0x00,//0x48 -> !
 0x00, 0x60, 0xE0, 0xC0, 0x80, 0x00, 0x80, 0xC0, 0xE0, 0x60, 0x00, 0x00, 0x00, 0x30, 0x38, 0x1D, 0x0F, 0x07, 0x0F, 0x1D, 0x38, 0x30, 0x00, 0x00,//0x49 -> x
 0x00, 0x00, 0x00, 0x00, 0x70, 0x70, 0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x1C, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00,//0x4A -> :
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xB8, 0xF8, 0x78, 0x00, 0x00, 0x00, 0x00, 0x00,//0x4B -> ,
@@ -110,66 +110,57 @@ const uint8_t USER_FONT_6x8[] = {
 0x08, 0x08, 0x08, 0x08, 0x08, 0x00,//0x13 -> -
 0x08, 0x08, 0x3E, 0x08, 0x08, 0x00,//0x14 -> +
 0x00, 0x44, 0x7D, 0x40, 0x00, 0x00,//0x15 -> i
-0x7C, 0x08, 0x04, 0x04, 0x08, 0x00,//0x16 -> r
-0x00, 0x41, 0x7F, 0x40, 0x00, 0x00,//0x17 -> l
-0x38, 0x44, 0x44, 0x44, 0x38, 0x00,//0x18 -> o
-0x7C, 0x08, 0x04, 0x04, 0x78, 0x00,//0x19 -> n
-0x26, 0x49, 0x49, 0x49, 0x32, 0x00,//0x1A -> S
-0x48, 0x54, 0x54, 0x54, 0x24, 0x00,//0x1B -> s
-0x7C, 0x04, 0x78, 0x04, 0x78, 0x00,//0x1C -> m
+0x00, 0x41, 0x7F, 0x40, 0x00, 0x00,//0x16 -> l
+0x7C, 0x08, 0x04, 0x04, 0x08, 0x00,//0x17 -> r
+0x00, 0x44, 0x7C, 0x40, 0x00, 0x00,//0x18 -> ı
+0x7C, 0x04, 0x78, 0x04, 0x78, 0x00,//0x19 -> m
+0x00, 0x7F, 0x10, 0x28, 0x44, 0x00,//0x1A -> k
+0x7C, 0x08, 0x04, 0x04, 0x78, 0x00,//0x1B -> n
+0x48, 0x54, 0x54, 0x54, 0x24, 0x00,//0x1C -> s
 0x04, 0x3E, 0x44, 0x40, 0x20, 0x00,//0x1D -> t
-0x7E, 0x09, 0x09, 0x09, 0x7E, 0x00,//0x1E -> A
-0x7F, 0x41, 0x41, 0x22, 0x1C, 0x00,//0x1F -> D
-0x3E, 0x41, 0x41, 0x41, 0x22, 0x00,//0x20 -> C
-0x00, 0x7F, 0x10, 0x28, 0x44, 0x00,//0x21 -> k
-0x01, 0x01, 0x7F, 0x01, 0x01, 0x00,//0x22 -> T
-0x7F, 0x49, 0x49, 0x49, 0x36, 0x00,//0x23 -> B
-0x3C, 0x41, 0x40, 0x21, 0x5C, 0x00,//0x24 -> ü
-0x3C, 0x40, 0x40, 0x20, 0x7C, 0x00,//0x25 -> u
-0x00, 0x44, 0x7C, 0x40, 0x00, 0x00,//0x26 -> ı
-0x7F, 0x02, 0x0C, 0x02, 0x7F, 0x00,//0x27 -> M
-0x44, 0x48, 0x30, 0x10, 0x0C, 0x00,//0x28 -> y
-0x7C, 0x14, 0x14, 0x14, 0x08, 0x00,//0x29 -> p
-0x7F, 0x09, 0x09, 0x09, 0x06, 0x00,//0x2A -> P
-0x3E, 0x41, 0x41, 0x49, 0x7A, 0x00,//0x2B -> G
-0x7F, 0x40, 0x40, 0x40, 0x40, 0x00,//0x2C -> L
-0x1F, 0x20, 0x40, 0x20, 0x1F, 0x00,//0x2D -> V
-0x7F, 0x09, 0x19, 0x29, 0x46, 0x00,//0x2E -> R
-0x7F, 0x08, 0x14, 0x22, 0x41, 0x00,//0x2F -> K
-0x7F, 0x08, 0x08, 0x08, 0x7F, 0x00,//0x30 -> H
-0x1C, 0x22, 0x62, 0x22, 0x10, 0x00,//0x31 -> ç
-0x00, 0x41, 0x7F, 0x41, 0x00, 0x00,//0x32 -> I
-0x12, 0x55, 0x35, 0x15, 0x09, 0x00,//0x33 -> ş
-0x08, 0x54, 0x54, 0x54, 0x3C, 0x00,//0x34 -> g
-0x3E, 0x41, 0x41, 0x41, 0x3E, 0x00,//0x35 -> O
-0x7F, 0x04, 0x08, 0x10, 0x7F, 0x00,//0x36 -> N
-0x00, 0x36, 0x36, 0x00, 0x00, 0x00,//0x37 -> :
-0x00, 0x60, 0x60, 0x00, 0x00, 0x00,//0x38 -> .
-0x3F, 0x40, 0x38, 0x40, 0x3F, 0x00,//0x39 -> W
-0x3F, 0x40, 0x40, 0x40, 0x3F, 0x00,//0x3A -> U
-0x7F, 0x49, 0x49, 0x49, 0x41, 0x00,//0x3B -> E
-0x08, 0x55, 0x56, 0x55, 0x3C, 0x00,//0x3C -> ğ
-0x07, 0x08, 0x70, 0x08, 0x07, 0x00,//0x3D -> Y
-0x44, 0x44, 0x7D, 0x44, 0x44, 0x00,//0x3E -> İ
-0x44, 0x64, 0x54, 0x4C, 0x44, 0x00,//0x3F -> z
-0x0C, 0x30, 0x40, 0x30, 0x0C, 0x00,//0x40 -> v
-0x7F, 0x09, 0x09, 0x09, 0x01, 0x00,//0x41 -> F
-0x00, 0x00, 0x4F, 0x00, 0x00, 0x00,//0x42 -> !
-0x38, 0x45, 0x44, 0x45, 0x38, 0x00,//0x43 -> ö
-0x3C, 0x40, 0x30, 0x40, 0x3C, 0x00,//0x44 -> w
-0x20, 0x40, 0x44, 0x3D, 0x00, 0x00,//0x45 -> j
-0x7F, 0x08, 0x04, 0x04, 0x78, 0x00,//0x46 -> h
-0x61, 0x51, 0x49, 0x45, 0x43, 0x00,//0x47 -> Z
-0x20, 0x40, 0x41, 0x3F, 0x01, 0x00,//0x48 -> J
-0x02, 0x01, 0x51, 0x09, 0x06, 0x00,//0x49 -> ?
-0x02, 0x55, 0x35, 0x15, 0x08, 0x00,//0x4A -> Ş
-0x38, 0x45, 0x56, 0x55, 0x30, 0x00,//0x4B -> Ğ
-0x38, 0x45, 0x44, 0x45, 0x38, 0x00,//0x4C -> Ö
-0x0E, 0x51, 0x71, 0x11, 0x08, 0x00,//0x4D -> Ç
-0x44, 0x24, 0x38, 0x48, 0x44, 0x00,//0x4E -> x
-0x3E, 0x41, 0x51, 0x21, 0x5E, 0x00,//0x4F -> Q
-0x20, 0x10, 0x08, 0x04, 0x02, 0x00,//0x50 -> /
-0x00, 0x05, 0x03, 0x00, 0x00, 0x00,//0x51 -> '
+0x38, 0x44, 0x44, 0x44, 0x38, 0x00,//0x1E -> o
+0x3C, 0x41, 0x40, 0x21, 0x5C, 0x00,//0x1F -> ü
+0x44, 0x48, 0x30, 0x10, 0x0C, 0x00,//0x20 -> y
+0x26, 0x49, 0x49, 0x49, 0x32, 0x00,//0x21 -> S
+0x7F, 0x41, 0x41, 0x22, 0x1C, 0x00,//0x22 -> D
+0x3C, 0x40, 0x40, 0x20, 0x7C, 0x00,//0x23 -> u
+0x3E, 0x41, 0x41, 0x41, 0x22, 0x00,//0x24 -> C
+0x7E, 0x09, 0x09, 0x09, 0x7E, 0x00,//0x25 -> A
+0x01, 0x01, 0x7F, 0x01, 0x01, 0x00,//0x26 -> T
+0x1C, 0x22, 0x62, 0x22, 0x10, 0x00,//0x27 -> ç
+0x3E, 0x41, 0x41, 0x49, 0x7A, 0x00,//0x28 -> G
+0x00, 0x60, 0x60, 0x00, 0x00, 0x00,//0x29 -> .
+0x7C, 0x14, 0x14, 0x14, 0x08, 0x00,//0x2A -> p
+0x7F, 0x09, 0x09, 0x09, 0x06, 0x00,//0x2B -> P
+0x7F, 0x02, 0x0C, 0x02, 0x7F, 0x00,//0x2C -> M
+0x12, 0x55, 0x35, 0x15, 0x09, 0x00,//0x2D -> ş
+0x7F, 0x08, 0x04, 0x04, 0x78, 0x00,//0x2E -> h
+0x3F, 0x40, 0x40, 0x40, 0x3F, 0x00,//0x2F -> U
+0x7F, 0x49, 0x49, 0x49, 0x36, 0x00,//0x30 -> B
+0x1F, 0x20, 0x40, 0x20, 0x1F, 0x00,//0x31 -> V
+0x0C, 0x30, 0x40, 0x30, 0x0C, 0x00,//0x32 -> v
+0x7F, 0x40, 0x40, 0x40, 0x40, 0x00,//0x33 -> L
+0x7F, 0x08, 0x08, 0x08, 0x7F, 0x00,//0x34 -> H
+0x44, 0x64, 0x54, 0x4C, 0x44, 0x00,//0x35 -> z
+0x08, 0x54, 0x54, 0x54, 0x3C, 0x00,//0x36 -> g
+0x3F, 0x40, 0x38, 0x40, 0x3F, 0x00,//0x37 -> W
+0x7F, 0x09, 0x19, 0x29, 0x46, 0x00,//0x38 -> R
+0x3E, 0x41, 0x41, 0x41, 0x3E, 0x00,//0x39 -> O
+0x7F, 0x08, 0x14, 0x22, 0x41, 0x00,//0x3A -> K
+0x00, 0x41, 0x7F, 0x41, 0x00, 0x00,//0x3B -> I
+0x00, 0x00, 0x4F, 0x00, 0x00, 0x00,//0x3C -> !
+0x38, 0x45, 0x44, 0x45, 0x38, 0x00,//0x3D -> ö
+0x7F, 0x49, 0x49, 0x49, 0x41, 0x00,//0x3E -> E
+0x00, 0x36, 0x36, 0x00, 0x00, 0x00,//0x3F -> :
+0x08, 0x55, 0x56, 0x55, 0x3C, 0x00,//0x40 -> ğ
+0x20, 0x40, 0x44, 0x3D, 0x00, 0x00,//0x41 -> j
+0x7F, 0x04, 0x08, 0x10, 0x7F, 0x00,//0x42 -> N
+0x7F, 0x09, 0x09, 0x09, 0x01, 0x00,//0x43 -> F
+0x44, 0x44, 0x7D, 0x44, 0x44, 0x00,//0x44 -> İ
+0x44, 0x24, 0x38, 0x48, 0x44, 0x00,//0x45 -> x
+0x3E, 0x41, 0x51, 0x21, 0x5E, 0x00,//0x46 -> Q
+0x20, 0x40, 0x41, 0x3F, 0x01, 0x00,//0x47 -> J
+0x20, 0x10, 0x08, 0x04, 0x02, 0x00,//0x48 -> /
 };
 const FontSection FontSectionInfo = {
     .font12_start_ptr = USER_FONT_12,
@@ -188,133 +179,134 @@ const char* LargeSymbolMinus = "\x13";//-
 const char* SmallSymbolMinus = "\x13";//- 
 const char* LargeSymbolSpace = "\x12";//  
 const char* SmallSymbolSpace = "\x12";//  
-const char* LargeSymbolDot = "\x2A";//. 
-const char* SmallSymbolDot = "\x38";//. 
-const char* SmallSymbolSlash = "\x50";/// 
-const char* SmallSymbolColon = "\x37";//: 
-const char* LargeSymbolDegC = "\x36";//C 
-const char* SmallSymbolDegC = "\x20";//C 
-const char* LargeSymbolDegF = "\x46";//F 
-const char* SmallSymbolDegF = "\x41";//F 
-const char* LargeSymbolMinutes = "\x1A";//m 
-const char* SmallSymbolMinutes = "\x1C";//m 
+const char* LargeSymbolDot = "\x29";//. 
+const char* SmallSymbolDot = "\x29";//. 
+const char* SmallSymbolSlash = "\x48";/// 
+const char* SmallSymbolColon = "\x3F";//: 
+const char* LargeSymbolDegC = "\x39";//C 
+const char* SmallSymbolDegC = "\x24";//C 
+const char* LargeSymbolDegF = "\x44";//F 
+const char* SmallSymbolDegF = "\x43";//F 
+const char* LargeSymbolMinutes = "\x1B";//m 
+const char* SmallSymbolMinutes = "\x19";//m 
 const char* LargeSymbolSeconds = "\x1C";//s 
-const char* SmallSymbolSeconds = "\x1B";//s 
-const char* LargeSymbolWatts = "\x48";//W 
-const char* SmallSymbolWatts = "\x39";//W 
-const char* LargeSymbolVolts = "\x3D";//V 
-const char* SmallSymbolVolts = "\x2D";//V 
-const char* SmallSymbolAmps = "\x1E";//A 
-const char* LargeSymbolDC = "\x31\x36";//DC 
-const char* LargeSymbolCellCount = "\x23";//S 
-const char* SmallSymbolVersionNumber = "\x40\x04\x38\x04\x05\x23\x38\x08\x0A\x23\x1F\x20\x04\x3B\x07";//v2.23B.68BDC2E5 
-const char* SmallSymbolPDDebug = "\x2A\x1F\x12\x1F\x10\x0D\x25\x34";//PD Debug 
-const char* SmallSymbolState = "\x1A\x1D\x0C\x1D\x10";//State 
-const char* SmallSymbolNoVBus = "\x36\x18\x12\x2D\x23\x25\x1B";//No VBus 
-const char* SmallSymbolVBus = "\x2D\x23\x25\x1B";//VBus 
-const char* LargeSymbolSleep = "\x47\x25\x25\x12";//Zzz  
+const char* SmallSymbolSeconds = "\x1C";//s 
+const char* LargeSymbolWatts = "\x47";//W 
+const char* SmallSymbolWatts = "\x37";//W 
+const char* LargeSymbolVolts = "\x3E";//V 
+const char* SmallSymbolVolts = "\x31";//V 
+const char* SmallSymbolAmps = "\x25";//A 
+const char* LargeSymbolDC = "\x32\x39";//DC 
+const char* LargeSymbolCellCount = "\x25";//S 
+const char* SmallSymbolVersionNumber = "\x32\x04\x29\x04\x05\x30\x29\x07\x08\x04\x04\x06\x09\x24\x04";//v2.23B.562247C2 
+const char* SmallSymbolPDDebug = "\x2B\x22\x12\x22\x10\x0D\x23\x36";//PD Debug 
+const char* SmallSymbolState = "\x21\x1D\x0C\x1D\x10";//State 
+const char* SmallSymbolNoVBus = "\x42\x1E\x12\x31\x30\x23\x1C";//No VBus 
+const char* SmallSymbolVBus = "\x31\x30\x23\x1C";//VBus 
+const char* LargeSymbolSleep = "\x46\x24\x24\x12";//Zzz  
 
 const char* DebugMenu[] = {
-	 "\x04\x02\x04\x08\x02\x0B\x03\x05\x12\x03\x07\x03\x08\x05\x05",//"20260913 151633" 
-	 "\x32\x1F\x12",//"ID " 
-	 "\x1E\x20\x20\x12\x12\x12",//"ACC   " 
-	 "\x2A\x39\x2E\x12\x12\x12",//"PWR   " 
-	 "\x2D\x15\x19\x12\x12\x12\x12\x12\x12\x12\x12",//"Vin        " 
-	 "\x22\x15\x29\x12\x20\x12\x12",//"Tip C  " 
-	 "\x30\x0C\x19\x12\x20\x12\x12",//"Han C  " 
-	 "\x27\x0C\x4E\x12\x20\x12\x12",//"Max C  " 
-	 "\x3A\x29\x22\x15\x1C\x10\x12",//"UpTime " 
-	 "\x27\x18\x40\x10\x12\x12\x12",//"Move   " 
-	 "\x22\x15\x29\x12\x2E\x10\x1B",//"Tip Res" 
-	 "\x22\x15\x29\x12\x2E\x12\x12",//"Tip R  " 
-	 "\x22\x15\x29\x12\x35\x12\x12",//"Tip O  " 
-	 "\x30\x39\x12\x2B\x12\x12\x12",//"HW G   " 
-	 "\x30\x39\x12\x27\x12\x12\x12",//"HW M   " 
-	 "\x30\x39\x12\x2A\x12\x12\x12",//"HW P   " 
-	 "\x30\x0C\x17\x17\x12\x12\x12",//"Hall   " 
+	 "\x04\x02\x04\x08\x02\x0B\x03\x07\x12\x03\x07\x02\x09\x02\x04",//"20260915 150702" 
+	 "\x3B\x22\x12",//"ID " 
+	 "\x25\x24\x24\x12\x12\x12",//"ACC   " 
+	 "\x2B\x37\x38\x12\x12\x12",//"PWR   " 
+	 "\x31\x15\x1B\x12\x12\x12\x12\x12\x12\x12\x12",//"Vin        " 
+	 "\x26\x15\x2A\x12\x24\x12\x12",//"Tip C  " 
+	 "\x34\x0C\x1B\x12\x24\x12\x12",//"Han C  " 
+	 "\x2C\x0C\x45\x12\x24\x12\x12",//"Max C  " 
+	 "\x2F\x2A\x26\x15\x19\x10\x12",//"UpTime " 
+	 "\x2C\x1E\x32\x10\x12\x12\x12",//"Move   " 
+	 "\x26\x15\x2A\x12\x38\x10\x1C",//"Tip Res" 
+	 "\x26\x15\x2A\x12\x38\x12\x12",//"Tip R  " 
+	 "\x26\x15\x2A\x12\x39\x12\x12",//"Tip O  " 
+	 "\x34\x37\x12\x28\x12\x12\x12",//"HW G   " 
+	 "\x34\x37\x12\x2C\x12\x12\x12",//"HW M   " 
+	 "\x34\x37\x12\x2B\x12\x12\x12",//"HW P   " 
+	 "\x34\x0C\x16\x16\x12\x12\x12",//"Hall   " 
 };
 
 const char* AccelTypeNames[] = {
-	 "\x1A\x0E\x0C\x19\x19\x15\x19\x34",//Scanning 
-	 "\x36\x18\x19\x10",//None 
-	 "\x27\x27\x1E\x0A\x08\x07\x04\x41\x20",//MMA8652FC 
-	 "\x2C\x32\x1A\x04\x1F\x30\x03\x04",//LIS2DH12 
-	 "\x23\x27\x1E\x04\x04\x05",//BMA223 
-	 "\x27\x1A\x1E\x05\x02\x03",//MSA301 
-	 "\x1A\x20\x09\x1E\x04\x02",//SC7A20 
-	 "\x2B\x2A\x32\x35",//GPIO 
-	 "\x2C\x32\x1A\x04\x12\x20\x2C\x35\x36\x3B",//LIS2 CLONE 
+	 "\x21\x0E\x0C\x1B\x1B\x15\x1B\x36",//Scanning 
+	 "\x42\x1E\x1B\x10",//None 
+	 "\x2C\x2C\x25\x0A\x08\x07\x04\x43\x24",//MMA8652FC 
+	 "\x33\x3B\x21\x04\x22\x34\x03\x04",//LIS2DH12 
+	 "\x30\x2C\x25\x04\x04\x05",//BMA223 
+	 "\x2C\x21\x25\x05\x02\x03",//MSA301 
+	 "\x21\x24\x09\x25\x04\x02",//SC7A20 
+	 "\x28\x2B\x3B\x39",//GPIO 
+	 "\x33\x3B\x21\x04\x12\x24\x33\x39\x42\x3E",//LIS2 CLONE 
 };
 
 const char* PowerSourceNames[] = {
-	 "\x1F\x20",//DC 
-	 "\x4F\x20",//QC 
-	 "\x2A\x2D\x37\x2A\x1F\x44\x2D\x23\x25\x1B",//PV:PDwVBus 
-	 "\x2A\x1F\x37\x36\x18\x12\x2D\x23\x25\x1B",//PD:No VBus 
+	 "\x22\x24",//DC 
+	 "\x46\x24",//QC 
+	 "\x2B\x22",//PD 
+	 "\x2B\x22",//PD 
+	 "\x30\x25\x26",//BAT 
 };
 
 const bool HasFahrenheit = false;
 
 struct {
   TranslationIndexTable indices;
-  char strings[2951];
+  char strings[3024];
 } const translation = {
   .indices = {
-    .CalibrationDone = 2502, // "Kalibrasyon\ntamam!"
-    .ResetOKMessage = 2521, // "Sıfırlama Tamam"
-    .SettingsResetMessage = 2538, // "Ayarlar\nSıfırlandı"
-    .NoAccelerometerMessage = 2557, // "İvme sensörü\ntespit edilemedi!"
-    .NoPowerDeliveryMessage = 2588, // "USB-PD IC\ntespit edilemedi!"
-    .LockingKeysString = 2616, // "KİLİTLİ"
-    .UnlockingKeysString = 2625, // "KİLİT AÇIK"
-    .WarningKeysLockedString = 2637, // "!KİLİTLİ!"
-    .WarningThermalRunaway = 2648, // "Termal\nKaçak"
-    .WarningTipShorted = 2661, // "!Uç Kısa Devre!"
-    .SettingsCalibrationWarning = 2678, // "Yeniden başlatmadan önce uç ve sapın oda sıcaklığında olduğundan emin olun!"
-    .CJCCalibrating = 2755, // "kalibre ediliyor\n"
-    .SettingsResetWarning = 2773, // "Ayarları varsayılan değerlere sıfırlamak istediğinizden emin misiniz?"
-    .UVLOWarningString = 2844, // "Güç Az"
-    .UndervoltageString = 2852, // "Düşük Voltaj\n"
-    .InputVoltageString = 2866, // "Giriş V: \n"
-    .ProfilePreheatString = 87, // ""
-    .ProfileCooldownString = 87, // ""
-    .SleepingAdvancedString = 2877, // "Bekleme Modu...\n"
-    .SleepingTipAdvancedString = 2894, // "Uç: \n"
-    .DeviceFailedValidationWarning = 2900, // "Cihazınız büyük olasılıkla sahte!"
-    .TooHotToStartProfileWarning = 87, // ""
+    .CalibrationDone = 2585, // "Kalibrasyon\ntamam!"
+    .ResetOKMessage = 2604, // "Sıfırlama\ntamam"
+    .SettingsResetMessage = 2620, // "Ayarlar\nSıfırlandı"
+    .NoAccelerometerMessage = 2639, // "İvme sensörü\ntespit edilemedi!"
+    .NoPowerDeliveryMessage = 2670, // "USB-PD IC\ntespit edilemedi!"
+    .LockingKeysString = 2698, // "KİLİTLİ"
+    .UnlockingKeysString = 2707, // "KİLİT AÇIK"
+    .WarningKeysLockedString = 2719, // "!KİLİTLİ!"
+    .WarningThermalRunaway = 2730, // "Termal\nKaçak"
+    .WarningTipShorted = 2743, // "Uçta kısa\ndevre!"
+    .SettingsCalibrationWarning = 2760, // "Yeniden başlatmadan önce uç ve sapın oda sıcaklığında olduğundan emin olun!"
+    .CJCCalibrating = 2837, // "kalibre ediliyor\n"
+    .SettingsResetWarning = 2855, // "Ayarları varsayılan değerlere sıfırlamak istediğinizden emin misiniz?"
+    .UVLOWarningString = 2926, // "Güç Az"
+    .UndervoltageString = 2934, // "Düşük Voltaj\n"
+    .InputVoltageString = 2948, // "Giriş V: \n"
+    .ProfilePreheatString = 187, // ""
+    .ProfileCooldownString = 187, // ""
+    .SleepingAdvancedString = 2959, // "Bekleme Modu...\n"
+    .SleepingTipAdvancedString = 2976, // "Uç: \n"
+    .DeviceFailedValidationWarning = 2982, // "Cihaz muhtemelen\nsahte!"
+    .TooHotToStartProfileWarning = 187, // ""
 
-    .SettingRightChar = 183, // "R"
-    .SettingLeftChar = 2935, // "L"
-    .SettingAutoChar = 2937, // "O"
-    .SettingSlowChar = 2939, // "Y"
-    .SettingMediumChar = 2937, // "O"
-    .SettingFastChar = 2941, // "H"
-    .SettingStartSolderingChar = 2935, // "L"
-    .SettingStartSleepChar = 2943, // "U"
-    .SettingStartSleepOffChar = 2945, // "S"
-    .SettingLockBoostChar = 2947, // "B"
-    .SettingLockFullChar = 2949, // "F"
-    .USBPDModeDefault = 2332, // {"displayText": "Default\nMode"}
-    .USBPDModeNoDynamic = 2345, // {"displayText": "No\nDynamic"}
-    .USBPDModeSafe = 2356, // {"displayText": "Safe\nMode"}
-    .TipTypeAuto = 2366, // {"displayText": "Auto\nSense"}
-    .TipTypeT12Long = 2377, // {"displayText": "TS100\nLong"}
-    .TipTypeT12Short = 2388, // {"displayText": "Pine\nShort"}
-    .TipTypeT12PTS = 2399, // {"displayText": "PTS\n200"}
-    .TipTypeTS80 = 2407, // {"displayText": "TS80\n"}
-    .TipTypeJBCC210 = 2413, // {"displayText": "JBC\nC210"}
+    .SettingRightChar = 3006, // "R"
+    .SettingLeftChar = 3008, // "L"
+    .SettingAutoChar = 3010, // "O"
+    .SettingSlowChar = 3012, // "Y"
+    .SettingMediumChar = 3010, // "O"
+    .SettingFastChar = 3014, // "H"
+    .SettingStartSolderingChar = 3008, // "L"
+    .SettingStartSleepChar = 3016, // "U"
+    .SettingStartSleepOffChar = 3018, // "S"
+    .SettingLockBoostChar = 3020, // "B"
+    .SettingLockFullChar = 3022, // "F"
+    .USBPDModeDefault = 2402, // {"displayText": "Varsayılan\nmod"}
+    .USBPDModeNoDynamic = 2417, // {"displayText": "Dinamik\nkapalı"}
+    .USBPDModeSafe = 2432, // {"displayText": "Güvenli\nmod"}
+    .TipTypeAuto = 2444, // {"displayText": "Otomatik\nalgıla"}
+    .TipTypeT12Long = 2460, // {"displayText": "TS100\nLong"}
+    .TipTypeT12Short = 2471, // {"displayText": "Pine\nShort"}
+    .TipTypeT12PTS = 2482, // {"displayText": "PTS\n200"}
+    .TipTypeTS80 = 2490, // {"displayText": "TS80\n"}
+    .TipTypeJBCC210 = 2496, // {"displayText": "JBC\nC210"}
 
     .SettingsDescriptions = {
       /* DCInCutoff                     */ 0, // "\"Güç Kaynağı\". En düşük çalışma voltajını ayarlar. (DC 10V) (S 3.3V hücre başına)"
-      /* MinVolCell                     */ 89, // "Pil hücresi başına izin verilen minimum voltaj (3S: 3 - 3.7V | 4-6S: 2.4 - 3.7V)"
+      /* MinVolCell                     */ 94, // "Pil hücresi başına izin verilen minimum voltaj (3S: 3 - 3.7V | 4-6S: 2.4 - 3.7V)"
       /* QCMaxVoltage                   */ 81, // ""
-      /* PDNegTimeout                   */ 185, // "Bazı QC şarj cihazlarıyla uyumluluk için 100ms adımlarında PD pazarlık zaman aşımı"
-      /* USBPDMode                      */ 279, // "PPS & EPR modlarını etkinleştirir"
-      /* BoostTemperature               */ 321, // "Yüksek Performans Modu Sıcaklığı"
-      /* AutoStart                      */ 360, // "Güç verildiğinde otomatik olarak lehimleme modunda başlat. (L=Lehimleme Modu | U=Uyku Modu | S=Uyku Modu Oda Sıcaklığı)"
-      /* TempChangeShortStep            */ 488, // "Kısa basışlardaki sıcaklık derecesi atlama oranı"
-      /* TempChangeLongStep             */ 560, // "Uzun başışlardaki sıcaklık derecesi atlama oranı"
-      /* LockingMode                    */ 632, // "Lehimleme sırasında, her iki düğmeye basılı tutarak kilitleme modunu değiştirin (B=Sadece performans modu | F=tam kilit)"
+      /* PDNegTimeout                   */ 189, // "Bazı QC şarj cihazlarıyla uyumluluk için 100ms adımlarında PD pazarlık zaman aşımı"
+      /* USBPDMode                      */ 287, // "PPS & EPR modlarını etkinleştirir"
+      /* BoostTemperature               */ 329, // "Yüksek Performans Modu Sıcaklığı"
+      /* AutoStart                      */ 377, // "Güç verildiğinde otomatik olarak lehimleme modunda başlat. (L=Lehimleme Modu | U=Uyku Modu | S=Uyku Modu Oda Sıcaklığı)"
+      /* TempChangeShortStep            */ 513, // "Kısa basışlardaki sıcaklık derecesi atlama oranı"
+      /* TempChangeLongStep             */ 581, // "Uzun başışlardaki sıcaklık derecesi atlama oranı"
+      /* LockingMode                    */ 649, // "Lehimleme sırasında, her iki düğmeye basılı tutarak kilitleme modunu değiştirin (B=Sadece performans modu | F=tam kilit)"
       /* ProfilePhases                  */ 81, // ""
       /* ProfilePreheatTemp             */ 81, // ""
       /* ProfilePreheatSpeed            */ 81, // ""
@@ -329,91 +321,91 @@ struct {
       /* ProfilePhase5Temp              */ 81, // ""
       /* ProfilePhase5Duration          */ 81, // ""
       /* ProfileCooldownSpeed           */ 81, // ""
-      /* MotionSensitivity              */ 768, // "Hareket Hassasiyeti (1=En az duyarlı | ... | 9=En duyarlı)"
-      /* SleepTemperature               */ 835, // "Bekleme Modu Sıcaklığı (C)"
-      /* SleepTimeout                   */ 868, // "Bekleme Modu Zaman Aşımı (Dakika | Saniye)"
-      /* ShutdownTimeout                */ 917, // "Kapatma Zaman Aşımı (Dakika)"
+      /* MotionSensitivity              */ 781, // "Hareket Hassasiyeti (1=En az duyarlı | ... | 9=En duyarlı)"
+      /* SleepTemperature               */ 856, // "Bekleme Modu Sıcaklığı (C)"
+      /* SleepTimeout                   */ 895, // "Bekleme Modu Zaman Aşımı (Dakika | Saniye)"
+      /* ShutdownTimeout                */ 950, // "Kapatma Zaman Aşımı (Dakika)"
       /* HallEffSensitivity             */ 81, // ""
       /* HallEffSleepTimeout            */ 81, // ""
-      /* TemperatureUnit                */ 953, // "Sıcaklık Birimi (C=Celsius | F=Fahrenheit)"
-      /* DisplayRotation                */ 1006, // "Görüntü Yönlendirme (R=Sağlak | L=Solak | O=Otomatik)"
-      /* CooldownBlink                  */ 1069, // "Soğutma ekranında uç hala sıcakken derece gösterilsin."
-      /* ScrollingSpeed                 */ 1132, // "Yazıların kayma hızı (Y=Yavaş | H=Hızlı)"
-      /* ReverseButtonTempChange        */ 1183, // "\"Düğme Yerleri Rotasyonu\" Sıcaklık ayar düğmelerinin yerini değiştirin"
-      /* ReverseButtonSettings          */ 1278, // "Reverse assignment of buttons for Settings menu"
-      /* AnimSpeed                      */ 1340, // "Menüdeki simge animasyonlarının hızı (Y=Yavaş | O=Orta | H=Hızlı)"
-      /* AnimLoop                       */ 1417, // "Ana menüde simge animasyonlarının döngüsü"
-      /* Brightness                     */ 1477, // "OLED ekran parlaklığını ayarlar"
-      /* ColourInversion                */ 1526, // "OLED ekran renklerini ters çevir"
-      /* LOGOTime                       */ 1574, // "Boot logo süresi (s=saniye)"
-      /* AdvancedIdle                   */ 1619, // "Boş ekranda ayrıntılı bilgileri daha küçük bir yazı tipi ile göster."
-      /* AdvancedSoldering              */ 1696, // "\"Gelişmiş Lehimleme\" Lehimleme yaparken detaylı bilgi göster"
+      /* TemperatureUnit                */ 994, // "Sıcaklık Birimi (C=Celsius | F=Fahrenheit)"
+      /* DisplayRotation                */ 1053, // "Görüntü Yönlendirme (R=Sağlak | L=Solak | O=Otomatik)"
+      /* CooldownBlink                  */ 1118, // "Soğutma ekranında uç hala sıcakken derece gösterilsin."
+      /* ScrollingSpeed                 */ 1190, // "Yazıların kayma hızı (Y=Yavaş | H=Hızlı)"
+      /* ReverseButtonTempChange        */ 1245, // "\"Düğme Yerleri Rotasyonu\" Sıcaklık ayar düğmelerinin yerini değiştirin"
+      /* ReverseButtonSettings          */ 1333, // "Ayarlar menüsündeki A ve B tuşlarının görevlerini değiştirir"
+      /* AnimSpeed                      */ 1407, // "Menüdeki simge animasyonlarının hızı (Y=Yavaş | O=Orta | H=Hızlı)"
+      /* AnimLoop                       */ 1488, // "Ana menüde simge animasyonlarının döngüsü"
+      /* Brightness                     */ 1548, // "OLED ekran parlaklığını ayarlar"
+      /* ColourInversion                */ 1597, // "OLED ekran renklerini ters çevir"
+      /* LOGOTime                       */ 1645, // "Boot logo süresi (s=saniye)"
+      /* AdvancedIdle                   */ 1685, // "Boş ekranda ayrıntılı bilgileri daha küçük bir yazı tipi ile göster."
+      /* AdvancedSoldering              */ 1771, // "\"Gelişmiş Lehimleme\" Lehimleme yaparken detaylı bilgi göster"
       /* BluetoothLE                    */ 81, // ""
-      /* PowerLimit                     */ 1765, // "Havyanın kullanacağı en yüksek güç (W=Watts)"
-      /* CalibrateCJC                   */ 1821, // "Sonraki boot'ta uç Soğuk Nokta Kompansasyonu kalibre edilecek (Delta T < 5°C ise gerekmez)"
-      /* VoltageCalibration             */ 1945, // "Voltaj Girişi Kalibrasyonu. Düğmeler ayarlar, çıkmak için uzun bas."
-      /* PowerPulsePower                */ 2023, // "Güç girişi voltajı ölçüm yoğunluğunu sık tut."
-      /* PowerPulseWait                 */ 2083, // "Uyanık tutma darbesinin tetiklenmeden önceki gecikme süresi (x 2.5s)"
-      /* PowerPulseDuration             */ 2174, // "Uyanık tutma darbesi süresi (x 250ms)"
-      /* SettingsReset                  */ 2231, // "Bütün ayarları sıfırlar"
+      /* PowerLimit                     */ 1849, // "Havyanın kullanacağı en yüksek güç (W=Watts)"
+      /* CalibrateCJC                   */ 1905, // "Sonraki boot'ta uç Soğuk Nokta Kompansasyonu kalibre edilecek (Delta T < 5°C ise gerekmez)"
+      /* VoltageCalibration             */ 2012, // "Voltaj Girişi Kalibrasyonu. Düğmeler ayarlar, çıkmak için uzun bas."
+      /* PowerPulsePower                */ 2094, // "Güç girişi voltajı ölçüm yoğunluğunu sık tut."
+      /* PowerPulseWait                 */ 2154, // "Uyanık tutma darbesinin tetiklenmeden önceki gecikme süresi (x 2.5s)"
+      /* PowerPulseDuration             */ 2245, // "Uyanık tutma darbesi süresi (x 250ms)"
+      /* SettingsReset                  */ 2302, // "Bütün ayarları sıfırlar"
       /* LanguageSwitch                 */ 81, // ""
-      /* SolderingTipType               */ 2286, // "Select the tip type fitted"
+      /* SolderingTipType               */ 2364, // "Takılı havya ucu türünü seçin"
     }, // SettingsDescriptions
 
     .SettingsShortNames = {
-      /* DCInCutoff                     */ 82, // "GÇKYN\n"
-      /* MinVolCell                     */ 170, // "Minimum\nVoltaj"
-      /* QCMaxVoltage                   */ 87, // ""
-      /* PDNegTimeout                   */ 268, // "PD\nTimeout"
-      /* USBPDMode                      */ 313, // "PD\nMode"
-      /* BoostTemperature               */ 354, // "YKSC\n"
-      /* AutoStart                      */ 480, // "OTOBAŞ\n"
-      /* TempChangeShortStep            */ 537, // "Sıcaklık değişimi\nkısa"
-      /* TempChangeLongStep             */ 609, // "Sıcaklık değişimi\nuzun"
-      /* LockingMode                    */ 753, // "Kilitleme\nİzni"
-      /* ProfilePhases                  */ 87, // ""
-      /* ProfilePreheatTemp             */ 87, // ""
-      /* ProfilePreheatSpeed            */ 87, // ""
-      /* ProfilePhase1Temp              */ 87, // ""
-      /* ProfilePhase1Duration          */ 87, // ""
-      /* ProfilePhase2Temp              */ 87, // ""
-      /* ProfilePhase2Duration          */ 87, // ""
-      /* ProfilePhase3Temp              */ 87, // ""
-      /* ProfilePhase3Duration          */ 87, // ""
-      /* ProfilePhase4Temp              */ 87, // ""
-      /* ProfilePhase4Duration          */ 87, // ""
-      /* ProfilePhase5Temp              */ 87, // ""
-      /* ProfilePhase5Duration          */ 87, // ""
-      /* ProfileCooldownSpeed           */ 87, // ""
-      /* MotionSensitivity              */ 827, // "HARHAS\n"
-      /* SleepTemperature               */ 862, // "BKSC\n"
-      /* SleepTimeout                   */ 911, // "BMZA\n"
-      /* ShutdownTimeout                */ 946, // "KPTZA\n"
-      /* HallEffSensitivity             */ 87, // ""
-      /* HallEffSleepTimeout            */ 87, // ""
-      /* TemperatureUnit                */ 996, // "tempUnit\n"
-      /* DisplayRotation                */ 1060, // "dispRot\n"
-      /* CooldownBlink                  */ 1124, // "SĞGÖST\n"
-      /* ScrollingSpeed                 */ 1173, // "scrSpeed\n"
-      /* ReverseButtonTempChange        */ 1254, // "Düğme Yerleri\nRotasyonu"
-      /* ReverseButtonSettings          */ 1326, // "Swap\nA B keys"
-      /* AnimSpeed                      */ 1406, // "animSpeed"
-      /* AnimLoop                       */ 1459, // "Animasyon\nDöngüsü"
-      /* Brightness                     */ 1509, // "Ekran\nparlaklığı"
-      /* ColourInversion                */ 1559, // "Ekran\nRenkleri"
-      /* LOGOTime                       */ 1602, // "Boot Logo\nSüresi"
-      /* AdvancedIdle                   */ 1688, // "AYRBİL\n"
-      /* AdvancedSoldering              */ 1757, // "GELLHM\n"
-      /* BluetoothLE                    */ 87, // ""
-      /* PowerLimit                     */ 1810, // "Güç\nlimiti"
-      /* CalibrateCJC                   */ 1912, // "CJC Kalibrasyonu\nSonraki Boot'ta"
-      /* VoltageCalibration             */ 2013, // "VOL KAL?\n"
-      /* PowerPulsePower                */ 2069, // "Güç\nDarbeleri"
-      /* PowerPulseWait                 */ 2152, // "Güç Darbesi\nGecikmesi"
-      /* PowerPulseDuration             */ 2212, // "Güç Darbesi\nSüresi"
-      /* SettingsReset                  */ 2255, // "SIFIRLA?\n"
-      /* LanguageSwitch                 */ 2265, // "Dil:\n TR      Türkçe"
-      /* SolderingTipType               */ 2313, // "Soldering\nTip Type"
+      /* DCInCutoff                     */ 82, // "Güç\nkaynağı"
+      /* MinVolCell                     */ 175, // "Min.\nvoltaj"
+      /* QCMaxVoltage                   */ 187, // ""
+      /* PDNegTimeout                   */ 272, // "PD zaman\naşımı"
+      /* USBPDMode                      */ 321, // "PD\nmodu"
+      /* BoostTemperature               */ 362, // "Takviye\nsıcak."
+      /* AutoStart                      */ 497, // "Otomatik\nbaşlat"
+      /* TempChangeShortStep            */ 562, // "Sıcaklık\nkısa adım"
+      /* TempChangeLongStep             */ 630, // "Sıcaklık\nuzun adım"
+      /* LockingMode                    */ 770, // "Tuş\nkilidi"
+      /* ProfilePhases                  */ 187, // ""
+      /* ProfilePreheatTemp             */ 187, // ""
+      /* ProfilePreheatSpeed            */ 187, // ""
+      /* ProfilePhase1Temp              */ 187, // ""
+      /* ProfilePhase1Duration          */ 187, // ""
+      /* ProfilePhase2Temp              */ 187, // ""
+      /* ProfilePhase2Duration          */ 187, // ""
+      /* ProfilePhase3Temp              */ 187, // ""
+      /* ProfilePhase3Duration          */ 187, // ""
+      /* ProfilePhase4Temp              */ 187, // ""
+      /* ProfilePhase4Duration          */ 187, // ""
+      /* ProfilePhase5Temp              */ 187, // ""
+      /* ProfilePhase5Duration          */ 187, // ""
+      /* ProfileCooldownSpeed           */ 187, // ""
+      /* MotionSensitivity              */ 840, // "Hareket\nhassas."
+      /* SleepTemperature               */ 883, // "Uyku\nsıcak."
+      /* SleepTimeout                   */ 938, // "Uyku\nsüresi"
+      /* ShutdownTimeout                */ 979, // "Kapanma\nsüresi"
+      /* HallEffSensitivity             */ 187, // ""
+      /* HallEffSleepTimeout            */ 187, // ""
+      /* TemperatureUnit                */ 1037, // "Sıcaklık\nbirimi"
+      /* DisplayRotation                */ 1107, // "Ekran\nyönü"
+      /* CooldownBlink                  */ 1173, // "Soğuma\nyanıp sön"
+      /* ScrollingSpeed                 */ 1231, // "Kaydırma\nhızı"
+      /* ReverseButtonTempChange        */ 1316, // "Sıcaklık\ntuşları"
+      /* ReverseButtonSettings          */ 1394, // "Menü\ntuşları"
+      /* AnimSpeed                      */ 1473, // "Animasyon\nhızı"
+      /* AnimLoop                       */ 1530, // "Animasyon\nDöngüsü"
+      /* Brightness                     */ 1580, // "Ekran\nparlaklığı"
+      /* ColourInversion                */ 1630, // "Ekran\nRenkleri"
+      /* LOGOTime                       */ 1673, // "Logo\nsüresi"
+      /* AdvancedIdle                   */ 1754, // "Boş ekran\ndetayı"
+      /* AdvancedSoldering              */ 1832, // "Lehimleme\ndetayı"
+      /* BluetoothLE                    */ 187, // ""
+      /* PowerLimit                     */ 1894, // "Güç\nlimiti"
+      /* CalibrateCJC                   */ 1996, // "Uç ortam\nkalib."
+      /* VoltageCalibration             */ 2080, // "Voltaj\nkalib."
+      /* PowerPulsePower                */ 2140, // "Güç\nDarbeleri"
+      /* PowerPulseWait                 */ 2223, // "Güç Darbesi\nGecikmesi"
+      /* PowerPulseDuration             */ 2283, // "Güç Darbesi\nSüresi"
+      /* SettingsReset                  */ 2326, // "Ayarları\nsıfırla"
+      /* LanguageSwitch                 */ 2343, // "Dil:\n TR      Türkçe"
+      /* SolderingTipType               */ 2394, // "Uç\ntürü"
     }, // SettingsShortNames
 
     .SettingsMenuEntriesDescriptions = {
@@ -425,236 +417,240 @@ struct {
     }, // SettingsMenuEntriesDescriptions
 
     .SettingsMenuEntries = {
-      /* PowerMenu                      */ 2422, // "Güç\nAyarları"
-      /* SolderingMenu                  */ 2435, // "Lehimleme\nAyarları"
-      /* PowerSavingMenu                */ 2454, // "Uyku\nModları"
-      /* UIMenu                         */ 2467, // "Kullanıcı\nArayüzü"
-      /* AdvancedMenu                   */ 2485, // "Gelişmiş\nAyarlar"
+      /* PowerMenu                      */ 2505, // "Güç\nAyarları"
+      /* SolderingMenu                  */ 2518, // "Lehimleme\nAyarları"
+      /* PowerSavingMenu                */ 2537, // "Uyku\nModları"
+      /* UIMenu                         */ 2550, // "Kullanıcı\nArayüzü"
+      /* AdvancedMenu                   */ 2568, // "Gelişmiş\nAyarlar"
     }, // SettingsMenuEntries
 
   }, // .indices
 
   /* .strings = */ {
     //    0: "\"Güç Kaynağı\". En düşük çalışma voltajını ayarlar. (DC 10V) (S 3.3V hücre başına)"
-    "\x41\x3C\x21\x2B\x12\x33\x0C\x20\x16\x0C\x24\x17\x41\x2A\x12\x3F\x16\x12\x0F\x21\x22\x21\x1B\x12\x2B\x0C\x18\x17\x22\x1A\x0C\x12\x2F\x1E\x18\x1D\x0C\x43\x17\x16\x17\x12\x0C\x20\x0C\x19\x18\x0C\x19\x2A\x12\x29\x31\x36\x12\x03\x02\x3D\x28\x12\x29\x23\x12\x05\x2A\x05\x3D\x12\x27\x21\x0E\x19\x10\x12\x0D\x0C\x22\x17\x16\x0C\x28" "\0"
-    //   82: "GÇKYN\n"
-    "\x2B\x4D\x2F\x3D\x36\x01" "\0"
-    //   89: "Pil hücresi başına izin verilen minimum voltaj (3S: 3 - 3.7V | 4-6S: 2.4 - 3.7V)"
-    "\x3E\x15\x18\x12\x27\x21\x0E\x19\x10\x1C\x15\x12\x0D\x0C\x22\x17\x16\x0C\x12\x15\x25\x15\x16\x12\x2F\x10\x19\x15\x18\x10\x16\x12\x1A\x15\x16\x15\x1A\x1F\x1A\x12\x2F\x1E\x18\x1D\x0C\x43\x12\x29\x05\x23\x4A\x12\x05\x12\x13\x12\x05\x2A\x09\x3D\x12\x2E\x12\x06\x13\x08\x23\x4A\x12\x04\x2A\x06\x12\x13\x12\x05\x2A\x09\x3D\x28" "\0"
-    //  170: "Minimum\nVoltaj"
-    "\x27\x15\x19\x15\x1C\x25\x1C\x01\x2D\x18\x17\x1D\x0C\x45" "\0"
-    //  185: "Bazı QC şarj cihazlarıyla uyumluluk için 100ms adımlarında PD pazarlık zaman aşımı"
-    "\x37\x0C\x25\x17\x12\x4E\x36\x12\x22\x0C\x19\x43\x12\x0E\x15\x27\x0C\x25\x18\x0C\x19\x17\x20\x18\x0C\x12\x1F\x20\x1F\x1A\x18\x1F\x18\x1F\x1B\x12\x15\x2B\x15\x16\x12\x03\x02\x02\x1A\x1C\x12\x0C\x0F\x17\x1A\x18\x0C\x19\x17\x16\x0F\x0C\x12\x3E\x31\x12\x30\x0C\x25\x0C\x19\x18\x17\x1B\x12\x25\x0C\x1A\x0C\x16\x12\x0C\x22\x17\x1A\x17" "\0"
-    //  268: "PD\nTimeout"
-    "\x2A\x1F\x01\x22\x15\x1C\x10\x18\x25\x1D" "\0"
-    //  279: "PPS & EPR modlarını etkinleştirir"
-    "\x3E\x3E\x23\x12\x54\x12\x3F\x3E\x45\x12\x1A\x1E\x0F\x18\x0C\x19\x17\x16\x17\x12\x10\x1D\x1B\x15\x16\x18\x10\x22\x1D\x15\x19\x15\x19" "\0"
-    //  313: "PD\nMode"
-    "\x2A\x1F\x01\x27\x18\x0F\x10" "\0"
-    //  321: "Yüksek Performans Modu Sıcaklığı"
-    "\x32\x21\x1B\x1C\x10\x1B\x12\x3E\x10\x19\x11\x1E\x19\x1A\x0C\x16\x1C\x12\x3B\x1E\x0F\x1F\x12\x23\x17\x0E\x0C\x1B\x18\x17\x24\x17" "\0"
-    //  354: "YKSC\n"
-    "\x3D\x2F\x1A\x20\x01" "\0"
-    //  360: "Güç verildiğinde otomatik olarak lehimleme modunda başlat. (L=Lehimleme Modu | U=Uyku Modu | S=Uyku Modu Oda Sıcaklığı)"
-    "\x3C\x21\x2B\x12\x2F\x10\x19\x15\x18\x0F\x15\x24\x15\x16\x0F\x10\x12\x1E\x1D\x1E\x1A\x0C\x1D\x15\x1B\x12\x1E\x18\x0C\x19\x0C\x1B\x12\x18\x10\x27\x15\x1A\x18\x10\x1A\x10\x12\x1A\x1E\x0F\x1F\x16\x0F\x0C\x12\x0D\x0C\x22\x18\x0C\x1D\x2A\x12\x29\x2D\x26\x2D\x10\x27\x15\x1A\x18\x10\x1A\x10\x12\x3B\x1E\x0F\x1F\x12\x2E\x12\x39\x26\x39\x20\x1B\x1F\x12\x3B\x1E\x0F\x1F\x12\x2E\x12\x23\x26\x39\x20\x1B\x1F\x12\x3B\x1E\x0F\x1F\x12\x35\x0F\x0C\x12\x23\x17\x0E\x0C\x1B\x18\x17\x24\x17\x28" "\0"
-    //  480: "OTOBAŞ\n"
-    "\x35\x22\x35\x23\x1E\x4A\x01" "\0"
-    //  488: "Kısa basışlardaki sıcaklık derecesi atlama oranı"
-    "\x33\x17\x1C\x0C\x12\x0D\x0C\x1C\x17\x22\x18\x0C\x19\x0F\x0C\x1B\x15\x12\x1C\x17\x0E\x0C\x1B\x18\x17\x1B\x12\x0F\x10\x19\x10\x0E\x10\x1C\x15\x12\x0C\x1D\x18\x0C\x1A\x0C\x12\x1E\x19\x0C\x16\x17" "\0"
-    //  537: "Sıcaklık değişimi\nkısa"
-    "\x1A\x26\x0E\x0C\x21\x17\x26\x21\x12\x0F\x10\x3C\x15\x33\x15\x1C\x15\x01\x21\x26\x1B\x0C" "\0"
-    //  560: "Uzun başışlardaki sıcaklık derecesi atlama oranı"
-    "\x39\x25\x1F\x16\x12\x0D\x0C\x22\x17\x22\x18\x0C\x19\x0F\x0C\x1B\x15\x12\x1C\x17\x0E\x0C\x1B\x18\x17\x1B\x12\x0F\x10\x19\x10\x0E\x10\x1C\x15\x12\x0C\x1D\x18\x0C\x1A\x0C\x12\x1E\x19\x0C\x16\x17" "\0"
-    //  609: "Sıcaklık değişimi\nuzun"
-    "\x1A\x26\x0E\x0C\x21\x17\x26\x21\x12\x0F\x10\x3C\x15\x33\x15\x1C\x15\x01\x25\x3F\x25\x19" "\0"
-    //  632: "Lehimleme sırasında, her iki düğmeye basılı tutarak kilitleme modunu değiştirin (B=Sadece performans modu | F=tam kilit)"
-    "\x2D\x10\x27\x15\x1A\x18\x10\x1A\x10\x12\x1C\x17\x19\x0C\x1C\x17\x16\x0F\x0C\x4B\x12\x27\x10\x19\x12\x15\x1B\x15\x12\x0F\x21\x24\x1A\x10\x20\x10\x12\x0D\x0C\x1C\x17\x18\x17\x12\x1D\x1F\x1D\x0C\x19\x0C\x1B\x12\x1B\x15\x18\x15\x1D\x18\x10\x1A\x10\x12\x1A\x1E\x0F\x1F\x16\x1F\x12\x0F\x10\x24\x15\x22\x1D\x15\x19\x15\x16\x12\x29\x37\x26\x23\x0C\x0F\x10\x0E\x10\x12\x30\x10\x19\x11\x1E\x19\x1A\x0C\x16\x1C\x12\x1A\x1E\x0F\x1F\x12\x2E\x12\x46\x26\x1D\x0C\x1A\x12\x1B\x15\x18\x15\x1D\x28" "\0"
-    //  753: "Kilitleme\nİzni"
-    "\x2F\x15\x17\x15\x1D\x17\x10\x1C\x10\x01\x3E\x3F\x19\x15" "\0"
-    //  768: "Hareket Hassasiyeti (1=En az duyarlı | ... | 9=En duyarlı)"
-    "\x3A\x0C\x19\x10\x1B\x10\x1D\x12\x3A\x0C\x1C\x1C\x0C\x1C\x15\x20\x10\x1D\x15\x12\x29\x03\x26\x3F\x16\x12\x0C\x25\x12\x0F\x1F\x20\x0C\x19\x18\x17\x12\x2E\x12\x2A\x2A\x2A\x12\x2E\x12\x0B\x26\x3F\x16\x12\x0F\x1F\x20\x0C\x19\x18\x17\x28" "\0"
-    //  827: "HARHAS\n"
-    "\x30\x1E\x2E\x30\x1E\x1A\x01" "\0"
-    //  835: "Bekleme Modu Sıcaklığı (C)"
-    "\x37\x10\x1B\x18\x10\x1A\x10\x12\x3B\x1E\x0F\x1F\x12\x23\x17\x0E\x0C\x1B\x18\x17\x24\x17\x12\x29\x36\x28" "\0"
-    //  862: "BKSC\n"
-    "\x23\x2F\x1A\x20\x01" "\0"
-    //  868: "Bekleme Modu Zaman Aşımı (Dakika | Saniye)"
-    "\x37\x10\x1B\x18\x10\x1A\x10\x12\x3B\x1E\x0F\x1F\x12\x47\x0C\x1A\x0C\x16\x12\x40\x22\x17\x1A\x17\x12\x29\x31\x0C\x1B\x15\x1B\x0C\x12\x2E\x12\x23\x0C\x16\x15\x20\x10\x28" "\0"
-    //  911: "BMZA\n"
-    "\x23\x27\x47\x1E\x01" "\0"
-    //  917: "Kapatma Zaman Aşımı (Dakika)"
-    "\x33\x0C\x30\x0C\x1D\x1A\x0C\x12\x47\x0C\x1A\x0C\x16\x12\x40\x22\x17\x1A\x17\x12\x29\x31\x0C\x1B\x15\x1B\x0C\x28" "\0"
-    //  946: "KPTZA\n"
-    "\x2F\x2A\x22\x47\x1E\x01" "\0"
-    //  953: "Sıcaklık Birimi (C=Celsius | F=Fahrenheit)"
-    "\x23\x17\x0E\x0C\x1B\x18\x17\x1B\x12\x37\x15\x19\x15\x1A\x15\x12\x29\x36\x26\x36\x10\x18\x1C\x15\x1F\x1C\x12\x2E\x12\x46\x26\x46\x0C\x27\x19\x10\x16\x27\x10\x15\x1D\x28" "\0"
-    //  996: "tempUnit\n"
-    "\x1D\x10\x1C\x29\x3A\x19\x15\x1D\x01" "\0"
-    // 1006: "Görüntü Yönlendirme (R=Sağlak | L=Solak | O=Otomatik)"
-    "\x3C\x34\x19\x21\x16\x1D\x21\x12\x32\x34\x16\x18\x10\x16\x0F\x15\x19\x1A\x10\x12\x29\x45\x26\x23\x0C\x24\x18\x0C\x1B\x12\x2E\x12\x2D\x26\x23\x1E\x18\x0C\x1B\x12\x2E\x12\x35\x26\x35\x1D\x1E\x1A\x0C\x1D\x15\x1B\x28" "\0"
-    // 1060: "dispRot\n"
-    "\x0F\x15\x1B\x29\x2E\x18\x1D\x01" "\0"
-    // 1069: "Soğutma ekranında uç hala sıcakken derece gösterilsin."
-    "\x23\x1E\x24\x1F\x1D\x1A\x0C\x12\x10\x1B\x19\x0C\x16\x17\x16\x0F\x0C\x12\x1F\x2B\x12\x27\x0C\x18\x0C\x12\x1C\x17\x0E\x0C\x1B\x1B\x10\x16\x12\x0F\x10\x19\x10\x0E\x10\x12\x2C\x34\x1C\x1D\x10\x19\x15\x18\x1C\x15\x16\x2A" "\0"
-    // 1124: "SĞGÖST\n"
-    "\x1A\x4B\x2B\x4C\x1A\x22\x01" "\0"
-    // 1132: "Yazıların kayma hızı (Y=Yavaş | H=Hızlı)"
-    "\x32\x0C\x25\x17\x18\x0C\x19\x17\x16\x12\x1B\x0C\x20\x1A\x0C\x12\x27\x17\x25\x17\x12\x29\x32\x26\x32\x0C\x2F\x0C\x22\x12\x2E\x12\x3A\x26\x3A\x17\x25\x18\x17\x28" "\0"
-    // 1173: "scrSpeed\n"
-    "\x1B\x0E\x16\x1A\x29\x10\x10\x0F\x01" "\0"
-    // 1183: "\"Düğme Yerleri Rotasyonu\" Sıcaklık ayar düğmelerinin yerini değiştirin"
-    "\x41\x31\x21\x24\x1A\x10\x12\x32\x10\x19\x18\x10\x19\x15\x12\x45\x1E\x1D\x0C\x1C\x20\x1E\x16\x1F\x41\x12\x23\x17\x0E\x0C\x1B\x18\x17\x1B\x12\x0C\x20\x0C\x19\x12\x0F\x21\x24\x1A\x10\x18\x10\x19\x15\x16\x15\x16\x12\x20\x10\x19\x15\x16\x15\x12\x0F\x10\x24\x15\x22\x1D\x15\x19\x15\x16" "\0"
-    // 1254: "Düğme Yerleri\nRotasyonu"
-    "\x1F\x24\x3C\x1C\x10\x12\x3D\x10\x16\x17\x10\x16\x15\x01\x2E\x18\x1D\x0C\x1B\x28\x18\x19\x25" "\0"
-    // 1278: "Reverse assignment of buttons for Settings menu"
-    "\x45\x10\x2F\x10\x19\x1C\x10\x12\x0C\x1C\x1C\x15\x2C\x16\x1A\x10\x16\x1D\x12\x1E\x11\x12\x0D\x1F\x1D\x1D\x1E\x16\x1C\x12\x11\x1E\x19\x12\x23\x10\x1D\x1D\x15\x16\x2C\x1C\x12\x1A\x10\x16\x1F" "\0"
-    // 1326: "Swap\nA B keys"
-    "\x1A\x44\x0C\x29\x01\x1E\x12\x23\x12\x21\x10\x28\x1B" "\0"
-    // 1340: "Menüdeki simge animasyonlarının hızı (Y=Yavaş | O=Orta | H=Hızlı)"
-    "\x3B\x10\x16\x21\x0F\x10\x1B\x15\x12\x1C\x15\x1A\x2C\x10\x12\x0C\x16\x15\x1A\x0C\x1C\x20\x1E\x16\x18\x0C\x19\x17\x16\x17\x16\x12\x27\x17\x25\x17\x12\x29\x32\x26\x32\x0C\x2F\x0C\x22\x12\x2E\x12\x35\x26\x35\x19\x1D\x0C\x12\x2E\x12\x3A\x26\x3A\x17\x25\x18\x17\x28" "\0"
-    // 1406: "\nanimSpeed"
-    "\x01\x0C\x16\x15\x1A\x23\x30\x10\x10\x0F" "\0"
-    // 1417: "Ana menüde simge animasyonlarının döngüsü"
-    "\x40\x16\x0C\x12\x1A\x10\x16\x21\x0F\x10\x12\x1C\x15\x1A\x2C\x10\x12\x0C\x16\x15\x1A\x0C\x1C\x20\x1E\x16\x18\x0C\x19\x17\x16\x17\x16\x12\x0F\x34\x16\x2C\x21\x1C\x21" "\0"
-    // 1459: "Animasyon\nDöngüsü"
-    "\x1E\x19\x15\x1C\x0C\x1B\x28\x18\x19\x01\x1F\x43\x19\x34\x24\x1B\x24" "\0"
-    // 1477: "OLED ekran parlaklığını ayarlar"
-    "\x35\x2D\x3F\x31\x12\x10\x1B\x19\x0C\x16\x12\x30\x0C\x19\x18\x0C\x1B\x18\x17\x24\x17\x16\x17\x12\x0C\x20\x0C\x19\x18\x0C\x19" "\0"
-    // 1509: "Ekran\nparlaklığı"
-    "\x3B\x21\x16\x0C\x19\x01\x29\x0C\x16\x17\x0C\x21\x17\x26\x3C\x26" "\0"
-    // 1526: "OLED ekran renklerini ters çevir"
-    "\x35\x2D\x3F\x31\x12\x10\x1B\x19\x0C\x16\x12\x19\x10\x16\x1B\x18\x10\x19\x15\x16\x15\x12\x1D\x10\x19\x1C\x12\x2B\x10\x2F\x15\x19" "\0"
-    // 1559: "Ekran\nRenkleri"
-    "\x3B\x21\x16\x0C\x19\x01\x2E\x10\x19\x21\x17\x10\x16\x15" "\0"
-    // 1574: "Boot logo süresi (s=saniye)"
-    "\x37\x1E\x1E\x1D\x12\x18\x1E\x2C\x1E\x12\x1C\x21\x19\x10\x1C\x15\x12\x29\x1C\x26\x1C\x0C\x16\x15\x20\x10\x28" "\0"
-    // 1602: "Boot Logo\nSüresi"
-    "\x23\x18\x18\x1D\x12\x2C\x18\x34\x18\x01\x1A\x24\x16\x10\x1B\x15" "\0"
-    // 1619: "Boş ekranda ayrıntılı bilgileri daha küçük bir yazı tipi ile göster."
-    "\x37\x1E\x22\x12\x10\x1B\x19\x0C\x16\x0F\x0C\x12\x0C\x20\x19\x17\x16\x1D\x17\x18\x17\x12\x0D\x15\x18\x2C\x15\x18\x10\x19\x15\x12\x0F\x0C\x27\x0C\x12\x1B\x21\x2B\x21\x1B\x12\x0D\x15\x19\x12\x20\x0C\x25\x17\x12\x1D\x15\x30\x15\x12\x15\x18\x10\x12\x2C\x34\x1C\x1D\x10\x19\x2A" "\0"
-    // 1688: "AYRBİL\n"
-    "\x1E\x3D\x2E\x23\x3E\x2C\x01" "\0"
-    // 1696: "\"Gelişmiş Lehimleme\" Lehimleme yaparken detaylı bilgi göster"
-    "\x41\x3C\x10\x18\x15\x22\x1A\x15\x22\x12\x2D\x10\x27\x15\x1A\x18\x10\x1A\x10\x41\x12\x2D\x10\x27\x15\x1A\x18\x10\x1A\x10\x12\x20\x0C\x30\x0C\x19\x1B\x10\x16\x12\x0F\x10\x1D\x0C\x20\x18\x17\x12\x0D\x15\x18\x2C\x15\x12\x2C\x34\x1C\x1D\x10\x19" "\0"
-    // 1757: "GELLHM\n"
-    "\x2B\x3B\x2C\x2C\x30\x27\x01" "\0"
-    // 1765: "Havyanın kullanacağı en yüksek güç (W=Watts)"
-    "\x3A\x0C\x2F\x20\x0C\x16\x17\x16\x12\x1B\x1F\x18\x18\x0C\x16\x0C\x0E\x0C\x24\x17\x12\x10\x16\x12\x20\x21\x1B\x1C\x10\x1B\x12\x2C\x21\x2B\x12\x29\x48\x26\x48\x0C\x1D\x1D\x1C\x28" "\0"
-    // 1810: "Güç\nlimiti"
-    "\x2B\x24\x31\x01\x17\x15\x1C\x15\x1D\x15" "\0"
-    // 1821: "Sonraki boot'ta uç Soğuk Nokta Kompansasyonu kalibre edilecek (Delta T < 5°C ise gerekmez)"
-    "\x23\x1E\x16\x19\x0C\x1B\x15\x12\x0D\x1E\x1E\x1D\x53\x1D\x0C\x12\x1F\x2B\x12\x23\x1E\x24\x1F\x1B\x12\x4F\x1E\x1B\x1D\x0C\x12\x33\x1E\x1A\x30\x0C\x16\x1C\x0C\x1C\x20\x1E\x16\x1F\x12\x1B\x0C\x18\x15\x0D\x19\x10\x12\x10\x0F\x15\x18\x10\x0E\x10\x1B\x12\x29\x31\x10\x18\x1D\x0C\x12\x44\x12\x52\x12\x07\x4D\x36\x12\x15\x1C\x10\x12\x2C\x10\x19\x10\x1B\x1A\x10\x25\x28" "\0"
-    // 1912: "CJC Kalibrasyonu\nSonraki Boot'ta"
-    "\x20\x48\x20\x12\x2F\x0C\x17\x15\x0D\x16\x0C\x1B\x28\x18\x19\x25\x01\x1A\x18\x19\x16\x0C\x21\x15\x12\x23\x18\x18\x1D\x51\x1D\x0C" "\0"
-    // 1945: "Voltaj Girişi Kalibrasyonu. Düğmeler ayarlar, çıkmak için uzun bas."
-    "\x3D\x1E\x18\x1D\x0C\x43\x12\x3C\x15\x19\x15\x22\x15\x12\x33\x0C\x18\x15\x0D\x19\x0C\x1C\x20\x1E\x16\x1F\x2A\x12\x31\x21\x24\x1A\x10\x18\x10\x19\x12\x0C\x20\x0C\x19\x18\x0C\x19\x4B\x12\x2B\x17\x1B\x1A\x0C\x1B\x12\x15\x2B\x15\x16\x12\x1F\x25\x1F\x16\x12\x0D\x0C\x1C\x2A" "\0"
-    // 2013: "VOL KAL?\n"
-    "\x2D\x35\x2C\x12\x2F\x1E\x2C\x49\x01" "\0"
-    // 2023: "Güç girişi voltajı ölçüm yoğunluğunu sık tut."
-    "\x3C\x21\x2B\x12\x2C\x15\x19\x15\x22\x15\x12\x2F\x1E\x18\x1D\x0C\x43\x17\x12\x34\x18\x2B\x21\x1A\x12\x20\x1E\x24\x1F\x16\x18\x1F\x24\x1F\x16\x1F\x12\x1C\x17\x1B\x12\x1D\x1F\x1D\x2A" "\0"
-    // 2069: "Güç\nDarbeleri"
-    "\x2B\x24\x31\x01\x1F\x0C\x16\x0D\x10\x17\x10\x16\x15" "\0"
-    // 2083: "Uyanık tutma darbesinin tetiklenmeden önceki gecikme süresi (x 2.5s)"
-    "\x39\x20\x0C\x16\x17\x1B\x12\x1D\x1F\x1D\x1A\x0C\x12\x0F\x0C\x19\x0D\x10\x1C\x15\x16\x15\x16\x12\x1D\x10\x1D\x15\x1B\x18\x10\x16\x1A\x10\x0F\x10\x16\x12\x34\x16\x0E\x10\x1B\x15\x12\x2C\x10\x0E\x15\x1B\x1A\x10\x12\x1C\x21\x19\x10\x1C\x15\x12\x29\x49\x12\x04\x2A\x07\x1C\x28" "\0"
-    // 2152: "Güç Darbesi\nGecikmesi"
-    "\x2B\x24\x31\x12\x1F\x0C\x16\x0D\x10\x1B\x15\x01\x2B\x10\x0E\x15\x21\x1C\x10\x1B\x15" "\0"
-    // 2174: "Uyanık tutma darbesi süresi (x 250ms)"
-    "\x39\x20\x0C\x16\x17\x1B\x12\x1D\x1F\x1D\x1A\x0C\x12\x0F\x0C\x19\x0D\x10\x1C\x15\x12\x1C\x21\x19\x10\x1C\x15\x12\x29\x49\x12\x04\x07\x02\x1A\x1C\x28" "\0"
-    // 2212: "Güç Darbesi\nSüresi"
-    "\x2B\x24\x31\x12\x1F\x0C\x16\x0D\x10\x1B\x15\x01\x1A\x24\x16\x10\x1B\x15" "\0"
-    // 2231: "Bütün ayarları sıfırlar"
-    "\x37\x21\x1D\x21\x16\x12\x0C\x20\x0C\x19\x18\x0C\x19\x17\x12\x1C\x17\x11\x17\x19\x18\x0C\x19" "\0"
-    // 2255: "SIFIRLA?\n"
-    "\x1A\x32\x41\x32\x2E\x2C\x1E\x49\x01" "\0"
-    // 2265: "Dil:\n TR      Türkçe"
-    "\x1F\x15\x17\x37\x01\x12\x22\x2E\x12\x12\x12\x12\x12\x12\x22\x24\x16\x21\x31\x10" "\0"
-    // 2286: "Select the tip type fitted"
-    "\x23\x10\x18\x10\x0E\x1D\x12\x1D\x27\x10\x12\x1D\x15\x30\x12\x1D\x20\x30\x10\x12\x11\x15\x1D\x1D\x10\x0F" "\0"
-    // 2313: "Soldering\nTip Type"
-    "\x1A\x18\x17\x0F\x10\x16\x15\x19\x34\x01\x22\x15\x29\x12\x22\x28\x29\x10" "\0"
-    // 2332: "Default\nMode"
-    "\x1F\x10\x11\x0C\x25\x17\x1D\x01\x27\x18\x0F\x10" "\0"
-    // 2345: "No\nDynamic"
-    "\x36\x18\x01\x1F\x28\x19\x0C\x1C\x15\x0E" "\0"
-    // 2356: "Safe\nMode"
-    "\x1A\x0C\x11\x10\x01\x27\x18\x0F\x10" "\0"
-    // 2366: "Auto\nSense"
-    "\x1E\x25\x1D\x18\x01\x1A\x10\x19\x1B\x10" "\0"
-    // 2377: "TS100\nLong"
-    "\x22\x1A\x03\x02\x02\x01\x2C\x18\x19\x34" "\0"
-    // 2388: "Pine\nShort"
-    "\x2A\x15\x19\x10\x01\x1A\x46\x18\x16\x1D" "\0"
-    // 2399: "PTS\n200"
-    "\x2A\x22\x1A\x01\x04\x02\x02" "\0"
-    // 2407: "TS80\n"
-    "\x22\x1A\x0A\x02\x01" "\0"
-    // 2413: "JBC\nC210"
-    "\x48\x23\x20\x01\x20\x04\x03\x02" "\0"
-    // 2422: "Güç\nAyarları"
-    "\x2B\x24\x31\x01\x1E\x28\x0C\x16\x17\x0C\x16\x26" "\0"
-    // 2435: "Lehimleme\nAyarları"
-    "\x2C\x10\x46\x15\x1C\x17\x10\x1C\x10\x01\x1E\x28\x0C\x16\x17\x0C\x16\x26" "\0"
-    // 2454: "Uyku\nModları"
-    "\x3A\x28\x21\x25\x01\x27\x18\x0F\x17\x0C\x16\x26" "\0"
-    // 2467: "Kullanıcı\nArayüzü"
-    "\x2F\x25\x17\x17\x0C\x19\x26\x0E\x26\x01\x1E\x16\x0C\x28\x24\x3F\x24" "\0"
-    // 2485: "Gelişmiş\nAyarlar"
-    "\x2B\x10\x17\x15\x33\x1C\x15\x33\x01\x1E\x28\x0C\x16\x17\x0C\x16" "\0"
-    // 2502: "Kalibrasyon\ntamam!"
-    "\x2F\x0C\x17\x15\x0D\x16\x0C\x1B\x28\x18\x19\x01\x1D\x0C\x1C\x0C\x1C\x42" "\0"
-    // 2521: "\nSıfırlama Tamam"
-    "\x01\x23\x17\x11\x17\x19\x18\x0C\x1A\x0C\x12\x44\x0C\x1A\x0C\x1A" "\0"
-    // 2538: "Ayarlar\nSıfırlandı"
-    "\x1E\x28\x0C\x16\x17\x0C\x16\x01\x1A\x26\x11\x26\x16\x17\x0C\x19\x0F\x26" "\0"
-    // 2557: "İvme sensörü\ntespit edilemedi!"
-    "\x3E\x40\x1C\x10\x12\x1B\x10\x19\x1B\x43\x16\x24\x01\x1D\x10\x1B\x29\x15\x1D\x12\x10\x0F\x15\x17\x10\x1C\x10\x0F\x15\x42" "\0"
-    // 2588: "USB-PD IC\ntespit edilemedi!"
-    "\x3A\x1A\x23\x13\x2A\x1F\x12\x32\x20\x01\x1D\x10\x1B\x29\x15\x1D\x12\x10\x0F\x15\x17\x10\x1C\x10\x0F\x15\x42" "\0"
-    // 2616: "\nKİLİTLİ"
-    "\x01\x33\x38\x2D\x38\x44\x2D\x38" "\0"
-    // 2625: "\nKİLİT AÇIK"
-    "\x01\x33\x38\x2D\x38\x44\x12\x40\x4C\x50\x33" "\0"
-    // 2637: "\n!KİLİTLİ!"
-    "\x01\x42\x33\x38\x2D\x38\x44\x2D\x38\x42" "\0"
-    // 2648: "Termal\nKaçak"
-    "\x22\x10\x16\x1C\x0C\x17\x01\x2F\x0C\x31\x0C\x21" "\0"
-    // 2661: "\n!Uç Kısa Devre!"
-    "\x01\x42\x39\x2B\x12\x33\x17\x1C\x0C\x12\x31\x10\x2F\x19\x10\x42" "\0"
-    // 2678: "\nYeniden başlatmadan önce uç ve sapın oda sıcaklığında olduğundan emin olun!"
-    "\x01\x32\x10\x16\x15\x0F\x10\x16\x12\x0D\x0C\x22\x18\x0C\x1D\x1A\x0C\x0F\x0C\x16\x12\x34\x16\x0E\x10\x12\x1F\x2B\x12\x2F\x10\x12\x1C\x0C\x30\x17\x16\x12\x1E\x0F\x0C\x12\x1C\x17\x0E\x0C\x1B\x18\x17\x24\x17\x16\x0F\x0C\x12\x1E\x18\x0F\x1F\x24\x1F\x16\x0F\x0C\x16\x12\x10\x1A\x15\x16\x12\x1E\x18\x1F\x16\x42" "\0"
-    // 2755: "kalibre ediliyor\n"
-    "\x21\x0C\x17\x15\x0D\x16\x10\x12\x10\x0F\x15\x17\x15\x28\x18\x16\x01" "\0"
-    // 2773: "\nAyarları varsayılan değerlere sıfırlamak istediğinizden emin misiniz?"
-    "\x01\x40\x20\x0C\x19\x18\x0C\x19\x17\x12\x2F\x0C\x19\x1C\x0C\x20\x17\x18\x0C\x16\x12\x0F\x10\x24\x10\x19\x18\x10\x19\x10\x12\x1C\x17\x11\x17\x19\x18\x0C\x1A\x0C\x1B\x12\x15\x1C\x1D\x10\x0F\x15\x24\x15\x16\x15\x25\x0F\x10\x16\x12\x10\x1A\x15\x16\x12\x1A\x15\x1C\x15\x16\x15\x25\x51" "\0"
-    // 2844: "\nGüç Az"
-    "\x01\x3C\x21\x2B\x12\x40\x25" "\0"
-    // 2852: "Düşük Voltaj\n"
-    "\x1F\x24\x33\x24\x21\x12\x2D\x18\x17\x1D\x0C\x45\x01" "\0"
-    // 2866: "Giriş V: \n"
-    "\x2B\x15\x16\x15\x33\x12\x2D\x37\x12\x01" "\0"
-    // 2877: "Bekleme Modu...\n"
-    "\x23\x10\x21\x17\x10\x1C\x10\x12\x27\x18\x0F\x25\x38\x38\x38\x01" "\0"
-    // 2894: "Uç: \n"
-    "\x3A\x31\x37\x12\x01" "\0"
-    // 2900: "\nCihazınız büyük olasılıkla sahte!"
-    "\x01\x36\x15\x27\x0C\x25\x17\x16\x17\x25\x12\x0D\x21\x20\x21\x1B\x12\x1E\x18\x0C\x1C\x17\x18\x17\x1B\x18\x0C\x12\x1C\x0C\x27\x1D\x10\x42" "\0"
-    // 2935: "L"
-    "\x2D" "\0"
-    // 2937: "O"
-    "\x35" "\0"
-    // 2939: "Y"
-    "\x32" "\0"
-    // 2941: "H"
-    "\x3A" "\0"
-    // 2943: "U"
-    "\x39" "\0"
-    // 2945: "S"
-    "\x23" "\0"
-    // 2947: "B"
-    "\x37" "\0"
-    // 2949: "F"
-    "\x46"
+    "\x41\x3D\x21\x2A\x12\x35\x0C\x20\x16\x0C\x23\x19\x41\x29\x12\x40\x16\x12\x0F\x21\x22\x21\x1A\x12\x2A\x0C\x18\x19\x22\x1B\x0C\x12\x2D\x1F\x18\x1D\x0C\x42\x19\x16\x19\x12\x0C\x20\x0C\x17\x18\x0C\x17\x29\x12\x28\x32\x39\x12\x03\x02\x3E\x27\x12\x28\x25\x12\x05\x29\x05\x3E\x12\x2B\x21\x0E\x17\x10\x12\x0D\x0C\x22\x19\x16\x0C\x27" "\0"
+    //   82: "Güç\nkaynağı"
+    "\x28\x1F\x27\x01\x1A\x0C\x20\x1B\x0C\x40\x18" "\0"
+    //   94: "Pil hücresi başına izin verilen minimum voltaj (3S: 3 - 3.7V | 4-6S: 2.4 - 3.7V)"
+    "\x3F\x15\x18\x12\x2B\x21\x0E\x17\x10\x1C\x15\x12\x0D\x0C\x22\x19\x16\x0C\x12\x15\x24\x15\x16\x12\x2D\x10\x17\x15\x18\x10\x16\x12\x1B\x15\x16\x15\x1B\x1E\x1B\x12\x2D\x1F\x18\x1D\x0C\x42\x12\x28\x05\x25\x4A\x12\x05\x12\x13\x12\x05\x29\x09\x3E\x12\x2F\x12\x06\x13\x08\x25\x4A\x12\x04\x29\x06\x12\x13\x12\x05\x29\x09\x3E\x27" "\0"
+    //  175: "Min.\nvoltaj"
+    "\x2C\x15\x1B\x29\x01\x32\x1E\x16\x1D\x0C\x41" "\0"
+    //  187: "\n"
+    "\x01" "\0"
+    //  189: "Bazı QC şarj cihazlarıyla uyumluluk için 100ms adımlarında PD pazarlık zaman aşımı"
+    "\x33\x0C\x24\x19\x12\x4E\x39\x12\x22\x0C\x17\x42\x12\x0E\x15\x2B\x0C\x24\x18\x0C\x17\x19\x20\x18\x0C\x12\x1E\x20\x1E\x1B\x18\x1E\x18\x1E\x1A\x12\x15\x2A\x15\x16\x12\x03\x02\x02\x1B\x1C\x12\x0C\x0F\x19\x1B\x18\x0C\x17\x19\x16\x0F\x0C\x12\x3F\x32\x12\x37\x0C\x24\x0C\x17\x18\x19\x1A\x12\x24\x0C\x1B\x0C\x16\x12\x0C\x22\x19\x1B\x19" "\0"
+    //  272: "PD zaman\naşımı"
+    "\x2B\x22\x12\x35\x0C\x19\x0C\x1B\x01\x0C\x2D\x18\x19\x18" "\0"
+    //  287: "PPS & EPR modlarını etkinleştirir"
+    "\x3F\x3F\x25\x12\x54\x12\x40\x3F\x45\x12\x1B\x1F\x0F\x18\x0C\x17\x19\x16\x19\x12\x10\x1D\x1A\x15\x16\x18\x10\x22\x1D\x15\x17\x15\x17" "\0"
+    //  321: "PD\nmodu"
+    "\x2B\x22\x01\x19\x1E\x0F\x23" "\0"
+    //  329: "Yüksek Performans Modu Sıcaklığı"
+    "\x31\x21\x1A\x1C\x10\x1A\x12\x3F\x10\x17\x11\x1F\x17\x1B\x0C\x16\x1C\x12\x3C\x1F\x0F\x1E\x12\x25\x19\x0E\x0C\x1A\x18\x19\x23\x19" "\0"
+    //  362: "Takviye\nsıcak."
+    "\x26\x0C\x1A\x32\x15\x20\x10\x01\x1C\x18\x0E\x0C\x1A\x29" "\0"
+    //  377: "Güç verildiğinde otomatik olarak lehimleme modunda başlat. (L=Lehimleme Modu | U=Uyku Modu | S=Uyku Modu Oda Sıcaklığı)"
+    "\x3D\x21\x2A\x12\x2D\x10\x17\x15\x18\x0F\x15\x23\x15\x16\x0F\x10\x12\x1F\x1D\x1F\x1B\x0C\x1D\x15\x1A\x12\x1F\x18\x0C\x17\x0C\x1A\x12\x18\x10\x2B\x15\x1B\x18\x10\x1B\x10\x12\x1B\x1F\x0F\x1E\x16\x0F\x0C\x12\x0D\x0C\x22\x18\x0C\x1D\x29\x12\x28\x2C\x26\x2C\x10\x2B\x15\x1B\x18\x10\x1B\x10\x12\x3C\x1F\x0F\x1E\x12\x2F\x12\x3B\x26\x3B\x20\x1A\x1E\x12\x3C\x1F\x0F\x1E\x12\x2F\x12\x25\x26\x3B\x20\x1A\x1E\x12\x3C\x1F\x0F\x1E\x12\x34\x0F\x0C\x12\x25\x19\x0E\x0C\x1A\x18\x19\x23\x19\x27" "\0"
+    //  497: "Otomatik\nbaşlat"
+    "\x39\x1D\x1E\x19\x0C\x1D\x15\x1A\x01\x0D\x0C\x2D\x16\x0C\x1D" "\0"
+    //  513: "Kısa basışlardaki sıcaklık derecesi atlama oranı"
+    "\x35\x19\x1C\x0C\x12\x0D\x0C\x1C\x19\x22\x18\x0C\x17\x0F\x0C\x1A\x15\x12\x1C\x19\x0E\x0C\x1A\x18\x19\x1A\x12\x0F\x10\x17\x10\x0E\x10\x1C\x15\x12\x0C\x1D\x18\x0C\x1B\x0C\x12\x1F\x17\x0C\x16\x19" "\0"
+    //  562: "Sıcaklık\nkısa adım"
+    "\x21\x18\x0E\x0C\x1A\x16\x18\x1A\x01\x1A\x18\x1C\x0C\x12\x0C\x0F\x18\x19" "\0"
+    //  581: "Uzun başışlardaki sıcaklık derecesi atlama oranı"
+    "\x3B\x24\x1E\x16\x12\x0D\x0C\x22\x19\x22\x18\x0C\x17\x0F\x0C\x1A\x15\x12\x1C\x19\x0E\x0C\x1A\x18\x19\x1A\x12\x0F\x10\x17\x10\x0E\x10\x1C\x15\x12\x0C\x1D\x18\x0C\x1B\x0C\x12\x1F\x17\x0C\x16\x19" "\0"
+    //  630: "Sıcaklık\nuzun adım"
+    "\x21\x18\x0E\x0C\x1A\x16\x18\x1A\x01\x23\x35\x23\x1B\x12\x0C\x0F\x18\x19" "\0"
+    //  649: "Lehimleme sırasında, her iki düğmeye basılı tutarak kilitleme modunu değiştirin (B=Sadece performans modu | F=tam kilit)"
+    "\x2C\x10\x2B\x15\x1B\x18\x10\x1B\x10\x12\x1C\x19\x17\x0C\x1C\x19\x16\x0F\x0C\x4B\x12\x2B\x10\x17\x12\x15\x1A\x15\x12\x0F\x21\x23\x1B\x10\x20\x10\x12\x0D\x0C\x1C\x19\x18\x19\x12\x1D\x1E\x1D\x0C\x17\x0C\x1A\x12\x1A\x15\x18\x15\x1D\x18\x10\x1B\x10\x12\x1B\x1F\x0F\x1E\x16\x1E\x12\x0F\x10\x23\x15\x22\x1D\x15\x17\x15\x16\x12\x28\x33\x26\x25\x0C\x0F\x10\x0E\x10\x12\x37\x10\x17\x11\x1F\x17\x1B\x0C\x16\x1C\x12\x1B\x1F\x0F\x1E\x12\x2F\x12\x44\x26\x1D\x0C\x1B\x12\x1A\x15\x18\x15\x1D\x27" "\0"
+    //  770: "Tuş\nkilidi"
+    "\x26\x23\x2D\x01\x1A\x15\x16\x15\x0F\x15" "\0"
+    //  781: "Hareket Hassasiyeti (1=En az duyarlı | ... | 9=En duyarlı)"
+    "\x38\x0C\x17\x10\x1A\x10\x1D\x12\x38\x0C\x1C\x1C\x0C\x1C\x15\x20\x10\x1D\x15\x12\x28\x03\x26\x40\x16\x12\x0C\x24\x12\x0F\x1E\x20\x0C\x17\x18\x19\x12\x2F\x12\x29\x29\x29\x12\x2F\x12\x0B\x26\x40\x16\x12\x0F\x1E\x20\x0C\x17\x18\x19\x27" "\0"
+    //  840: "Hareket\nhassas."
+    "\x34\x0C\x17\x10\x1A\x10\x1D\x01\x2E\x0C\x1C\x1C\x0C\x1C\x29" "\0"
+    //  856: "Bekleme Modu Sıcaklığı (C)"
+    "\x33\x10\x1A\x18\x10\x1B\x10\x12\x3C\x1F\x0F\x1E\x12\x25\x19\x0E\x0C\x1A\x18\x19\x23\x19\x12\x28\x39\x27" "\0"
+    //  883: "Uyku\nsıcak."
+    "\x2F\x20\x1A\x23\x01\x1C\x18\x0E\x0C\x1A\x29" "\0"
+    //  895: "Bekleme Modu Zaman Aşımı (Dakika | Saniye)"
+    "\x33\x10\x1A\x18\x10\x1B\x10\x12\x3C\x1F\x0F\x1E\x12\x46\x0C\x1B\x0C\x16\x12\x3A\x22\x19\x1B\x19\x12\x28\x32\x0C\x1A\x15\x1A\x0C\x12\x2F\x12\x25\x0C\x16\x15\x20\x10\x27" "\0"
+    //  938: "Uyku\nsüresi"
+    "\x2F\x20\x1A\x23\x01\x1C\x1F\x17\x10\x1C\x15" "\0"
+    //  950: "Kapatma Zaman Aşımı (Dakika)"
+    "\x35\x0C\x37\x0C\x1D\x1B\x0C\x12\x46\x0C\x1B\x0C\x16\x12\x3A\x22\x19\x1B\x19\x12\x28\x32\x0C\x1A\x15\x1A\x0C\x27" "\0"
+    //  979: "Kapanma\nsüresi"
+    "\x3A\x0C\x2A\x0C\x1B\x19\x0C\x01\x1C\x1F\x17\x10\x1C\x15" "\0"
+    //  994: "Sıcaklık Birimi (C=Celsius | F=Fahrenheit)"
+    "\x25\x19\x0E\x0C\x1A\x18\x19\x1A\x12\x33\x15\x17\x15\x1B\x15\x12\x28\x39\x26\x39\x10\x18\x1C\x15\x1E\x1C\x12\x2F\x12\x44\x26\x44\x0C\x2B\x17\x10\x16\x2B\x10\x15\x1D\x27" "\0"
+    // 1037: "Sıcaklık\nbirimi"
+    "\x21\x18\x0E\x0C\x1A\x16\x18\x1A\x01\x0D\x15\x17\x15\x19\x15" "\0"
+    // 1053: "Görüntü Yönlendirme (R=Sağlak | L=Solak | O=Otomatik)"
+    "\x3D\x30\x17\x21\x16\x1D\x21\x12\x31\x30\x16\x18\x10\x16\x0F\x15\x17\x1B\x10\x12\x28\x45\x26\x25\x0C\x23\x18\x0C\x1A\x12\x2F\x12\x2C\x26\x25\x1F\x18\x0C\x1A\x12\x2F\x12\x34\x26\x34\x1D\x1F\x1B\x0C\x1D\x15\x1A\x27" "\0"
+    // 1107: "Ekran\nyönü"
+    "\x3E\x1A\x17\x0C\x1B\x01\x20\x3D\x1B\x1F" "\0"
+    // 1118: "Soğutma ekranında uç hala sıcakken derece gösterilsin."
+    "\x25\x1F\x23\x1E\x1D\x1B\x0C\x12\x10\x1A\x17\x0C\x16\x19\x16\x0F\x0C\x12\x1E\x2A\x12\x2B\x0C\x18\x0C\x12\x1C\x19\x0E\x0C\x1A\x1A\x10\x16\x12\x0F\x10\x17\x10\x0E\x10\x12\x2E\x30\x1C\x1D\x10\x17\x15\x18\x1C\x15\x16\x29" "\0"
+    // 1173: "Soğuma\nyanıp sön"
+    "\x21\x1E\x40\x23\x19\x0C\x01\x20\x0C\x1B\x18\x2A\x12\x1C\x3D\x1B" "\0"
+    // 1190: "Yazıların kayma hızı (Y=Yavaş | H=Hızlı)"
+    "\x31\x0C\x24\x19\x18\x0C\x17\x19\x16\x12\x1A\x0C\x20\x1B\x0C\x12\x2B\x19\x24\x19\x12\x28\x31\x26\x31\x0C\x2D\x0C\x22\x12\x2F\x12\x38\x26\x38\x19\x24\x18\x19\x27" "\0"
+    // 1231: "Kaydırma\nhızı"
+    "\x3A\x0C\x20\x0F\x18\x17\x19\x0C\x01\x2E\x18\x35\x18" "\0"
+    // 1245: "\"Düğme Yerleri Rotasyonu\" Sıcaklık ayar düğmelerinin yerini değiştirin"
+    "\x41\x32\x21\x23\x1B\x10\x12\x31\x10\x17\x18\x10\x17\x15\x12\x45\x1F\x1D\x0C\x1C\x20\x1F\x16\x1E\x41\x12\x25\x19\x0E\x0C\x1A\x18\x19\x1A\x12\x0C\x20\x0C\x17\x12\x0F\x21\x23\x1B\x10\x18\x10\x17\x15\x16\x15\x16\x12\x20\x10\x17\x15\x16\x15\x12\x0F\x10\x23\x15\x22\x1D\x15\x17\x15\x16" "\0"
+    // 1316: "Sıcaklık\ntuşları"
+    "\x21\x18\x0E\x0C\x1A\x16\x18\x1A\x01\x1D\x23\x2D\x16\x0C\x17\x18" "\0"
+    // 1333: "Ayarlar menüsündeki A ve B tuşlarının görevlerini değiştirir"
+    "\x3A\x20\x0C\x17\x18\x0C\x17\x12\x1B\x10\x16\x21\x1C\x21\x16\x0F\x10\x1A\x15\x12\x3A\x12\x2D\x10\x12\x33\x12\x1D\x1E\x22\x18\x0C\x17\x19\x16\x19\x16\x12\x2E\x30\x17\x10\x2D\x18\x10\x17\x15\x16\x15\x12\x0F\x10\x23\x15\x22\x1D\x15\x17\x15\x17" "\0"
+    // 1394: "Menü\ntuşları"
+    "\x2C\x10\x1B\x1F\x01\x1D\x23\x2D\x16\x0C\x17\x18" "\0"
+    // 1407: "Menüdeki simge animasyonlarının hızı (Y=Yavaş | O=Orta | H=Hızlı)"
+    "\x3C\x10\x16\x21\x0F\x10\x1A\x15\x12\x1C\x15\x1B\x2E\x10\x12\x0C\x16\x15\x1B\x0C\x1C\x20\x1F\x16\x18\x0C\x17\x19\x16\x19\x16\x12\x2B\x19\x24\x19\x12\x28\x31\x26\x31\x0C\x2D\x0C\x22\x12\x2F\x12\x34\x26\x34\x17\x1D\x0C\x12\x2F\x12\x38\x26\x38\x19\x24\x18\x19\x27" "\0"
+    // 1473: "Animasyon\nhızı"
+    "\x25\x1B\x15\x19\x0C\x1C\x20\x1E\x1B\x01\x2E\x18\x35\x18" "\0"
+    // 1488: "Ana menüde simge animasyonlarının döngüsü"
+    "\x3A\x16\x0C\x12\x1B\x10\x16\x21\x0F\x10\x12\x1C\x15\x1B\x2E\x10\x12\x0C\x16\x15\x1B\x0C\x1C\x20\x1F\x16\x18\x0C\x17\x19\x16\x19\x16\x12\x0F\x30\x16\x2E\x21\x1C\x21" "\0"
+    // 1530: "Animasyon\nDöngüsü"
+    "\x25\x1B\x15\x19\x0C\x1C\x20\x1E\x1B\x01\x22\x3D\x1B\x36\x1F\x1C\x1F" "\0"
+    // 1548: "OLED ekran parlaklığını ayarlar"
+    "\x34\x2C\x40\x32\x12\x10\x1A\x17\x0C\x16\x12\x37\x0C\x17\x18\x0C\x1A\x18\x19\x23\x19\x16\x19\x12\x0C\x20\x0C\x17\x18\x0C\x17" "\0"
+    // 1580: "Ekran\nparlaklığı"
+    "\x3E\x1A\x17\x0C\x1B\x01\x2A\x0C\x17\x16\x0C\x1A\x16\x18\x40\x18" "\0"
+    // 1597: "OLED ekran renklerini ters çevir"
+    "\x34\x2C\x40\x32\x12\x10\x1A\x17\x0C\x16\x12\x17\x10\x16\x1A\x18\x10\x17\x15\x16\x15\x12\x1D\x10\x17\x1C\x12\x2A\x10\x2D\x15\x17" "\0"
+    // 1630: "Ekran\nRenkleri"
+    "\x3E\x1A\x17\x0C\x1B\x01\x38\x10\x1B\x1A\x16\x10\x17\x15" "\0"
+    // 1645: "Boot logo süresi (s=saniye)"
+    "\x33\x1F\x1F\x1D\x12\x18\x1F\x2E\x1F\x12\x1C\x21\x17\x10\x1C\x15\x12\x28\x1C\x26\x1C\x0C\x16\x15\x20\x10\x27" "\0"
+    // 1673: "Logo\nsüresi"
+    "\x33\x1E\x36\x1E\x01\x1C\x1F\x17\x10\x1C\x15" "\0"
+    // 1685: "Boş ekranda ayrıntılı bilgileri daha küçük bir yazı tipi ile göster."
+    "\x33\x1F\x22\x12\x10\x1A\x17\x0C\x16\x0F\x0C\x12\x0C\x20\x17\x19\x16\x1D\x19\x18\x19\x12\x0D\x15\x18\x2E\x15\x18\x10\x17\x15\x12\x0F\x0C\x2B\x0C\x12\x1A\x21\x2A\x21\x1A\x12\x0D\x15\x17\x12\x20\x0C\x24\x19\x12\x1D\x15\x37\x15\x12\x15\x18\x10\x12\x2E\x30\x1C\x1D\x10\x17\x29" "\0"
+    // 1754: "Boş ekran\ndetayı"
+    "\x30\x1E\x2D\x12\x10\x1A\x17\x0C\x1B\x01\x0F\x10\x1D\x0C\x20\x18" "\0"
+    // 1771: "\"Gelişmiş Lehimleme\" Lehimleme yaparken detaylı bilgi göster"
+    "\x41\x3D\x10\x18\x15\x22\x1B\x15\x22\x12\x2C\x10\x2B\x15\x1B\x18\x10\x1B\x10\x41\x12\x2C\x10\x2B\x15\x1B\x18\x10\x1B\x10\x12\x20\x0C\x37\x0C\x17\x1A\x10\x16\x12\x0F\x10\x1D\x0C\x20\x18\x19\x12\x0D\x15\x18\x2E\x15\x12\x2E\x30\x1C\x1D\x10\x17" "\0"
+    // 1832: "Lehimleme\ndetayı"
+    "\x33\x10\x2E\x15\x19\x16\x10\x19\x10\x01\x0F\x10\x1D\x0C\x20\x18" "\0"
+    // 1849: "Havyanın kullanacağı en yüksek güç (W=Watts)"
+    "\x38\x0C\x2D\x20\x0C\x16\x19\x16\x12\x1A\x1E\x18\x18\x0C\x16\x0C\x0E\x0C\x23\x19\x12\x10\x16\x12\x20\x21\x1A\x1C\x10\x1A\x12\x2E\x21\x2A\x12\x28\x47\x26\x47\x0C\x1D\x1D\x1C\x27" "\0"
+    // 1894: "Güç\nlimiti"
+    "\x28\x1F\x27\x01\x16\x15\x19\x15\x1D\x15" "\0"
+    // 1905: "Sonraki boot'ta uç Soğuk Nokta Kompansasyonu kalibre edilecek (Delta T < 5°C ise gerekmez)"
+    "\x25\x1F\x16\x17\x0C\x1A\x15\x12\x0D\x1F\x1F\x1D\x53\x1D\x0C\x12\x1E\x2A\x12\x25\x1F\x23\x1E\x1A\x12\x4F\x1F\x1A\x1D\x0C\x12\x35\x1F\x1B\x37\x0C\x16\x1C\x0C\x1C\x20\x1F\x16\x1E\x12\x1A\x0C\x18\x15\x0D\x17\x10\x12\x10\x0F\x15\x18\x10\x0E\x10\x1A\x12\x28\x32\x10\x18\x1D\x0C\x12\x43\x12\x52\x12\x07\x4D\x39\x12\x15\x1C\x10\x12\x2E\x10\x17\x10\x1A\x1B\x10\x24\x27" "\0"
+    // 1996: "Uç ortam\nkalib."
+    "\x2F\x27\x12\x1E\x17\x1D\x0C\x19\x01\x1A\x0C\x16\x15\x0D\x29" "\0"
+    // 2012: "Voltaj Girişi Kalibrasyonu. Düğmeler ayarlar, çıkmak için uzun bas."
+    "\x3E\x1F\x18\x1D\x0C\x42\x12\x3D\x15\x17\x15\x22\x15\x12\x35\x0C\x18\x15\x0D\x17\x0C\x1C\x20\x1F\x16\x1E\x29\x12\x32\x21\x23\x1B\x10\x18\x10\x17\x12\x0C\x20\x0C\x17\x18\x0C\x17\x4B\x12\x2A\x19\x1A\x1B\x0C\x1A\x12\x15\x2A\x15\x16\x12\x1E\x24\x1E\x16\x12\x0D\x0C\x1C\x29" "\0"
+    // 2080: "Voltaj\nkalib."
+    "\x31\x1E\x16\x1D\x0C\x41\x01\x1A\x0C\x16\x15\x0D\x29" "\0"
+    // 2094: "Güç girişi voltajı ölçüm yoğunluğunu sık tut."
+    "\x3D\x21\x2A\x12\x2E\x15\x17\x15\x22\x15\x12\x2D\x1F\x18\x1D\x0C\x42\x19\x12\x30\x18\x2A\x21\x1B\x12\x20\x1F\x23\x1E\x16\x18\x1E\x23\x1E\x16\x1E\x12\x1C\x19\x1A\x12\x1D\x1E\x1D\x29" "\0"
+    // 2140: "Güç\nDarbeleri"
+    "\x28\x1F\x27\x01\x22\x0C\x17\x0D\x10\x16\x10\x17\x15" "\0"
+    // 2154: "Uyanık tutma darbesinin tetiklenmeden önceki gecikme süresi (x 2.5s)"
+    "\x3B\x20\x0C\x16\x19\x1A\x12\x1D\x1E\x1D\x1B\x0C\x12\x0F\x0C\x17\x0D\x10\x1C\x15\x16\x15\x16\x12\x1D\x10\x1D\x15\x1A\x18\x10\x16\x1B\x10\x0F\x10\x16\x12\x30\x16\x0E\x10\x1A\x15\x12\x2E\x10\x0E\x15\x1A\x1B\x10\x12\x1C\x21\x17\x10\x1C\x15\x12\x28\x49\x12\x04\x29\x07\x1C\x27" "\0"
+    // 2223: "Güç Darbesi\nGecikmesi"
+    "\x28\x1F\x27\x12\x22\x0C\x17\x0D\x10\x1C\x15\x01\x28\x10\x0E\x15\x1A\x19\x10\x1C\x15" "\0"
+    // 2245: "Uyanık tutma darbesi süresi (x 250ms)"
+    "\x3B\x20\x0C\x16\x19\x1A\x12\x1D\x1E\x1D\x1B\x0C\x12\x0F\x0C\x17\x0D\x10\x1C\x15\x12\x1C\x21\x17\x10\x1C\x15\x12\x28\x49\x12\x04\x07\x02\x1B\x1C\x27" "\0"
+    // 2283: "Güç Darbesi\nSüresi"
+    "\x28\x1F\x27\x12\x22\x0C\x17\x0D\x10\x1C\x15\x01\x21\x1F\x17\x10\x1C\x15" "\0"
+    // 2302: "Bütün ayarları sıfırlar"
+    "\x33\x21\x1D\x21\x16\x12\x0C\x20\x0C\x17\x18\x0C\x17\x19\x12\x1C\x19\x11\x19\x17\x18\x0C\x17" "\0"
+    // 2326: "Ayarları\nsıfırla"
+    "\x25\x20\x0C\x17\x16\x0C\x17\x18\x01\x1C\x18\x11\x18\x17\x16\x0C" "\0"
+    // 2343: "Dil:\n TR      Türkçe"
+    "\x22\x15\x16\x3F\x01\x12\x26\x38\x12\x12\x12\x12\x12\x12\x26\x1F\x17\x1A\x27\x10" "\0"
+    // 2364: "Takılı havya ucu türünü seçin"
+    "\x43\x0C\x1A\x19\x18\x19\x12\x2B\x0C\x2D\x20\x0C\x12\x1E\x0E\x1E\x12\x1D\x21\x17\x21\x16\x21\x12\x1C\x10\x2A\x15\x16" "\0"
+    // 2394: "Uç\ntürü"
+    "\x2F\x27\x01\x1D\x1F\x17\x1F" "\0"
+    // 2402: "Varsayılan\nmod"
+    "\x31\x0C\x17\x1C\x0C\x20\x18\x16\x0C\x1B\x01\x19\x1E\x0F" "\0"
+    // 2417: "Dinamik\nkapalı"
+    "\x22\x15\x1B\x0C\x19\x15\x1A\x01\x1A\x0C\x2A\x0C\x16\x18" "\0"
+    // 2432: "Güvenli\nmod"
+    "\x28\x1F\x32\x10\x1B\x16\x15\x01\x19\x1E\x0F" "\0"
+    // 2444: "Otomatik\nalgıla"
+    "\x39\x1D\x1E\x19\x0C\x1D\x15\x1A\x01\x0C\x16\x36\x18\x16\x0C" "\0"
+    // 2460: "TS100\nLong"
+    "\x26\x21\x03\x02\x02\x01\x33\x1E\x1B\x36" "\0"
+    // 2471: "Pine\nShort"
+    "\x2B\x15\x1B\x10\x01\x21\x2E\x1E\x17\x1D" "\0"
+    // 2482: "PTS\n200"
+    "\x2B\x26\x21\x01\x04\x02\x02" "\0"
+    // 2490: "TS80\n"
+    "\x26\x21\x0A\x02\x01" "\0"
+    // 2496: "JBC\nC210"
+    "\x47\x30\x24\x01\x24\x04\x03\x02" "\0"
+    // 2505: "Güç\nAyarları"
+    "\x28\x1F\x27\x01\x25\x20\x0C\x17\x16\x0C\x17\x18" "\0"
+    // 2518: "Lehimleme\nAyarları"
+    "\x33\x10\x2E\x15\x19\x16\x10\x19\x10\x01\x25\x20\x0C\x17\x16\x0C\x17\x18" "\0"
+    // 2537: "Uyku\nModları"
+    "\x2F\x20\x1A\x23\x01\x2C\x1E\x0F\x16\x0C\x17\x18" "\0"
+    // 2550: "Kullanıcı\nArayüzü"
+    "\x3A\x23\x16\x16\x0C\x1B\x18\x0E\x18\x01\x25\x17\x0C\x20\x1F\x35\x1F" "\0"
+    // 2568: "Gelişmiş\nAyarlar"
+    "\x28\x10\x16\x15\x2D\x19\x15\x2D\x01\x25\x20\x0C\x17\x16\x0C\x17" "\0"
+    // 2585: "Kalibrasyon\ntamam!"
+    "\x3A\x0C\x16\x15\x0D\x17\x0C\x1C\x20\x1E\x1B\x01\x1D\x0C\x19\x0C\x19\x3C" "\0"
+    // 2604: "Sıfırlama\ntamam"
+    "\x21\x18\x11\x18\x17\x16\x0C\x19\x0C\x01\x1D\x0C\x19\x0C\x19" "\0"
+    // 2620: "Ayarlar\nSıfırlandı"
+    "\x25\x20\x0C\x17\x16\x0C\x17\x01\x21\x18\x11\x18\x17\x16\x0C\x1B\x0F\x18" "\0"
+    // 2639: "İvme sensörü\ntespit edilemedi!"
+    "\x44\x32\x19\x10\x12\x1C\x10\x1B\x1C\x3D\x17\x1F\x01\x1D\x10\x1C\x2A\x15\x1D\x12\x10\x0F\x15\x16\x10\x19\x10\x0F\x15\x3C" "\0"
+    // 2670: "USB-PD IC\ntespit edilemedi!"
+    "\x2F\x21\x30\x13\x2B\x22\x12\x3B\x24\x01\x1D\x10\x1C\x2A\x15\x1D\x12\x10\x0F\x15\x16\x10\x19\x10\x0F\x15\x3C" "\0"
+    // 2698: "\nKİLİTLİ"
+    "\x01\x35\x36\x2C\x36\x43\x2C\x36" "\0"
+    // 2707: "\nKİLİT AÇIK"
+    "\x01\x35\x36\x2C\x36\x43\x12\x3A\x4C\x50\x35" "\0"
+    // 2719: "\n!KİLİTLİ!"
+    "\x01\x48\x35\x36\x2C\x36\x43\x2C\x36\x48" "\0"
+    // 2730: "Termal\nKaçak"
+    "\x26\x10\x17\x19\x0C\x16\x01\x3A\x0C\x27\x0C\x1A" "\0"
+    // 2743: "Uçta kısa\ndevre!"
+    "\x2F\x27\x1D\x0C\x12\x1A\x18\x1C\x0C\x01\x0F\x10\x32\x17\x10\x3C" "\0"
+    // 2760: "\nYeniden başlatmadan önce uç ve sapın oda sıcaklığında olduğundan emin olun!"
+    "\x01\x31\x10\x16\x15\x0F\x10\x16\x12\x0D\x0C\x22\x18\x0C\x1D\x1B\x0C\x0F\x0C\x16\x12\x30\x16\x0E\x10\x12\x1E\x2A\x12\x2D\x10\x12\x1C\x0C\x37\x19\x16\x12\x1F\x0F\x0C\x12\x1C\x19\x0E\x0C\x1A\x18\x19\x23\x19\x16\x0F\x0C\x12\x1F\x18\x0F\x1E\x23\x1E\x16\x0F\x0C\x16\x12\x10\x1B\x15\x16\x12\x1F\x18\x1E\x16\x48" "\0"
+    // 2837: "kalibre ediliyor\n"
+    "\x1A\x0C\x16\x15\x0D\x17\x10\x12\x10\x0F\x15\x16\x15\x20\x1E\x17\x01" "\0"
+    // 2855: "\nAyarları varsayılan değerlere sıfırlamak istediğinizden emin misiniz?"
+    "\x01\x3A\x20\x0C\x17\x18\x0C\x17\x19\x12\x2D\x0C\x17\x1C\x0C\x20\x19\x18\x0C\x16\x12\x0F\x10\x23\x10\x17\x18\x10\x17\x10\x12\x1C\x19\x11\x19\x17\x18\x0C\x1B\x0C\x1A\x12\x15\x1C\x1D\x10\x0F\x15\x23\x15\x16\x15\x24\x0F\x10\x16\x12\x10\x1B\x15\x16\x12\x1B\x15\x1C\x15\x16\x15\x24\x51" "\0"
+    // 2926: "\nGüç Az"
+    "\x01\x3D\x21\x2A\x12\x3A\x24" "\0"
+    // 2934: "Düşük Voltaj\n"
+    "\x22\x1F\x2D\x1F\x1A\x12\x31\x1E\x16\x1D\x0C\x41\x01" "\0"
+    // 2948: "Giriş V: \n"
+    "\x28\x15\x17\x15\x2D\x12\x31\x3F\x12\x01" "\0"
+    // 2959: "Bekleme Modu...\n"
+    "\x30\x10\x1A\x16\x10\x19\x10\x12\x2C\x1E\x0F\x23\x29\x29\x29\x01" "\0"
+    // 2976: "Uç: \n"
+    "\x2F\x27\x3F\x12\x01" "\0"
+    // 2982: "Cihaz muhtemelen\nsahte!"
+    "\x24\x15\x2E\x0C\x35\x12\x19\x23\x2E\x1D\x10\x19\x10\x16\x10\x1B\x01\x1C\x0C\x2E\x1D\x10\x3C" "\0"
+    // 3006: "R"
+    "\x45" "\0"
+    // 3008: "L"
+    "\x2C" "\0"
+    // 3010: "O"
+    "\x34" "\0"
+    // 3012: "Y"
+    "\x31" "\0"
+    // 3014: "H"
+    "\x38" "\0"
+    // 3016: "U"
+    "\x3B" "\0"
+    // 3018: "S"
+    "\x25" "\0"
+    // 3020: "B"
+    "\x33" "\0"
+    // 3022: "F"
+    "\x44"
   }, // .strings
 
 }; // translation
