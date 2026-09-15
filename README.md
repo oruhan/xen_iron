@@ -1,9 +1,9 @@
-# IronOS-TS101-Custom
+# xen_iron
 
 Custom Miniware TS101 soldering iron firmware.
 
-"WARNING"
-This is custom firmware. Flashing it might void your warranty.
+> [!WARNING]
+> This is custom firmware. Flashing it might void your warranty.
 
 ## Fork
 
