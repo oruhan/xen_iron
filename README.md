@@ -5,9 +5,12 @@ Custom Miniware TS101 soldering iron firmware.
 > [!WARNING]
 > This is custom firmware. Flashing it might void your warranty.
 
-## Fork
+## Credits
 
-Forked from [IronOS-TS101-FullOLED](https://github.com/vtolvr/IronOS-TS101-FullOLED).
+Based on the IronOS project and the  
+[IronOS-TS101-FullOLED](https://github.com/vtolvr/IronOS-TS101-FullOLED) repo.
+
+Thanks to the IronOS contributors and community.
 
 ## Installation
 
