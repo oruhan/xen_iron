@@ -1,4 +1,5 @@
 #include "power.hpp"
+#include "SolderingCommon.h"
 #include "ui_drawing.hpp"
 #include <OperatingModes.h>
 #ifdef OLED_128x32
@@ -44,7 +45,7 @@ void drawBatteryOrHeatStatus(const int8_t powerSource, const uint32_t voltageX10
 } // namespace
 
 void ui_draw_soldering_fullscreen_status(bool boostModeOn) {
-  ui_draw_tip_temperature_fullscreen();
+  ui_draw_temperature_fullscreen_animated(getTipTemp(), 0, TemperatureAnimationSlot::Soldering);
 
   // Split the 128x32 display into an 80px temperature area and a 48px
   // live-power panel. The temperature still uses the full 32px height.

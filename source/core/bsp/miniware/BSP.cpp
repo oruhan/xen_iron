@@ -304,11 +304,17 @@ void FinishMeasureTipResistance() {
   // // As we are only detecting two resistances; we can split the difference for now
   uint8_t newRes = 0;
   if (reading > 1200) {
-    // return; // Change nothing as probably disconnected tip
+    // No tip is present. Clear any transient short indication and restart the
+    // three-sample sequence so a subsequently inserted tip can be detected.
+    tipShorted               = false;
     tipResistanceReadingSlot = lastTipResistance = 0;
     return;
   } else if (reading < 200) {
-    tipShorted = true;
+    // Hot-plugging can briefly look like a short. Do not leave the startup
+    // checks latched on these samples; restart and confirm on fresh readings.
+    tipShorted               = true;
+    tipResistanceReadingSlot = lastTipResistance = 0;
+    return;
   } else if (reading < 520) {
     newRes = 40;
   } else if (reading < 800) {
@@ -316,6 +322,7 @@ void FinishMeasureTipResistance() {
   } else {
     newRes = 80;
   }
+  tipShorted        = false;
   lastTipResistance = newRes;
 }
 volatile bool       tipMeasurementOccuring = true;

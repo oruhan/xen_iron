@@ -12,6 +12,13 @@
 extern uint8_t heaterThermalRunawayCounter;
 
 bool checkExitSoldering(void) {
+  if (isTipDisconnected()) {
+    // Stop heating immediately and return to the home screen when the tip is
+    // removed while soldering.
+    currentTempTargetDegC = 0;
+    return true;
+  }
+
 #ifdef POW_DC
   // Undervoltage test
   if (checkForUnderVoltage()) {

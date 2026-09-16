@@ -757,6 +757,37 @@ void OLED::drawAreaFullscreen(int16_t x, const uint8_t *ptr) {
   }
 }
 
+// OR a page-ordered bitmap into the framebuffer with integer scaling and a
+// vertical clipping window. This is used by number-roll animations where a
+// glyph can begin above or finish below its normal panel.
+void OLED::drawAreaClipped(int16_t x, int16_t y, uint8_t width, uint8_t height, const uint8_t *ptr, uint8_t scale, uint8_t clipY0, uint8_t clipY1) {
+  if (scale == 0 || clipY0 >= clipY1 || clipY0 >= OLED_HEIGHT) {
+    return;
+  }
+  if (clipY1 > OLED_HEIGHT) {
+    clipY1 = OLED_HEIGHT;
+  }
+  for (uint8_t sourceY = 0; sourceY < height; sourceY++) {
+    for (uint8_t sourceX = 0; sourceX < width; sourceX++) {
+      if ((ptr[(sourceY / 8) * width + sourceX] & (1U << (sourceY % 8))) == 0) {
+        continue;
+      }
+      for (uint8_t scaleY = 0; scaleY < scale; scaleY++) {
+        const int16_t destinationY = y + sourceY * scale + scaleY;
+        if (destinationY < clipY0 || destinationY >= clipY1) {
+          continue;
+        }
+        for (uint8_t scaleX = 0; scaleX < scale; scaleX++) {
+          const int16_t destinationX = x + sourceX * scale + scaleX;
+          if (destinationX >= 0 && destinationX < OLED_WIDTH) {
+            stripPointers[destinationY / 8][destinationX] |= 1U << (destinationY % 8);
+          }
+        }
+      }
+    }
+  }
+}
+
 // Draw an area, but y must be aligned on 0/8 offset
 void OLED::drawArea(int16_t x, int8_t y, uint8_t width, uint8_t height, const uint8_t *ptr) {
   // Splat this from x->x+width in two strides
@@ -860,7 +891,8 @@ void OLED::drawFilledRect(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, bool c
     y0              = 0;                  // Blank out any start offset for future iterations
                                           // If we are terminating the bottom of the rectangle in this row, we mask the bottom side of things too
     if (remainingHeight <= 8) {
-      uint8_t maskBottom = ~((0xFF) << y1 % 8);  // Create mask for
+      const uint8_t endBit     = y1 % 8;
+      uint8_t       maskBottom = endBit == 0 ? 0xFF : ~((0xFF) << endBit); // An aligned exclusive end covers the complete page.
       maskTop            = maskTop & maskBottom; // AND the two masks together for final write mask
     }
 

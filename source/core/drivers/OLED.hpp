@@ -114,6 +114,7 @@ public:
   static void drawSymbol(uint8_t symbolID);                                                           // Used for drawing symbols of a predictable width
   static void drawSymbolFullscreen(uint8_t symbolID);                                                 // Draw a 12x16 symbol scaled to 24x32
   static void drawArea(int16_t x, int8_t y, uint8_t wide, uint8_t height, const uint8_t *ptr);        // Draw an area, but y must be aligned on 0/8 offset
+  static void drawAreaClipped(int16_t x, int16_t y, uint8_t width, uint8_t height, const uint8_t *ptr, uint8_t scale, uint8_t clipY0, uint8_t clipY1);
   static void drawAreaFullscreen(int16_t x, const uint8_t *ptr);                                      // Draw a 12x16 area scaled to 24x32
   static void drawAreaSwapped(int16_t x, int8_t y, uint8_t wide, uint8_t height, const uint8_t *ptr); // Draw an area, but y must be aligned on 0/8 offset
   static void fillArea(int16_t x, int8_t y, uint8_t wide, uint8_t height, const uint8_t value);       // Fill an area, but y must be aligned on 0/8 offset

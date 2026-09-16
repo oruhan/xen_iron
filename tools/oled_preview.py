@@ -18,8 +18,6 @@ FRAME_BYTES = WIDTH * HEIGHT // 8
 DEFAULT_SCALE = 6
 OFF_COLOR = (2, 8, 11)
 ON_COLOR = (174, 242, 255)
-
-
 def _png_chunk(kind: bytes, payload: bytes) -> bytes:
     body = kind + payload
     return struct.pack(">I", len(payload)) + body + struct.pack(">I", binascii.crc32(body) & 0xFFFFFFFF)
@@ -205,6 +203,37 @@ def draw_small_temperature(canvas: Canvas, value: int, assets: FontAssets, x: in
     return end + 10
 
 
+def draw_tall_small_glyph(canvas: Canvas, glyph: bytes, x: int, y_offset: int = 0) -> None:
+    source_columns = (0, 1, 1, 2, 3, 4, 4, 5)
+    for source_y in range(7):
+        for output_x, source_x in enumerate(source_columns):
+            if glyph[source_x] & (1 << source_y):
+                for doubled_y in (1, 2):
+                    destination_y = 8 + y_offset + source_y * 2 + doubled_y
+                    if 8 <= destination_y < 24:
+                        canvas.set_pixel(x + output_x, destination_y)
+
+
+def draw_fullscreen_digit_offset(canvas: Canvas, digit: str, assets: FontAssets, x: int, y_offset: int) -> None:
+    glyph = assets.large[int(digit)]
+    for source_y in range(16):
+        for source_x in range(12):
+            if glyph[(source_y // 8) * 12 + source_x] & (1 << (source_y % 8)):
+                for scale_y in range(2):
+                    destination_y = y_offset + source_y * 2 + scale_y
+                    if 0 <= destination_y < 32:
+                        canvas.set_pixel(x + source_x * 2, destination_y)
+                        canvas.set_pixel(x + source_x * 2 + 1, destination_y)
+
+
+def draw_fullscreen_digits_offset(canvas: Canvas, value: int, assets: FontAssets, panel_x: int, y_offset: int) -> None:
+    text = str(value)
+    x = panel_x + (72 - len(text) * 24) // 2
+    for digit in text:
+        draw_fullscreen_digit_offset(canvas, digit, assets, x, y_offset)
+        x += 24
+
+
 def draw_heat(canvas: Canvas, assets: FontAssets, level: int, x: int = 116, y: int = 16) -> None:
     symbol = assets.extras[14 * 24 : 15 * 24]
     canvas.bitmap(symbol, 12, 16, x, y)
@@ -270,13 +299,68 @@ def render_home_dashboard(voltage_x10: int, source: str, assets: FontAssets) -> 
     return canvas
 
 
+def render_home_hot(assets: FontAssets) -> Canvas:
+    canvas = render_home_voltage(12, assets)
+    canvas.fill_rect(10, 4, 36, 4, False)
+    canvas.fill_rect(8, 8, 40, 16, False)
+    canvas.fill_rect(10, 24, 36, 4, False)
+    canvas.fill_rect(8, 30, 40, 2, False)
+    canvas.fill_rect(13, 30, 29, 1, True)
+    value = "185"
+    x = (56 - (len(value) * 8 + 4 + 8)) // 2
+    for digit in value:
+        draw_tall_small_glyph(canvas, assets.small[assets.small_chars[digit]], x)
+        x += 8
+    draw_degree(canvas, x, 8)
+    draw_tall_small_glyph(canvas, assets.small[assets.small_chars["C"]], x + 4)
+    return canvas
+
+
 def render_temperature_adjust(assets: FontAssets) -> Canvas:
     canvas = Canvas().bind_assets(assets)
-    canvas.large_text("+", assets, 0, 8)
+    canvas.large_text("-", assets, 0, 8)
     canvas.fullscreen_number(350, assets, panel_x=24)
     draw_degree(canvas, 94, 0)
     canvas.small_text("C", assets, 98, 0)
-    canvas.large_text("-", assets, 116, 8)
+    canvas.large_text("+", assets, 116, 8)
+    return canvas
+
+
+def render_temperature_roll(screen: str, assets: FontAssets) -> Canvas:
+    if screen == "soldering":
+        canvas = render_soldering(DEMO_STATES[0], assets)
+        panel_x = 0
+    elif screen == "adjust":
+        canvas = render_temperature_adjust(assets)
+        panel_x = 24
+    else:
+        canvas = render_home_hot(assets)
+        canvas.fill_rect(8, 8, 40, 16, False)
+        old_value, new_value = "184", "185"
+        x = (56 - (len(new_value) * 8 + 4 + 8)) // 2
+        for old_digit, new_digit in zip(old_value, new_value):
+            if old_digit == new_digit:
+                draw_tall_small_glyph(canvas, assets.small[assets.small_chars[new_digit]], x)
+            else:
+                draw_tall_small_glyph(canvas, assets.small[assets.small_chars[old_digit]], x, 8)
+                draw_tall_small_glyph(canvas, assets.small[assets.small_chars[new_digit]], x, -8)
+            x += 8
+        draw_degree(canvas, x, 8)
+        draw_tall_small_glyph(canvas, assets.small[assets.small_chars["C"]], x + 4)
+        return canvas
+
+    canvas.fill_rect(panel_x, 0, 72, 32, False)
+    old_value, new_value = "349", "350"
+    x = panel_x
+    for old_digit, new_digit in zip(old_value, new_value):
+        if old_digit == new_digit:
+            draw_fullscreen_digit_offset(canvas, new_digit, assets, x, 0)
+        else:
+            draw_fullscreen_digit_offset(canvas, old_digit, assets, x, 16)
+            draw_fullscreen_digit_offset(canvas, new_digit, assets, x, -16)
+        x += 24
+    draw_degree(canvas, panel_x + 70, 0)
+    canvas.small_text("C", assets, panel_x + 74, 0)
     return canvas
 
 
@@ -345,6 +429,13 @@ def render_demos(output_dir: Path, assets: FontAssets, scale: int) -> list[Path]
         output = output_dir / f"{name}.png"
         write_png(output, renderer(assets).pixels, scale)
         outputs.append(output)
+    output = output_dir / "home-hot-tip.png"
+    write_png(output, render_home_hot(assets).pixels, scale)
+    outputs.append(output)
+    for screen in ("soldering", "home", "adjust"):
+        output = output_dir / f"temperature-roll-{screen}-mid.png"
+        write_png(output, render_temperature_roll(screen, assets).pixels, scale)
+        outputs.append(output)
     return outputs
 
 
@@ -380,8 +471,9 @@ def self_test(assets: FontAssets) -> None:
     usb_canvas = render_home_voltage(5, assets)
     dc_canvas = render_home_voltage(12, assets)
     assert usb_canvas.pixels != dc_canvas.pixels
-    for renderer in (render_temperature_adjust, render_sleep, render_profile, render_cjc):
+    for renderer in (render_temperature_adjust, render_sleep, render_profile, render_cjc, render_home_hot):
         assert renderer(assets).clipped_writes == 0
+    assert all(render_temperature_roll(screen, assets).clipped_writes == 0 for screen in ("soldering", "home", "adjust"))
     assert all(render_soldering(state, assets).clipped_writes == 0 for state in DEMO_STATES)
     assert usb_canvas.clipped_writes == 0 and dc_canvas.clipped_writes == 0
 

@@ -8,12 +8,28 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
+
+enum class TemperatureAnimationSlot : uint8_t {
+  Soldering,
+  Home,
+  Adjust,
+};
+
+struct TemperatureSlideFrame {
+  TemperatureType_t previousValue;
+  int8_t             previousOffset;
+  int8_t             currentOffset;
+  bool               active;
+};
+
 void ui_draw_warning_undervoltage(void);
 void ui_draw_power_source_icon(void);                            // Draw a single character wide power source icon
 void ui_draw_tip_temperature(bool symbol, const FontStyle font); // Draw tip temp, aware of conversions
 void ui_draw_tip_temperature_fullscreen(void);                   // Draw a centred 24x32 tip temperature
 void ui_draw_temperature_fullscreen(TemperatureType_t temperature, uint8_t x = 0); // Draw a value in the 80px fullscreen temperature panel
+void ui_draw_temperature_fullscreen_animated(TemperatureType_t temperature, uint8_t x, TemperatureAnimationSlot slot);
 void ui_draw_temperature_small(TemperatureType_t temperature, uint8_t x, uint8_t y); // Draw value, degree mark and C/F in one 8px row
+void ui_get_temperature_slide_frame(TemperatureType_t temperature, TemperatureAnimationSlot slot, uint8_t height, TemperatureSlideFrame &frame);
 bool warnUser(const char *warning, const ButtonState buttons);   // Print a full screen warning to the user
 void ui_draw_cjc_sampling(const uint8_t num_dots);               // Draws the CJC info text and progress dots
 void ui_draw_debug_menu(const uint8_t item_number);              // Draws the debug menu state

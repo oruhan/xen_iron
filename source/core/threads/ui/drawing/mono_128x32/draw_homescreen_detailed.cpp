@@ -1,4 +1,5 @@
 #include "OperatingModes.h"
+#include "SolderingCommon.h"
 #include "ui_drawing.hpp"
 #include "TipThermoModel.h"
 #ifdef OLED_128x32
@@ -27,7 +28,7 @@ void ui_draw_homescreen_detailed(TemperatureType_t tipTemp) {
     ui_draw_temperature_small(getSettingValue(SettingsOptions::SolderingTemp), 61, 24);
   } else {
     if (!(getSettingValue(SettingsOptions::CoolingTempBlink) && (tipTemp > 55) && (xTaskGetTickCount() % 1000 < 300))) {
-      ui_draw_tip_temperature_fullscreen();
+      ui_draw_temperature_fullscreen_animated(getTipTemp(), 0, TemperatureAnimationSlot::Home);
     }
     OLED::fillArea(DividerX, 0, 1, OLED_HEIGHT, 0xFF);
     ui_draw_temperature_small(getSettingValue(SettingsOptions::SolderingTemp), StatusX, 0);
