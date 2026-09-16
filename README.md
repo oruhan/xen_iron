@@ -82,8 +82,8 @@ now the fixed and only target; another model name is rejected.
 **Docker (works everywhere):**
 
 ```bash
-git clone --recurse-submodules https://github.com/oruhan/IronOS-TS101-Custom.git
-cd IronOS-TS101-Custom
+git clone --recurse-submodules https://github.com/oruhan/xen_iron.git
+cd xen_iron
 ./scripts/deploy.sh
 cd source/
 ./build.sh -l <PREFERRED_LANGUAGE>
