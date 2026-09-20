@@ -169,8 +169,8 @@
 #define __STDC_UTF_16__ 1
 #define __DBL_IS_IEC_60559__ 1
 #define __FRACT_MIN__ (-0.5R-0.5R)
-#define MIN_TEMP_C 10
-#define MIN_TEMP_F 50
+#define MIN_TEMP_C 0
+#define MIN_TEMP_F 32
 #define __DA_IBIT__ 32
 #define __ARM_SIZEOF_MINIMAL_ENUM 1
 #define __FLT32X_HAS_INFINITY__ 1
@@ -292,8 +292,8 @@
 #define __DBL_HAS_QUIET_NAN__ 1
 #define __FLT32X_EPSILON__ 2.2204460492503131e-16F32x
 #define HAS_POWER_DEBUG_MENU 
-#define MAX_TEMP_C 450
-#define MAX_TEMP_F 850
+#define MAX_TEMP_C 380
+#define MAX_TEMP_F 716
 #define __FLT64_MIN_EXP__ (-1021)
 #define __LACCUM_MIN__ (-0X1P31LK-0X1P31LK)
 #define __FRACT_FBIT__ 15
@@ -440,7 +440,7 @@
 #define __CHAR16_TYPE__ short unsigned int
 #define __PRAGMA_REDEFINE_EXTNAME 1
 #define __INT64 "ll"
-#define BOOST_TEMP 420
+#define BOOST_TEMP 380
 #define __SIZE_WIDTH__ 32
 #define __INT_LEAST16_MAX__ 0x7fff
 #define __INT64_MAX__ 0x7fffffffffffffffLL

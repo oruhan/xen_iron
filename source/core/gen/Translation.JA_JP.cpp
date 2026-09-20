@@ -302,12 +302,12 @@ const uint8_t USER_FONT_6x8[] = {
 0x7C, 0x08, 0x04, 0x04, 0x78, 0x00,//0x19 -> n
 0x01, 0x01, 0x7F, 0x01, 0x01, 0x00,//0x1A -> T
 0x7F, 0x41, 0x41, 0x22, 0x1C, 0x00,//0x1B -> D
-0x7F, 0x09, 0x09, 0x09, 0x06, 0x00,//0x1C -> P
-0x7F, 0x02, 0x0C, 0x02, 0x7F, 0x00,//0x1D -> M
-0x7E, 0x09, 0x09, 0x09, 0x7E, 0x00,//0x1E -> A
+0x7E, 0x09, 0x09, 0x09, 0x7E, 0x00,//0x1C -> A
+0x7F, 0x09, 0x09, 0x09, 0x06, 0x00,//0x1D -> P
+0x7F, 0x02, 0x0C, 0x02, 0x7F, 0x00,//0x1E -> M
 0x7C, 0x14, 0x14, 0x14, 0x08, 0x00,//0x1F -> p
-0x04, 0x3E, 0x44, 0x40, 0x20, 0x00,//0x20 -> t
-0x7F, 0x49, 0x49, 0x49, 0x36, 0x00,//0x21 -> B
+0x7F, 0x49, 0x49, 0x49, 0x36, 0x00,//0x20 -> B
+0x04, 0x3E, 0x44, 0x40, 0x20, 0x00,//0x21 -> t
 0x3C, 0x40, 0x40, 0x20, 0x7C, 0x00,//0x22 -> u
 0x48, 0x54, 0x54, 0x54, 0x24, 0x00,//0x23 -> s
 0x7F, 0x08, 0x08, 0x08, 0x7F, 0x00,//0x24 -> H
@@ -322,19 +322,19 @@ const uint8_t USER_FONT_6x8[] = {
 0x44, 0x48, 0x30, 0x10, 0x0C, 0x00,//0x2D -> y
 0x7F, 0x09, 0x19, 0x29, 0x46, 0x00,//0x2E -> R
 0x3E, 0x41, 0x41, 0x41, 0x3E, 0x00,//0x2F -> O
-0x00, 0x60, 0x60, 0x00, 0x00, 0x00,//0x30 -> .
-0x0C, 0x30, 0x40, 0x30, 0x0C, 0x00,//0x31 -> v
-0x7C, 0x08, 0x04, 0x04, 0x08, 0x00,//0x32 -> r
-0x3E, 0x41, 0x41, 0x49, 0x7A, 0x00,//0x33 -> G
-0x7F, 0x09, 0x09, 0x09, 0x01, 0x00,//0x34 -> F
-0x7F, 0x49, 0x49, 0x49, 0x41, 0x00,//0x35 -> E
-0x44, 0x24, 0x38, 0x48, 0x44, 0x00,//0x36 -> x
-0x3C, 0x40, 0x30, 0x40, 0x3C, 0x00,//0x37 -> w
-0x00, 0x7F, 0x10, 0x28, 0x44, 0x00,//0x38 -> k
-0x7F, 0x08, 0x04, 0x04, 0x78, 0x00,//0x39 -> h
-0x3F, 0x40, 0x40, 0x40, 0x3F, 0x00,//0x3A -> U
-0x3E, 0x41, 0x51, 0x21, 0x5E, 0x00,//0x3B -> Q
-0x20, 0x40, 0x41, 0x3F, 0x01, 0x00,//0x3C -> J
+0x7F, 0x09, 0x09, 0x09, 0x01, 0x00,//0x30 -> F
+0x00, 0x60, 0x60, 0x00, 0x00, 0x00,//0x31 -> .
+0x0C, 0x30, 0x40, 0x30, 0x0C, 0x00,//0x32 -> v
+0x7C, 0x08, 0x04, 0x04, 0x08, 0x00,//0x33 -> r
+0x3E, 0x41, 0x41, 0x49, 0x7A, 0x00,//0x34 -> G
+0x44, 0x24, 0x38, 0x48, 0x44, 0x00,//0x35 -> x
+0x3C, 0x40, 0x30, 0x40, 0x3C, 0x00,//0x36 -> w
+0x00, 0x7F, 0x10, 0x28, 0x44, 0x00,//0x37 -> k
+0x7F, 0x08, 0x04, 0x04, 0x78, 0x00,//0x38 -> h
+0x3F, 0x40, 0x40, 0x40, 0x3F, 0x00,//0x39 -> U
+0x3E, 0x41, 0x51, 0x21, 0x5E, 0x00,//0x3A -> Q
+0x20, 0x40, 0x41, 0x3F, 0x01, 0x00,//0x3B -> J
+0x7F, 0x49, 0x49, 0x49, 0x41, 0x00,//0x3C -> E
 0x00, 0x36, 0x36, 0x00, 0x00, 0x00,//0x3D -> :
 0x20, 0x10, 0x08, 0x04, 0x02, 0x00,//0x3E -> /
 };
@@ -356,13 +356,13 @@ const char* SmallSymbolMinus = "\x13";//-
 const char* LargeSymbolSpace = "\x12";//  
 const char* SmallSymbolSpace = "\x12";//  
 const char* LargeSymbolDot = "\x2F";//. 
-const char* SmallSymbolDot = "\x30";//. 
+const char* SmallSymbolDot = "\x31";//. 
 const char* SmallSymbolSlash = "\x3E";/// 
 const char* SmallSymbolColon = "\x3D";//: 
 const char* LargeSymbolDegC = "\x2E";//C 
 const char* SmallSymbolDegC = "\x16";//C 
 const char* LargeSymbolDegF = "\xBF";//F 
-const char* SmallSymbolDegF = "\x34";//F 
+const char* SmallSymbolDegF = "\x30";//F 
 const char* LargeSymbolMinutes = "\x2C";//m 
 const char* SmallSymbolMinutes = "\x26";//m 
 const char* LargeSymbolSeconds = "\x22";//s 
@@ -371,54 +371,54 @@ const char* LargeSymbolWatts = "\xB9";//W
 const char* SmallSymbolWatts = "\x25";//W 
 const char* LargeSymbolVolts = "\x3B";//V 
 const char* SmallSymbolVolts = "\x29";//V 
-const char* SmallSymbolAmps = "\x1E";//A 
+const char* SmallSymbolAmps = "\x1C";//A 
 const char* LargeSymbolDC = "\x46\x2E";//DC 
 const char* LargeSymbolCellCount = "\x3C";//S 
-const char* SmallSymbolVersionNumber = "\x31\x04\x30\x04\x05\x21\x30\x05\x09\x06\x05\x08\x35\x02\x0B";//v2.23B.37436E09 
-const char* SmallSymbolPDDebug = "\x1C\x1B\x12\x1B\x10\x0D\x22\x28";//PD Debug 
-const char* SmallSymbolState = "\x15\x20\x0C\x20\x10";//State 
-const char* SmallSymbolNoVBus = "\x2A\x18\x12\x29\x21\x22\x23";//No VBus 
-const char* SmallSymbolVBus = "\x29\x21\x22\x23";//VBus 
+const char* SmallSymbolVersionNumber = "\x32\x04\x31\x04\x05\x20\x31\x1C\x06\x16\x07\x30\x03\x08\x20";//v2.23B.A4C5F16B 
+const char* SmallSymbolPDDebug = "\x1D\x1B\x12\x1B\x10\x0D\x22\x28";//PD Debug 
+const char* SmallSymbolState = "\x15\x21\x0C\x21\x10";//State 
+const char* SmallSymbolNoVBus = "\x2A\x18\x12\x29\x20\x22\x23";//No VBus 
+const char* SmallSymbolVBus = "\x29\x20\x22\x23";//VBus 
 const char* LargeSymbolSleep = "\xF1\x19\xB6\xB6\x12";//Zzz  
 
 const char* DebugMenu[] = {
-	 "\x04\x02\x04\x08\x02\x0B\x03\x0B\x12\x03\x0A\x03\x04\x02\x08",//"20260919 181206" 
+	 "\x04\x02\x04\x08\x02\x0B\x04\x02\x12\x02\x0A\x06\x03\x06\x04",//"20260920 084142" 
 	 "\x2C\x1B\x12",//"ID " 
-	 "\x1E\x16\x16\x12\x12\x12",//"ACC   " 
-	 "\x1C\x25\x2E\x12\x12\x12",//"PWR   " 
+	 "\x1C\x16\x16\x12\x12\x12",//"ACC   " 
+	 "\x1D\x25\x2E\x12\x12\x12",//"PWR   " 
 	 "\x29\x17\x19\x12\x12\x12\x12\x12\x12\x12\x12",//"Vin        " 
 	 "\x1A\x17\x1F\x12\x16\x12\x12",//"Tip C  " 
 	 "\x24\x0C\x19\x12\x16\x12\x12",//"Han C  " 
-	 "\x1D\x0C\x36\x12\x16\x12\x12",//"Max C  " 
-	 "\x3A\x1F\x1A\x17\x26\x10\x12",//"UpTime " 
-	 "\x1D\x18\x31\x10\x12\x12\x12",//"Move   " 
+	 "\x1E\x0C\x35\x12\x16\x12\x12",//"Max C  " 
+	 "\x39\x1F\x1A\x17\x26\x10\x12",//"UpTime " 
+	 "\x1E\x18\x32\x10\x12\x12\x12",//"Move   " 
 	 "\x1A\x17\x1F\x12\x2E\x10\x23",//"Tip Res" 
 	 "\x1A\x17\x1F\x12\x2E\x12\x12",//"Tip R  " 
 	 "\x1A\x17\x1F\x12\x2F\x12\x12",//"Tip O  " 
-	 "\x24\x25\x12\x33\x12\x12\x12",//"HW G   " 
-	 "\x24\x25\x12\x1D\x12\x12\x12",//"HW M   " 
-	 "\x24\x25\x12\x1C\x12\x12\x12",//"HW P   " 
+	 "\x24\x25\x12\x34\x12\x12\x12",//"HW G   " 
+	 "\x24\x25\x12\x1E\x12\x12\x12",//"HW M   " 
+	 "\x24\x25\x12\x1D\x12\x12\x12",//"HW P   " 
 	 "\x24\x0C\x27\x27\x12\x12\x12",//"Hall   " 
 };
 
 const char* AccelTypeNames[] = {
 	 "\x15\x0E\x0C\x19\x19\x17\x19\x28",//Scanning 
 	 "\x2A\x18\x19\x10",//None 
-	 "\x1D\x1D\x1E\x0A\x08\x07\x04\x34\x16",//MMA8652FC 
+	 "\x1E\x1E\x1C\x0A\x08\x07\x04\x30\x16",//MMA8652FC 
 	 "\x2B\x2C\x15\x04\x1B\x24\x03\x04",//LIS2DH12 
-	 "\x21\x1D\x1E\x04\x04\x05",//BMA223 
-	 "\x1D\x15\x1E\x05\x02\x03",//MSA301 
-	 "\x15\x16\x09\x1E\x04\x02",//SC7A20 
-	 "\x33\x1C\x2C\x2F",//GPIO 
-	 "\x2B\x2C\x15\x04\x12\x16\x2B\x2F\x2A\x35",//LIS2 CLONE 
+	 "\x20\x1E\x1C\x04\x04\x05",//BMA223 
+	 "\x1E\x15\x1C\x05\x02\x03",//MSA301 
+	 "\x15\x16\x09\x1C\x04\x02",//SC7A20 
+	 "\x34\x1D\x2C\x2F",//GPIO 
+	 "\x2B\x2C\x15\x04\x12\x16\x2B\x2F\x2A\x3C",//LIS2 CLONE 
 };
 
 const char* PowerSourceNames[] = {
 	 "\x1B\x16",//DC 
-	 "\x3B\x16",//QC 
-	 "\x1C\x1B",//PD 
-	 "\x1C\x1B",//PD 
-	 "\x21\x1E\x1A",//BAT 
+	 "\x3A\x16",//QC 
+	 "\x1D\x1B",//PD 
+	 "\x1D\x1B",//PD 
+	 "\x20\x1C\x1A",//BAT 
 };
 
 const bool HasFahrenheit = true;
@@ -617,7 +617,7 @@ struct {
     //  112: "一部のQC電源との互換性のため、PDネゴシエーションをタイムアウトする時間 <x100ms（ミリ秒）>"
     "\xF1\x06\xC8\x16\xF1\x1A\x2E\x1C\x49\xB0\x16\xF1\x03\xDF\xE2\x16\x40\x74\x76\x4D\x46\xF1\x0A\xF1\x0C\x72\xF1\x0D\x20\x72\x84\x1D\x17\x2A\x43\xF1\x09\x61\xF1\x0E\x29\x1E\x21\x27\x38\x12\x25\x77\x03\x02\x02\x2C\x22\x7B\xA9\x5B\x69\x7A\x26" "\0"
     //  172: "PD\ntimeout"
-    "\x1C\x1B\x01\x20\x17\x26\x10\x18\x22\x20" "\0"
+    "\x1D\x1B\x01\x21\x17\x26\x10\x18\x22\x21" "\0"
     //  183: "No Dynamic disables EPR & PPS, Safe mode does not use padding resistance"
     "\xBD\x19\x12\x46\xB7\x1A\x0C\x2C\x18\x0E\x12\x0F\x18\x22\x0C\x0D\x2D\x10\x22\x12\xF1\x1C\x4D\xBB\x12\xC3\x12\x4D\x4D\x3C\x8C\x12\x3C\x0C\x11\x10\x12\x2C\x19\x0F\x10\x12\x0F\x19\x10\x22\x12\x1A\x19\x15\x12\x45\x22\x10\x12\x36\x0C\x0F\x0F\x18\x1A\x4C\x12\x24\x10\x22\x18\x22\x15\x0C\x1A\x0E\x10" "\0"
     //  257: "\nPD VPDO"
@@ -681,7 +681,7 @@ struct {
     //  725: "Reverse assignment of buttons for Settings menu"
     "\xBB\x10\xB8\x10\x24\x22\x10\x12\x0C\x22\x22\x18\x4C\x1A\x2C\x10\x1A\x15\x12\x19\x11\x12\x0D\x45\x15\x15\x19\x1A\x22\x12\x11\x19\x24\x12\x3C\x10\x15\x15\x18\x1A\x4C\x22\x12\x2C\x10\x1A\x45" "\0"
     //  773: "Swap\nA B keys"
-    "\x15\x37\x0C\x1F\x01\x1E\x12\x21\x12\x38\x10\x2D\x23" "\0"
+    "\x15\x36\x0C\x1F\x01\x1C\x12\x20\x12\x37\x10\x2D\x23" "\0"
     //  787: "メニューアイコンのアニメーションの速さ <遅=低速 | 中=中速 | 速=高速>"
     "\x70\x71\xA8\x20\x61\x43\x5F\x1D\x16\x61\x71\x70\x20\x72\x84\x1D\x16\x30\x64\x12\x25\x55\x1B\x59\x30\x12\x2B\x12\x5A\x1B\x5A\x30\x12\x2B\x12\x30\x1B\x7C\x30\x26" "\0"
     //  828: "\n動画の速度"
@@ -743,25 +743,25 @@ struct {
     // 1301: "Select the tip type fitted"
     "\x3C\x10\x2D\x10\x0E\x15\x12\x15\x8A\x10\x12\x15\x18\x36\x12\x15\xB7\x36\x10\x12\x11\x18\x15\x15\x10\x0F" "\0"
     // 1328: "Soldering\nTip Type"
-    "\x15\x18\x27\x0F\x10\x32\x17\x19\x28\x01\x1A\x17\x1F\x12\x1A\x2D\x1F\x10" "\0"
+    "\x15\x18\x27\x0F\x10\x33\x17\x19\x28\x01\x1A\x17\x1F\x12\x1A\x2D\x1F\x10" "\0"
     // 1347: "Default\nMode"
-    "\x1B\x10\x11\x0C\x22\x27\x20\x01\x1D\x18\x0F\x10" "\0"
+    "\x1B\x10\x11\x0C\x22\x27\x21\x01\x1E\x18\x0F\x10" "\0"
     // 1360: "No\nDynamic"
     "\x2A\x18\x01\x1B\x2D\x19\x0C\x26\x17\x0E" "\0"
     // 1371: "Safe\nMode"
-    "\x15\x0C\x11\x10\x01\x1D\x18\x0F\x10" "\0"
+    "\x15\x0C\x11\x10\x01\x1E\x18\x0F\x10" "\0"
     // 1381: "Auto\nSense"
-    "\x1E\x22\x20\x18\x01\x15\x10\x19\x23\x10" "\0"
+    "\x1C\x22\x21\x18\x01\x15\x10\x19\x23\x10" "\0"
     // 1392: "TS100\nLong"
     "\x1A\x15\x03\x02\x02\x01\x2B\x18\x19\x28" "\0"
     // 1403: "Pine\nShort"
-    "\x1C\x17\x19\x10\x01\x15\x39\x18\x32\x20" "\0"
+    "\x1D\x17\x19\x10\x01\x15\x38\x18\x33\x21" "\0"
     // 1414: "PTS\n200"
-    "\x1C\x1A\x15\x01\x04\x02\x02" "\0"
+    "\x1D\x1A\x15\x01\x04\x02\x02" "\0"
     // 1422: "TS80\n"
     "\x1A\x15\x0A\x02\x01" "\0"
     // 1428: "JBC\nC210"
-    "\x3C\x21\x16\x01\x16\x04\x03\x02" "\0"
+    "\x3B\x20\x16\x01\x16\x04\x03\x02" "\0"
     // 1437: "\n電源設定"
     "\x01\x1C\x49\x39\x33" "\0"
     // 1443: "\n半田付け設定"
