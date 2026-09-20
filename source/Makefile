@@ -12,6 +12,14 @@ endif
 # Output folder
 HEXFILE_DIR=hexfile
 
+# Release artifact version. An exact Git tag takes precedence so tagged builds
+# naturally produce names such as TS101_TR_v2.23-beta.1.hex. Development builds
+# fall back to BUILD_VERSION from version.h (for example v2.23). Callers may
+# override this with RELEASE_VERSION=v2.23-rc.1.
+BASE_RELEASE_VERSION:=$(shell sed -n 's/^#define BUILD_VERSION "\([^"]*\)".*/\1/p' version.h)
+EXACT_RELEASE_TAG:=$(shell git describe --tags --exact-match 2>/dev/null)
+RELEASE_VERSION?=$(if $(filter v%,$(EXACT_RELEASE_TAG)),$(EXACT_RELEASE_TAG),$(BASE_RELEASE_VERSION))
+
 # Temporary objects folder
 OUTPUT_DIR_BASE=objects
 OUTPUT_DIR=objects/ts101
@@ -278,8 +286,12 @@ OUT_OBJS_S=$(addprefix $(OUTPUT_DIR)/,$(OBJS_S))
 
 default: firmware-EN
 
-firmware-%: $(HEXFILE_DIR)/$(model)_%.hex $(HEXFILE_DIR)/$(model)_%.bin $(HEXFILE_DIR)/$(model)_%.dfu
-	@true
+firmware-%: $(HEXFILE_DIR)/$(model)_%.elf $(HEXFILE_DIR)/$(model)_%.bin $(HEXFILE_DIR)/$(model)_%.dfu
+	@$(OBJCOPY) $(HEXFILE_DIR)/$(model)_$*.elf -O ihex $(HEXFILE_DIR)/$(model)_$*_$(RELEASE_VERSION).hex
+	@echo 'Created $(HEXFILE_DIR)/$(model)_$*_$(RELEASE_VERSION).hex'
+
+print-release-version:
+	@printf '%s\n' '$(RELEASE_VERSION)'
 
 # Targets for binary files
 
@@ -500,7 +512,7 @@ check-style:
 	else  echo "" && echo "" && echo "Style check: FAIL! Please, check the log above for the details." && echo "If there is a false-negative trigger, please, report an issue attaching the log or link to the log!" && echo "" && echo "" && exit 1 ; \
 	fi;
 
-.PHONY: style  check-style  all  clean  default  clean-all
+.PHONY: style check-style all clean default clean-all print-release-version
 .SECONDARY:
 
 # Pull in dependency info for *existing* .o files

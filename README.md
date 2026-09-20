@@ -21,7 +21,7 @@ Thanks to the IronOS contributors and community.
 
 **Steps:**
 
-1. Download the firmware from [Releases](../../releases) (grab the TS101\_<PREFERRED_LANGUAGE>.hex)
+1. Download the firmware from [Releases](../../releases) (grab `TS101_<LANGUAGE>_<VERSION>.hex`)
 
 2. Put your TS101 in DFU mode:
    - Unplug the iron
@@ -42,13 +42,10 @@ Thanks to the IronOS contributors and community.
 The repository supports only TS101 with its fixed 128x32 OLED. Available languages are
 `DE`, `EN`, `ES`, `FR`, `JA_JP`, `RU`, and `TR`.
 
-Install the ARM toolchain and Python support:
+Install the ARM toolchain, Python venv support, and ZIP utilities:
 
 ```bash
-sudo dnf install arm-none-eabi-gcc-cs arm-none-eabi-gcc-cs-c++ arm-none-eabi-newlib make python3
-python3 -m venv source/.venv-build
-source source/.venv-build/bin/activate
-python -m pip install -r source/requirements-build.txt
+sudo dnf install arm-none-eabi-gcc-cs arm-none-eabi-gcc-cs-c++ arm-none-eabi-newlib make python3 zip unzip
 ```
 
 The USB-PD code is a Git submodule. A new clone must be recursive. For an existing clone,
@@ -58,24 +55,31 @@ initialize it once:
 git submodule update --init --recursive
 ```
 
-Build one language (for example Turkish):
+Build every supported language with one command from the repository root:
 
 ```bash
-cd source
-source .venv-build/bin/activate
-make -j"$(nproc)" firmware-TR
-```
-
-Build selected languages or every retained language:
-
-```bash
-./build.sh -l "DE EN TR"
 ./build.sh
 ```
 
-The files are written to `source/hexfile/`, for example
-`source/hexfile/TS101_TR.hex`. The `model=TS101` argument is optional because TS101 is
-now the fixed and only target; another model name is rejected.
+The script creates and maintains `source/.venv-build` automatically; manual venv
+activation is not required. Build one language or a selected set with:
+
+```bash
+./build.sh -l TR
+./build.sh -l "DE EN TR"
+```
+
+Firmware files are written to `source/hexfile/` with an automatic version suffix,
+for example `TS101_TR_v2.23.hex`. An exact Git tag is used when available, producing
+names such as `TS101_TR_v2.23-beta.1.hex`; otherwise the version comes from
+`source/version.h`. Override it explicitly when needed:
+
+```bash
+./build.sh -v v2.23-beta.1
+```
+
+The all-language build also produces a versioned ZIP archive. The only supported
+model is TS101.
 
 ## Docker Build
 
@@ -85,11 +89,10 @@ now the fixed and only target; another model name is rejected.
 git clone --recurse-submodules https://github.com/oruhan/xen_iron.git
 cd xen_iron
 ./scripts/deploy.sh
-cd source/
 ./build.sh -l <PREFERRED_LANGUAGE>
 ```
 
-Your firmware ends up in `source/hexfile/TS101_<PREFERRED_LANGUAGE>.hex`.
+Your firmware ends up in `source/hexfile/TS101_<PREFERRED_LANGUAGE>_<VERSION>.hex`.
 
 ## 128x32 OLED previews
 

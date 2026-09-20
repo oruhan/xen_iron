@@ -76,6 +76,17 @@ for path in translation_files:
     if code is not None:
         parsed_languages[code] = lang
 
+
+def split_language_and_version(artifact_name: str):
+    """Split DE_v2.23 into (DE, v2.23) while preserving JA_JP and multi names."""
+    for language_code in sorted(parsed_languages, key=len, reverse=True):
+        if artifact_name == language_code:
+            return language_code, None
+        version_prefix = language_code + "_v"
+        if artifact_name.startswith(version_prefix):
+            return language_code, artifact_name[len(language_code) + 1 :]
+    return artifact_name, None
+
 # Now that we have the languages, we can generate our index of info on each file
 
 output_json = {"git_tag": read_git_tag(), "release": read_version(), "contents": {}}
@@ -100,12 +111,13 @@ for file_path in output_files:
             if len(matches) == 3:
                 if device_model_name is None:
                     device_model_name = matches[0]
-                lang_code: str = matches[1]
+                raw_lang_code: str = matches[1]
+                lang_code, artifact_version = split_language_and_version(raw_lang_code)
                 lang_file = parsed_languages.get(lang_code, None)
-                if lang_file is None and lang_code.startswith("multi_"):
+                if lang_file is None and raw_lang_code.startswith("multi_"):
                     # Multi files wont match, but we fake this by just taking the filename to it
                     lang_file = {
-                        "languageLocalName": lang_code.replace("multi_", "").replace(
+                        "languageLocalName": raw_lang_code.replace("multi_", "").replace(
                             "compressed_", ""
                         )
                     }
@@ -115,6 +127,8 @@ for file_path in output_files:
                     "language_code": lang_code,
                     "language_name": lang_file.get("languageLocalName", None),
                 }
+                if artifact_version is not None:
+                    file_record["artifact_version"] = artifact_version
                 output_json["contents"][name] = file_record
             else:
                 print(f"failed to parse {matches}")

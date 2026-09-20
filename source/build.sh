@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
 TRANSLATION_DIR="../translations"
 #TRANSLATION_SCRIPT="make_translation.py"
 
@@ -9,6 +13,7 @@ BUILD_LANGUAGES=()
 AVAILABLE_MODELS=("TS101")
 BUILD_MODELS=()
 OPTIONS=()
+RELEASE_VERSION_OVERRIDE=""
 
 builder_info() {
     echo -e "
@@ -29,17 +34,19 @@ usage() {
     builder_info
     echo -e "
 Usage : 
-    $(basename "$0") [-l <LANG_CODES>] [-m <MODELS>] [-o <OPTIONS>] [-h]
+    $(basename "$0") [-l <LANG_CODES>] [-m <MODELS>] [-o <OPTIONS>] [-v <VERSION>] [-h]
 
 Parameters :
     -l LANG_CODE : Force a specific language (${AVAILABLE_LANGUAGES[*]})
     -m MODEL     : Force a specific model (${AVAILABLE_MODELS[*]})
     -o key=val   : Pass options to make
+    -v VERSION   : Override artifact version (for example v2.23-beta.1)
     -h           : Show this help message
 
 Example : 
     $(basename "$0") -l TR                            (Build Turkish firmware)
     $(basename "$0") -l \"DE EN TR\"                    (Build selected languages)
+    $(basename "$0") -v v2.23-beta.1                  (Override artifact version)
     $(basename "$0")                                  (Build every available language)
 
 INFO : 
@@ -88,7 +95,7 @@ declare -a margs=()
 declare -a largs=()
 declare -a oargs=()
 
-while getopts "h:l:m:o:" option; do
+while getopts "h:l:m:o:v:" option; do
     case "${option}" in
     h)
         usage
@@ -101,6 +108,9 @@ while getopts "h:l:m:o:" option; do
         ;;
     o)
         IFS=' ' read -r -a oargs <<< "${OPTARG}"
+        ;;
+    v)
+        RELEASE_VERSION_OVERRIDE="${OPTARG}"
         ;;
     *)
         usage
@@ -170,6 +180,13 @@ if ((${#oargs[@]})); then
 fi
 
 echo "********************************************"
+
+if [[ -n "$RELEASE_VERSION_OVERRIDE" ]]; then
+    if [[ ! "$RELEASE_VERSION_OVERRIDE" =~ ^v[0-9]+\.[0-9]+([._-][A-Za-z0-9._-]+)?$ ]]; then
+        forceExit "Invalid version '$RELEASE_VERSION_OVERRIDE'. Expected a filename-safe value such as v2.23 or v2.23-beta.1."
+    fi
+    OPTIONS+=("RELEASE_VERSION=$RELEASE_VERSION_OVERRIDE")
+fi
 ##
 #StartBuild
 
@@ -184,6 +201,28 @@ if [ ${#BUILD_LANGUAGES[@]} -gt 0 ] && [ ${#BUILD_MODELS[@]} -gt 0 ]; then
         echo "Building firmware for $model in ${BUILD_LANGUAGES[*]}"
         make -j"$(nproc)" model="$model" "${BUILD_LANGUAGES[@]/#/firmware-}" "${OPTIONS[@]}" >/dev/null
         checkLastCommand
+
+        # The Makefile emits a board-family info line while it is parsed. The
+        # print target itself is deliberately the final line.
+        release_version="$(make --no-print-directory -s model="$model" print-release-version "${OPTIONS[@]}" | tail -n 1)"
+        versioned_hex_files=()
+        for language in "${BUILD_LANGUAGES[@]}"; do
+            firmware_path="hexfile/${model}_${language}_${release_version}.hex"
+            if [[ ! -f "$firmware_path" ]]; then
+                forceExit "Expected firmware was not generated: $firmware_path"
+            fi
+            versioned_hex_files+=("$firmware_path")
+        done
+
+        if [[ ${#BUILD_LANGUAGES[@]} -eq ${#AVAILABLE_LANGUAGES[@]} ]]; then
+            archive_path="hexfile/${model}_all_languages_${release_version}.zip"
+        else
+            archive_path="hexfile/${model}_selected_languages_${release_version}.zip"
+        fi
+        zip -q -j -FS "$archive_path" "${versioned_hex_files[@]}"
+        unzip -tq "$archive_path" >/dev/null
+        echo "    Version: $release_version"
+        echo "    Archive: $archive_path"
     done
 else
     forceExit "Nothing to build. (no model or language specified)"

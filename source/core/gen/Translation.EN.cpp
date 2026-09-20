@@ -181,7 +181,7 @@ const char* SmallSymbolVolts = "\x31";//V
 const char* SmallSymbolAmps = "\x25";//A 
 const char* LargeSymbolDC = "\x28\x29";//DC 
 const char* LargeSymbolCellCount = "\x22";//S 
-const char* SmallSymbolVersionNumber = "\x2A\x04\x2D\x04\x05\x29\x2D\x25\x06\x20\x07\x39\x03\x08\x29";//v2.23B.A4C5F16B 
+const char* SmallSymbolVersionNumber = "\x2A\x04\x2D\x04\x05\x29\x2D\x03\x06\x06\x06\x03\x39\x04\x05";//v2.23B.14441F23 
 const char* SmallSymbolPDDebug = "\x22\x24\x12\x24\x10\x0D\x1E\x1D";//PD Debug 
 const char* SmallSymbolState = "\x1F\x15\x0C\x15\x10";//State 
 const char* SmallSymbolNoVBus = "\x2E\x16\x12\x31\x29\x1E\x19";//No VBus 
@@ -189,7 +189,7 @@ const char* SmallSymbolVBus = "\x31\x29\x1E\x19";//VBus
 const char* LargeSymbolSleep = "\x3E\x42\x42\x12";//Zzz  
 
 const char* DebugMenu[] = {
-	 "\x04\x02\x04\x08\x02\x0B\x04\x02\x12\x02\x0A\x06\x03\x05\x08",//"20260920 084136" 
+	 "\x04\x02\x04\x08\x02\x0B\x04\x02\x12\x02\x0A\x06\x0B\x02\x07",//"20260920 084905" 
 	 "\x2C\x24\x12",//"ID " 
 	 "\x25\x20\x20\x12\x12\x12",//"ACC   " 
 	 "\x22\x30\x32\x12\x12\x12",//"PWR   " 

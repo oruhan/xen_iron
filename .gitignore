@@ -210,6 +210,7 @@ Translation Editor/.vscode/
 # misc.
 source/compile_commands.json
 source/.metadata/*
+source/.venv-build/
 
 # TS100 related
 TS100/KiCad/TS100.bak
