@@ -16,7 +16,7 @@ void ui_draw_power_source_icon(void) {
     if (cellV > 9) {
       cellV = 9;
     }
-    OLED::drawBattery(cellV + 1);
+    OLED::drawBatteryFullHeight(cellV + 1);
     return;
   }
 #endif

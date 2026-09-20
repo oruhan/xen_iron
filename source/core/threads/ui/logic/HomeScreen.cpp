@@ -6,6 +6,21 @@
 bool showExitMenuTransition = false;
 
 OperatingMode handleHomeButtons(const ButtonState buttons, guiContext *cxt) {
+  if (cxt->scratch_state.state2 != 0) {
+    const bool dismissWarning = warnUserWithIcon(translatedString(Tr->WarningTipMissing), buttons);
+    if (cxt->scratch_state.state2 == 1) {
+      // The long-press event that opened the warning can still be active while
+      // its entry frame is rendered. Arm dismissal only after that input has
+      // been released so the warning cannot immediately animate back out.
+      if (buttons == BUTTON_NONE) {
+        cxt->scratch_state.state2 = 2;
+      }
+    } else if (dismissWarning) {
+      cxt->scratch_state.state2 = 0;
+      cxt->transitionMode       = TransitionAnimation::Up;
+    }
+    return OperatingMode::HomeScreen;
+  }
   if (buttons != BUTTON_NONE && cxt->scratch_state.state1 == 0) {
     return OperatingMode::HomeScreen; // Ignore button press
   } else {
@@ -28,6 +43,8 @@ OperatingMode handleHomeButtons(const ButtonState buttons, guiContext *cxt) {
       cxt->transitionMode = TransitionAnimation::Left;
       return OperatingMode::SolderingProfile;
     } else {
+      cxt->scratch_state.state2 = 1;
+      cxt->transitionMode       = TransitionAnimation::Down;
       return OperatingMode::HomeScreen;
     }
 #else
@@ -40,6 +57,9 @@ OperatingMode handleHomeButtons(const ButtonState buttons, guiContext *cxt) {
       bool detailedView   = getSettingValue(SettingsOptions::DetailedIDLE) && getSettingValue(SettingsOptions::DetailedSoldering);
       cxt->transitionMode = detailedView ? TransitionAnimation::None : TransitionAnimation::Left;
       return OperatingMode::Soldering;
+    } else {
+      cxt->scratch_state.state2 = 1;
+      cxt->transitionMode       = TransitionAnimation::Down;
     }
     break;
   case BUTTON_B_SHORT:
@@ -67,7 +87,7 @@ OperatingMode drawHomeScreen(const ButtonState buttons, guiContext *cxt) {
   if (getSettingValue(SettingsOptions::DetailedIDLE)) {
     ui_draw_homescreen_detailed(tipTemp);
   } else {
-    ui_draw_homescreen_simplified(tipTemp);
+    ui_draw_homescreen_simplified(tipTemp, cxt->viewEnterTime);
   }
   return handleHomeButtons(buttons, cxt);
 }

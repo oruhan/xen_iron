@@ -10,8 +10,10 @@ constexpr uint8_t DividerX              = TemperaturePanelWidth;
 constexpr uint8_t StatusPanelX          = DividerX + 3;
 constexpr uint8_t StatusIconX           = OLED_WIDTH - 12;
 
+uint8_t integerPlacesForTenths(const uint32_t valueX10) { return valueX10 >= 100 ? 2 : 1; }
+
 void drawInputVoltage(const uint32_t voltageX10) {
-  OLED::printNumber(voltageX10 / 10, 2, FontStyle::SMALL);
+  OLED::printNumber(voltageX10 / 10, integerPlacesForTenths(voltageX10), FontStyle::SMALL);
   OLED::print(SmallSymbolDot, FontStyle::SMALL);
   OLED::printNumber(voltageX10 % 10, 1, FontStyle::SMALL);
   OLED::print(SmallSymbolVolts, FontStyle::SMALL);
@@ -21,7 +23,7 @@ void drawWattage(const uint32_t wattageX10) {
   if (wattageX10 > 999) {
     OLED::printNumber(wattageX10 / 10, 3, FontStyle::SMALL);
   } else {
-    OLED::printNumber(wattageX10 / 10, 2, FontStyle::SMALL);
+    OLED::printNumber(wattageX10 / 10, integerPlacesForTenths(wattageX10), FontStyle::SMALL);
     OLED::print(SmallSymbolDot, FontStyle::SMALL);
     OLED::printNumber(wattageX10 % 10, 1, FontStyle::SMALL);
   }
@@ -37,7 +39,7 @@ void drawBatteryOrHeatStatus(const int8_t powerSource, const uint32_t voltageX10
       cellV = getSettingValue(SettingsOptions::MinVoltageCells);
     }
     cellV -= getSettingValue(SettingsOptions::MinVoltageCells);
-    OLED::drawBattery((cellV > 9 ? 9 : cellV) + 1);
+    OLED::drawBatteryFullHeight((cellV > 9 ? 9 : cellV) + 1);
   } else {
     OLED::drawHeatSymbol(X10WattsToPWM(wattageX10));
   }
@@ -57,7 +59,10 @@ void ui_draw_soldering_fullscreen_status(bool boostModeOn) {
   OLED::setCursor(StatusPanelX, 0);
   OLED::print(PowerSourceNames[powerSource], FontStyle::SMALL, 3);
   if (boostModeOn) {
-    OLED::setCursor(StatusIconX, 0);
+    // A battery uses the complete 12x32 status column. Keep boost visible in
+    // the gap after the three-character BAT source label instead of drawing
+    // it under the full-height battery.
+    OLED::setCursor(powerSource == 4 ? StatusPanelX + 20 : StatusIconX, 0);
     OLED::print(SmallSymbolPlus, FontStyle::SMALL);
   }
 

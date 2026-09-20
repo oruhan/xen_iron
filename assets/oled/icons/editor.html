@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TS101 OLED Piksel Editörü</title>
+  <style>
+    :root { color-scheme: dark; font: 15px system-ui, sans-serif; }
+    body { margin: 24px; background: #071014; color: #d8f7ff; }
+    .bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 16px; }
+    button, label, input { font: inherit; }
+    button, .file { border: 1px solid #4d7180; border-radius: 7px; padding: 8px 11px; background: #10232b; color: inherit; cursor: pointer; }
+    input[type=file] { display: none; }
+    input[type=number] { width: 58px; padding: 7px; background: #10232b; color: inherit; border: 1px solid #4d7180; border-radius: 6px; }
+    #grid { display: grid; gap: 1px; width: max-content; background: #26414c; border: 1px solid #5a8798; padding: 1px; user-select: none; touch-action: none; }
+    .pixel { width: var(--pixel, 18px); height: var(--pixel, 18px); background: #02080b; }
+    .pixel.on { background: #aef2ff; }
+    #status { color: #86b4c3; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>TS101 OLED Piksel Editörü</h1>
+  <div class="bar">
+    <label class="file">PBM aç<input id="open" type="file" accept=".pbm,image/x-portable-bitmap"></label>
+    <button id="save">PBM indir</button>
+    <button id="clear">Temizle</button>
+    <button id="invert">Tersine çevir</button>
+    <label>Genişlik <input id="width" type="number" min="1" max="128" value="16"></label>
+    <label>Yükseklik <input id="height" type="number" min="1" max="64" value="16"></label>
+    <button id="new">Yeni tuval</button>
+  </div>
+  <div id="status">Yeni 16x16 tuval</div>
+  <div id="grid" aria-label="Piksel tuvali"></div>
+  <script>
+    const grid = document.querySelector('#grid');
+    const status = document.querySelector('#status');
+    let width = 16, height = 16, pixels = [], filename = 'yeni_simge.pbm', painting = null;
+
+    function makeGrid(w, h, data = null) {
+      width = w; height = h; pixels = data || Array(w * h).fill(false);
+      grid.style.gridTemplateColumns = `repeat(${w}, var(--pixel, 18px))`;
+      grid.replaceChildren(...pixels.map((on, index) => {
+        const cell = document.createElement('div');
+        cell.className = `pixel${on ? ' on' : ''}`;
+        cell.dataset.index = index;
+        return cell;
+      }));
+      status.textContent = `${filename} — ${width}x${height}, ${pixels.filter(Boolean).length} yanan piksel`;
+    }
+    function setPixel(index, on) {
+      pixels[index] = on;
+      grid.children[index].classList.toggle('on', on);
+    }
+    grid.addEventListener('pointerdown', event => {
+      const cell = event.target.closest('.pixel'); if (!cell) return;
+      painting = !pixels[+cell.dataset.index]; setPixel(+cell.dataset.index, painting);
+      grid.setPointerCapture(event.pointerId);
+    });
+    grid.addEventListener('pointermove', event => {
+      if (painting === null) return;
+      const cell = document.elementFromPoint(event.clientX, event.clientY)?.closest('.pixel');
+      if (cell && grid.contains(cell)) setPixel(+cell.dataset.index, painting);
+    });
+    grid.addEventListener('pointerup', () => { painting = null; status.textContent = `${filename} — ${width}x${height}, ${pixels.filter(Boolean).length} yanan piksel`; });
+    document.querySelector('#open').addEventListener('change', async event => {
+      const file = event.target.files[0]; if (!file) return;
+      const tokens = (await file.text()).replace(/#[^\n]*/g, '').trim().split(/\s+/);
+      if (tokens[0] !== 'P1') return alert('Yalnızca P1 PBM dosyaları destekleniyor.');
+      const w = +tokens[1], h = +tokens[2], values = tokens.slice(3);
+      if (values.length !== w * h || values.some(v => v !== '0' && v !== '1')) return alert('PBM piksel sayısı/geçerliliği hatalı.');
+      filename = file.name; makeGrid(w, h, values.map(v => v === '1'));
+    });
+    document.querySelector('#new').onclick = () => {
+      filename = 'yeni_simge.pbm'; makeGrid(+document.querySelector('#width').value, +document.querySelector('#height').value);
+    };
+    document.querySelector('#clear').onclick = () => makeGrid(width, height);
+    document.querySelector('#invert').onclick = () => makeGrid(width, height, pixels.map(value => !value));
+    document.querySelector('#save').onclick = () => {
+      const rows = Array.from({length: height}, (_, y) => pixels.slice(y * width, (y + 1) * width).map(v => v ? '1' : '0').join(' '));
+      const blob = new Blob([`P1\n# ${filename} - 1 is lit\n${width} ${height}\n${rows.join('\n')}\n`], {type: 'image/x-portable-bitmap'});
+      const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = filename; link.click(); URL.revokeObjectURL(link.href);
+    };
+    makeGrid(width, height);
+  </script>
+</body>
+</html>

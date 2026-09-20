@@ -33,6 +33,9 @@
     "WarningTipShorted": {
       "message": "¡Punta en cortocircuito!"
     },
+    "WarningTipMissing": {
+      "message": "Inserte la\npunta"
+    },
     "SettingsCalibrationWarning": {
       "message": "¡Antes de reiniciar, asegúrese de que la punta y el mango estén a temperatura ambiente!"
     },

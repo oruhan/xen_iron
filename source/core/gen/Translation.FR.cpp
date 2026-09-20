@@ -145,18 +145,19 @@ const uint8_t USER_FONT_6x8[] = {
 0x00, 0x00, 0x4F, 0x00, 0x00, 0x00,//0x38 -> !
 0x38, 0x55, 0x56, 0x54, 0x08, 0x00,//0x39 -> è
 0x3F, 0x40, 0x40, 0x40, 0x3F, 0x00,//0x3A -> U
-0x38, 0x46, 0x45, 0x46, 0x38, 0x00,//0x3B -> ô
-0x44, 0x48, 0x30, 0x10, 0x0C, 0x00,//0x3C -> y
-0x44, 0x24, 0x38, 0x48, 0x44, 0x00,//0x3D -> x
-0x08, 0x14, 0x14, 0x14, 0x7C, 0x00,//0x3E -> q
-0x20, 0x40, 0x41, 0x3F, 0x01, 0x00,//0x3F -> J
-0x3E, 0x41, 0x41, 0x49, 0x7A, 0x00,//0x40 -> G
-0x7F, 0x49, 0x49, 0x49, 0x41, 0x00,//0x41 -> E
+0x7F, 0x49, 0x49, 0x49, 0x41, 0x00,//0x3B -> E
+0x38, 0x46, 0x45, 0x46, 0x38, 0x00,//0x3C -> ô
+0x44, 0x48, 0x30, 0x10, 0x0C, 0x00,//0x3D -> y
+0x44, 0x24, 0x38, 0x48, 0x44, 0x00,//0x3E -> x
+0x08, 0x14, 0x14, 0x14, 0x7C, 0x00,//0x3F -> q
+0x20, 0x40, 0x41, 0x3F, 0x01, 0x00,//0x40 -> J
+0x3E, 0x41, 0x41, 0x49, 0x7A, 0x00,//0x41 -> G
 0x38, 0x56, 0x55, 0x56, 0x08, 0x00,//0x42 -> ê
 0x1C, 0x22, 0x62, 0x22, 0x10, 0x00,//0x43 -> ç
-0x20, 0x40, 0x44, 0x3D, 0x00, 0x00,//0x44 -> j
-0x3E, 0x41, 0x51, 0x21, 0x5E, 0x00,//0x45 -> Q
-0x20, 0x10, 0x08, 0x04, 0x02, 0x00,//0x46 -> /
+0x44, 0x64, 0x54, 0x4C, 0x44, 0x00,//0x44 -> z
+0x20, 0x40, 0x44, 0x3D, 0x00, 0x00,//0x45 -> j
+0x3E, 0x41, 0x51, 0x21, 0x5E, 0x00,//0x46 -> Q
+0x20, 0x10, 0x08, 0x04, 0x02, 0x00,//0x47 -> /
 };
 const FontSection FontSectionInfo = {
     .font12_start_ptr = USER_FONT_12,
@@ -177,7 +178,7 @@ const char* LargeSymbolSpace = "\x12";//
 const char* SmallSymbolSpace = "\x12";//  
 const char* LargeSymbolDot = "\x23";//. 
 const char* SmallSymbolDot = "\x25";//. 
-const char* SmallSymbolSlash = "\x46";/// 
+const char* SmallSymbolSlash = "\x47";/// 
 const char* SmallSymbolColon = "\x37";//: 
 const char* LargeSymbolDegC = "\x2A";//C 
 const char* SmallSymbolDegC = "\x21";//C 
@@ -194,7 +195,7 @@ const char* SmallSymbolVolts = "\x2D";//V
 const char* SmallSymbolAmps = "\x2A";//A 
 const char* LargeSymbolDC = "\x22\x2A";//DC 
 const char* LargeSymbolCellCount = "\x2F";//S 
-const char* SmallSymbolVersionNumber = "\x27\x04\x25\x04\x05\x2C\x25\x0B\x09\x02\x09\x05\x08\x05\x05";//v2.23B.97073633 
+const char* SmallSymbolVersionNumber = "\x27\x04\x25\x04\x05\x2C\x25\x05\x09\x06\x05\x08\x3B\x02\x0B";//v2.23B.37436E09 
 const char* SmallSymbolPDDebug = "\x23\x20\x12\x20\x10\x0D\x1C\x26";//PD Debug 
 const char* SmallSymbolState = "\x22\x18\x0C\x18\x10";//State 
 const char* SmallSymbolNoVBus = "\x35\x1A\x12\x2D\x2C\x1C\x19";//No VBus 
@@ -202,20 +203,20 @@ const char* SmallSymbolVBus = "\x2D\x2C\x1C\x19";//VBus
 const char* LargeSymbolSleep = "\x4B\x3B\x3B\x12";//Zzz  
 
 const char* DebugMenu[] = {
-	 "\x04\x02\x04\x08\x02\x0B\x03\x08\x12\x03\x0B\x05\x09\x02\x07",//"20260916 193705" 
+	 "\x04\x02\x04\x08\x02\x0B\x03\x0B\x12\x03\x0A\x03\x04\x02\x06",//"20260919 181204" 
 	 "\x29\x20\x12",//"ID " 
 	 "\x2A\x21\x21\x12\x12\x12",//"ACC   " 
 	 "\x23\x32\x2B\x12\x12\x12",//"PWR   " 
 	 "\x2D\x16\x15\x12\x12\x12\x12\x12\x12\x12\x12",//"Vin        " 
 	 "\x24\x16\x1F\x12\x21\x12\x12",//"Tip C  " 
 	 "\x30\x0C\x15\x12\x21\x12\x12",//"Han C  " 
-	 "\x28\x0C\x3D\x12\x21\x12\x12",//"Max C  " 
+	 "\x28\x0C\x3E\x12\x21\x12\x12",//"Max C  " 
 	 "\x3A\x1F\x24\x16\x1E\x10\x12",//"UpTime " 
 	 "\x28\x1A\x27\x10\x12\x12\x12",//"Move   " 
 	 "\x24\x16\x1F\x12\x2B\x10\x19",//"Tip Res" 
 	 "\x24\x16\x1F\x12\x2B\x12\x12",//"Tip R  " 
 	 "\x24\x16\x1F\x12\x33\x12\x12",//"Tip O  " 
-	 "\x30\x32\x12\x40\x12\x12\x12",//"HW G   " 
+	 "\x30\x32\x12\x41\x12\x12\x12",//"HW G   " 
 	 "\x30\x32\x12\x28\x12\x12\x12",//"HW M   " 
 	 "\x30\x32\x12\x23\x12\x12\x12",//"HW P   " 
 	 "\x30\x0C\x1B\x1B\x12\x12\x12",//"Hall   " 
@@ -229,13 +230,13 @@ const char* AccelTypeNames[] = {
 	 "\x2C\x28\x2A\x04\x04\x05",//BMA223 
 	 "\x28\x22\x2A\x05\x02\x03",//MSA301 
 	 "\x22\x21\x09\x2A\x04\x02",//SC7A20 
-	 "\x40\x23\x29\x33",//GPIO 
-	 "\x2E\x29\x22\x04\x12\x21\x2E\x33\x35\x41",//LIS2 CLONE 
+	 "\x41\x23\x29\x33",//GPIO 
+	 "\x2E\x29\x22\x04\x12\x21\x2E\x33\x35\x3B",//LIS2 CLONE 
 };
 
 const char* PowerSourceNames[] = {
 	 "\x20\x21",//DC 
-	 "\x45\x21",//QC 
+	 "\x46\x21",//QC 
 	 "\x23\x20",//PD 
 	 "\x23\x20",//PD 
 	 "\x2C\x2A\x24",//BAT 
@@ -245,7 +246,7 @@ const bool HasFahrenheit = false;
 
 struct {
   TranslationIndexTable indices;
-  char strings[3473];
+  char strings[3490];
 } const translation = {
   .indices = {
     .CalibrationDone = 2999, // "Étalonnage\nterminé !"
@@ -258,30 +259,31 @@ struct {
     .WarningKeysLockedString = 3120, // "! VERR. !"
     .WarningThermalRunaway = 3131, // "Surchauffe\ncritique"
     .WarningTipShorted = 3151, // "!Court-circuit Panne!"
-    .SettingsCalibrationWarning = 3174, // "Avant de redémarrer, assurez-vous que la panne et la poignée sont à température ambiante !"
-    .CJCCalibrating = 3266, // "Étalonnage\n"
-    .SettingsResetWarning = 3278, // "Voulez-vous vraiment réinitialiser les paramètres aux valeurs par défaut ?"
-    .UVLOWarningString = 3354, // "DC FAIBLE"
-    .UndervoltageString = 3365, // "Sous-tension\n"
-    .InputVoltageString = 3379, // "Tension:\n"
+    .WarningTipMissing = 3174, // "Insérez la\npanne"
+    .SettingsCalibrationWarning = 3191, // "Avant de redémarrer, assurez-vous que la panne et la poignée sont à température ambiante !"
+    .CJCCalibrating = 3283, // "Étalonnage\n"
+    .SettingsResetWarning = 3295, // "Voulez-vous vraiment réinitialiser les paramètres aux valeurs par défaut ?"
+    .UVLOWarningString = 3371, // "DC FAIBLE"
+    .UndervoltageString = 3382, // "Sous-tension\n"
+    .InputVoltageString = 3396, // "Tension:\n"
     .ProfilePreheatString = 224, // ""
     .ProfileCooldownString = 224, // ""
-    .SleepingAdvancedString = 3389, // "En veille...\n"
-    .SleepingTipAdvancedString = 3403, // "Panne:\n"
-    .DeviceFailedValidationWarning = 3411, // "Votre appareil semble être une contrefaçon !"
+    .SleepingAdvancedString = 3406, // "En veille...\n"
+    .SleepingTipAdvancedString = 3420, // "Panne:\n"
+    .DeviceFailedValidationWarning = 3428, // "Votre appareil semble être une contrefaçon !"
     .TooHotToStartProfileWarning = 224, // ""
 
     .SettingRightChar = 1778, // "D"
-    .SettingLeftChar = 3457, // "G"
-    .SettingAutoChar = 3459, // "A"
-    .SettingSlowChar = 3461, // "L"
-    .SettingMediumChar = 3463, // "M"
-    .SettingFastChar = 3465, // "R"
-    .SettingStartSolderingChar = 3459, // "A"
-    .SettingStartSleepChar = 3467, // "V"
-    .SettingStartSleepOffChar = 3469, // "O"
-    .SettingLockBoostChar = 3471, // "B"
-    .SettingLockFullChar = 3467, // "V"
+    .SettingLeftChar = 3474, // "G"
+    .SettingAutoChar = 3476, // "A"
+    .SettingSlowChar = 3478, // "L"
+    .SettingMediumChar = 3480, // "M"
+    .SettingFastChar = 3482, // "R"
+    .SettingStartSolderingChar = 3476, // "A"
+    .SettingStartSleepChar = 3484, // "V"
+    .SettingStartSleepOffChar = 3486, // "O"
+    .SettingLockBoostChar = 3488, // "B"
+    .SettingLockFullChar = 3484, // "V"
     .USBPDModeDefault = 2802, // {"displayText": "Mode\npar Défaut"}
     .USBPDModeNoDynamic = 2818, // {"displayText": "Non\nDynamique"}
     .USBPDModeSafe = 2832, // {"displayText": "Mode\nSécurisé"}
@@ -436,7 +438,7 @@ struct {
     //  226: "Délai de négociation PD par paliers de 100ms pour la compatibilité avec certains chargeurs QC"
     "\x22\x1E\x1A\x0C\x17\x12\x0F\x10\x12\x18\x1E\x26\x1C\x0E\x17\x0C\x19\x17\x1C\x18\x12\x2E\x22\x12\x1F\x0C\x15\x12\x1F\x0C\x1A\x17\x10\x15\x16\x12\x0F\x10\x12\x03\x02\x02\x1D\x16\x12\x1F\x1C\x1B\x15\x12\x1A\x0C\x12\x0E\x1C\x1D\x1F\x0C\x19\x17\x0D\x17\x1A\x17\x19\x1E\x12\x0C\x20\x10\x0E\x12\x0E\x10\x15\x19\x0C\x17\x18\x16\x12\x0E\x28\x0C\x15\x26\x10\x1B\x15\x16\x12\x4C\x2A" "\0"
     //  320: "Délai\nexpir. PD"
-    "\x20\x1D\x1B\x0C\x16\x01\x10\x3D\x1F\x16\x17\x25\x12\x23\x20" "\0"
+    "\x20\x1D\x1B\x0C\x16\x01\x10\x3E\x1F\x16\x17\x25\x12\x23\x20" "\0"
     //  336: "Le mode Non Dynamique désactive EPR & PPS, le mode Sécurisé n'utilise pas de résistance à la protection"
     "\x31\x10\x12\x1D\x1C\x0F\x10\x12\x4D\x1C\x18\x12\x22\x3C\x18\x0C\x1D\x17\x32\x1B\x10\x12\x0F\x1E\x16\x0C\x0E\x19\x17\x20\x10\x12\x38\x2E\x2D\x12\x52\x12\x2E\x2E\x2F\x39\x12\x1A\x10\x12\x1D\x1C\x0F\x10\x12\x2F\x1E\x0E\x1B\x15\x17\x16\x1E\x12\x18\x2C\x1B\x19\x17\x1A\x17\x16\x10\x12\x1F\x0C\x16\x12\x0F\x10\x12\x15\x1E\x16\x17\x16\x19\x0C\x18\x0E\x10\x12\x3A\x12\x1A\x0C\x12\x1F\x15\x1C\x19\x10\x0E\x19\x17\x1C\x18" "\0"
     //  440: "Mode\nPD"
@@ -504,11 +506,11 @@ struct {
     // 1553: "Vitesse des animations des icônes dans le menu (L=lente | M=moyenne | R=rapide)"
     "\x27\x17\x19\x10\x16\x16\x10\x12\x0F\x10\x16\x12\x0C\x18\x17\x1D\x0C\x19\x17\x1C\x18\x16\x12\x0F\x10\x16\x12\x17\x0E\x42\x18\x10\x16\x12\x0F\x0C\x18\x16\x12\x1A\x10\x12\x1D\x10\x18\x1B\x12\x25\x31\x21\x1A\x10\x18\x19\x10\x12\x29\x12\x45\x21\x1D\x1C\x3C\x10\x18\x18\x10\x12\x29\x12\x2D\x21\x15\x0C\x1F\x17\x0F\x10\x24" "\0"
     // 1633: "Vitesse\nanim. icônes"
-    "\x2D\x16\x18\x10\x19\x19\x10\x01\x0C\x15\x16\x1E\x25\x12\x16\x0E\x3B\x15\x10\x19" "\0"
+    "\x2D\x16\x18\x10\x19\x19\x10\x01\x0C\x15\x16\x1E\x25\x12\x16\x0E\x3C\x15\x10\x19" "\0"
     // 1654: "Rejouer en boucle les animations des icônes dans le menu principal"
     "\x2D\x10\x40\x1C\x1B\x10\x15\x12\x10\x18\x12\x0D\x1C\x1B\x0E\x1A\x10\x12\x1A\x10\x16\x12\x0C\x18\x17\x1D\x0C\x19\x17\x1C\x18\x16\x12\x0F\x10\x16\x12\x17\x0E\x42\x18\x10\x16\x12\x0F\x0C\x18\x16\x12\x1A\x10\x12\x1D\x10\x18\x1B\x12\x1F\x15\x17\x18\x0E\x17\x1F\x0C\x1A" "\0"
     // 1721: "Rejouer\nanim. icônes"
-    "\x2B\x10\x44\x1A\x1C\x10\x17\x01\x0C\x15\x16\x1E\x25\x12\x16\x0E\x3B\x15\x10\x19" "\0"
+    "\x2B\x10\x45\x1A\x1C\x10\x17\x01\x0C\x15\x16\x1E\x25\x12\x16\x0E\x3C\x15\x10\x19" "\0"
     // 1742: "Ajuster la luminosité de l'écran OLED"
     "\x2B\x40\x1B\x16\x19\x10\x15\x12\x1A\x0C\x12\x1A\x1B\x1D\x17\x18\x1C\x16\x17\x19\x1E\x12\x0F\x10\x12\x1A\x2C\x1E\x0E\x15\x0C\x18\x12\x36\x31\x38\x22" "\0"
     // 1780: "Luminosité\nde l'écran"
@@ -536,7 +538,7 @@ struct {
     // 2170: "Au prochain démarrage, la compensation de soudure froide (CJC) sera calibrée (non nécessaire si Delta T est < 5°C)."
     "\x2B\x1B\x12\x1F\x15\x1C\x0E\x28\x0C\x17\x18\x12\x0F\x1E\x1D\x0C\x15\x15\x0C\x26\x10\x39\x12\x1A\x0C\x12\x0E\x1C\x1D\x1F\x10\x18\x16\x0C\x19\x17\x1C\x18\x12\x0F\x10\x12\x16\x1C\x1B\x0F\x1B\x15\x10\x12\x11\x15\x1C\x17\x0F\x10\x12\x25\x2A\x4F\x2A\x24\x12\x16\x10\x15\x0C\x12\x0E\x0C\x1A\x17\x0D\x15\x1E\x10\x12\x25\x18\x1C\x18\x12\x18\x1E\x0E\x10\x16\x16\x0C\x17\x15\x10\x12\x16\x17\x12\x22\x10\x1A\x19\x0C\x12\x3D\x12\x10\x16\x19\x12\x51\x12\x07\x4A\x2A\x24\x23" "\0"
     // 2286: "Étalonner CJC\nau reboot"
-    "\x2F\x18\x0C\x1B\x1A\x15\x15\x10\x17\x12\x21\x3F\x21\x01\x0C\x1C\x12\x17\x10\x0D\x1A\x1A\x18" "\0"
+    "\x2F\x18\x0C\x1B\x1A\x15\x15\x10\x17\x12\x21\x40\x21\x01\x0C\x1C\x12\x17\x10\x0D\x1A\x1A\x18" "\0"
     // 2310: "Étalonner tension d'entrée (appui long pour quitter)"
     "\x49\x19\x0C\x1A\x1C\x18\x18\x10\x15\x12\x19\x10\x18\x16\x17\x1C\x18\x12\x0F\x2C\x10\x18\x19\x15\x1E\x10\x12\x25\x0C\x1F\x1F\x1B\x17\x12\x1A\x1C\x18\x26\x12\x1F\x1C\x1B\x15\x12\x32\x1B\x17\x19\x19\x10\x15\x24" "\0"
     // 2363: "Étalonner\ntension d'entrée"
@@ -562,11 +564,11 @@ struct {
     // 2750: "Séléctionner le type de panne utilisé"
     "\x2F\x1E\x1A\x1E\x0E\x19\x17\x1C\x18\x18\x10\x15\x12\x1A\x10\x12\x19\x3C\x1F\x10\x12\x0F\x10\x12\x1F\x0C\x18\x18\x10\x12\x1B\x19\x17\x1A\x17\x16\x1E" "\0"
     // 2788: "Type\nde panne"
-    "\x24\x3C\x1F\x10\x01\x0F\x10\x12\x1F\x0C\x15\x15\x10" "\0"
+    "\x24\x3D\x1F\x10\x01\x0F\x10\x12\x1F\x0C\x15\x15\x10" "\0"
     // 2802: "Mode\npar Défaut"
     "\x28\x1A\x0F\x10\x01\x1F\x0C\x17\x12\x20\x1D\x11\x0C\x1C\x18" "\0"
     // 2818: "Non\nDynamique"
-    "\x35\x1A\x15\x01\x20\x3C\x15\x0C\x1E\x16\x3E\x1C\x10" "\0"
+    "\x35\x1A\x15\x01\x20\x3D\x15\x0C\x1E\x16\x3F\x1C\x10" "\0"
     // 2832: "Mode\nSécurisé"
     "\x28\x1A\x0F\x10\x01\x22\x1D\x0E\x1C\x17\x16\x19\x1D" "\0"
     // 2846: "Détéction\nAuto."
@@ -580,7 +582,7 @@ struct {
     // 2892: "TS80\n"
     "\x24\x22\x0A\x02\x01" "\0"
     // 2898: "JBC\nC210"
-    "\x3F\x2C\x21\x01\x21\x04\x03\x02" "\0"
+    "\x40\x2C\x21\x01\x21\x04\x03\x02" "\0"
     // 2907: "Paramètres\nd'alim."
     "\x23\x0C\x17\x0C\x1E\x39\x18\x17\x10\x19\x01\x0F\x31\x0C\x1B\x16\x1E\x25" "\0"
     // 2926: "Paramètres\nde soudure"
@@ -608,42 +610,44 @@ struct {
     // 3120: "\n! VERR. !"
     "\x01\x34\x12\x27\x38\x2D\x2D\x23\x12\x34" "\0"
     // 3131: "Surchauffe\ncritique"
-    "\x22\x1C\x17\x0E\x34\x0C\x1C\x11\x11\x10\x01\x0E\x17\x16\x18\x16\x3E\x1C\x10" "\0"
+    "\x22\x1C\x17\x0E\x34\x0C\x1C\x11\x11\x10\x01\x0E\x17\x16\x18\x16\x3F\x1C\x10" "\0"
     // 3151: "\n!Court-circuit Panne!"
     "\x01\x34\x2A\x1C\x1B\x15\x19\x13\x0E\x17\x15\x0E\x1B\x17\x19\x12\x2E\x0C\x18\x18\x10\x34" "\0"
-    // 3174: "\nAvant de redémarrer, assurez-vous que la panne et la poignée sont à température ambiante !"
+    // 3174: "Insérez la\npanne"
+    "\x29\x15\x19\x1D\x17\x10\x44\x12\x1B\x0C\x01\x1F\x0C\x15\x15\x10" "\0"
+    // 3191: "\nAvant de redémarrer, assurez-vous que la panne et la poignée sont à température ambiante !"
     "\x01\x2B\x20\x0C\x18\x19\x12\x0F\x10\x12\x15\x10\x0F\x1E\x1D\x0C\x15\x15\x10\x15\x39\x12\x0C\x16\x16\x1B\x15\x10\x3B\x13\x20\x1C\x1B\x16\x12\x32\x1B\x10\x12\x1A\x0C\x12\x1F\x0C\x18\x18\x10\x12\x10\x19\x12\x1A\x0C\x12\x1F\x1C\x17\x26\x18\x1E\x10\x12\x16\x1C\x18\x19\x12\x3A\x12\x19\x10\x1D\x1F\x1E\x15\x0C\x19\x1B\x15\x10\x12\x0C\x1D\x0D\x17\x0C\x18\x19\x10\x12\x34" "\0"
-    // 3266: "Étalonnage\n"
+    // 3283: "Étalonnage\n"
     "\x2F\x18\x0C\x1B\x1A\x15\x15\x0C\x26\x10\x01" "\0"
-    // 3278: "\nVoulez-vous vraiment réinitialiser les paramètres aux valeurs par défaut ?"
+    // 3295: "\nVoulez-vous vraiment réinitialiser les paramètres aux valeurs par défaut ?"
     "\x01\x27\x1C\x1B\x1A\x10\x3B\x13\x20\x1C\x1B\x16\x12\x20\x15\x0C\x17\x1D\x10\x18\x19\x12\x15\x1E\x17\x18\x17\x19\x17\x0C\x1A\x17\x16\x10\x15\x12\x1A\x10\x16\x12\x1F\x0C\x15\x0C\x1D\x3F\x19\x15\x10\x16\x12\x0C\x1B\x30\x12\x20\x0C\x1A\x10\x1B\x15\x16\x12\x1F\x0C\x15\x12\x0F\x1E\x11\x0C\x1B\x19\x12\x50" "\0"
-    // 3354: "\nDC FAIBLE"
+    // 3371: "\nDC FAIBLE"
     "\x01\x22\x2A\x12\x37\x2B\x33\x41\x31\x38" "\0"
-    // 3365: "Sous-tension\n"
+    // 3382: "Sous-tension\n"
     "\x22\x1A\x1C\x19\x13\x18\x10\x15\x19\x16\x1A\x15\x01" "\0"
-    // 3379: "Tension:\n"
+    // 3396: "Tension:\n"
     "\x24\x10\x15\x19\x16\x1A\x15\x37\x01" "\0"
-    // 3389: "En veille...\n"
-    "\x41\x15\x12\x27\x10\x16\x1B\x1B\x10\x25\x25\x25\x01" "\0"
-    // 3403: "Panne:\n"
+    // 3406: "En veille...\n"
+    "\x3B\x15\x12\x27\x10\x16\x1B\x1B\x10\x25\x25\x25\x01" "\0"
+    // 3420: "Panne:\n"
     "\x23\x0C\x15\x15\x10\x37\x01" "\0"
-    // 3411: "\nVotre appareil semble être une contrefaçon !"
+    // 3428: "\nVotre appareil semble être une contrefaçon !"
     "\x01\x27\x1C\x19\x15\x10\x12\x0C\x1F\x1F\x0C\x15\x10\x17\x1A\x12\x16\x10\x1D\x0D\x1A\x10\x12\x35\x19\x15\x10\x12\x1B\x18\x10\x12\x0E\x1C\x18\x19\x15\x10\x11\x0C\x48\x1C\x18\x12\x34" "\0"
-    // 3457: "G"
+    // 3474: "G"
     "\x46" "\0"
-    // 3459: "A"
+    // 3476: "A"
     "\x2B" "\0"
-    // 3461: "L"
+    // 3478: "L"
     "\x31" "\0"
-    // 3463: "M"
+    // 3480: "M"
     "\x45" "\0"
-    // 3465: "R"
+    // 3482: "R"
     "\x2D" "\0"
-    // 3467: "V"
+    // 3484: "V"
     "\x27" "\0"
-    // 3469: "O"
+    // 3486: "O"
     "\x36" "\0"
-    // 3471: "B"
+    // 3488: "B"
     "\x41"
   }, // .strings
 

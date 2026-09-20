@@ -33,6 +33,9 @@
     "WarningTipShorted": {
       "message": "!Tip Shorted!"
     },
+    "WarningTipMissing": {
+      "message": "Insert tip"
+    },
     "SettingsCalibrationWarning": {
       "message": "Before rebooting, make sure tip & handle are at room temperature!"
     },

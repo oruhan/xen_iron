@@ -31,10 +31,11 @@ void ui_draw_temperature_fullscreen_animated(TemperatureType_t temperature, uint
 void ui_draw_temperature_small(TemperatureType_t temperature, uint8_t x, uint8_t y); // Draw value, degree mark and C/F in one 8px row
 void ui_get_temperature_slide_frame(TemperatureType_t temperature, TemperatureAnimationSlot slot, uint8_t height, TemperatureSlideFrame &frame);
 bool warnUser(const char *warning, const ButtonState buttons);   // Print a full screen warning to the user
+bool warnUserWithIcon(const char *warning, const ButtonState buttons); // Print a warning icon and compact message
 void ui_draw_cjc_sampling(const uint8_t num_dots);               // Draws the CJC info text and progress dots
 void ui_draw_debug_menu(const uint8_t item_number);              // Draws the debug menu state
 void ui_draw_homescreen_detailed(TemperatureType_t tipTemp);     // Drawing the home screen -- Detailed mode
-void ui_draw_homescreen_simplified(TemperatureType_t tipTemp);   // Drawing the home screen -- Simple mode
+void ui_draw_homescreen_simplified(TemperatureType_t tipTemp, TickType_t viewEnterTime); // Drawing the home screen -- Simple mode
 void ui_pre_render_assets(void);                                 // If any assets need to be pre-rendered into ram
 // Soldering mode
 void ui_draw_soldering_power_status(bool boost_mode_on);

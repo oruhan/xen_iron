@@ -69,9 +69,10 @@ OperatingMode handleSolderingButtons(const ButtonState buttons, guiContext *cxt)
     break;
   case BUTTON_F_SHORT:
   case BUTTON_B_SHORT:
-    // These two full-screen layouts switch directly. Sliding them exposes the
-    // black background between panels for a frame on the 128x32 TS101 OLED.
-    cxt->transitionMode = TransitionAnimation::None;
+    // Present temperature adjustment as a temporary panel rising from below.
+    // The vertical framebuffer transition keeps every scan line populated, so
+    // it does not reintroduce the black flash of the old horizontal slide.
+    cxt->transitionMode = TransitionAnimation::Down;
     return OperatingMode::TemperatureAdjust;
   case BUTTON_BOTH_LONG:
     if (getSettingValue(SettingsOptions::LockingMode)) {

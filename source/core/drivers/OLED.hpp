@@ -106,6 +106,8 @@ public:
   static void clearScreen() { memset(stripPointers[0], 0, OLED_FRAMEBUFFER_BYTES); }
   // Draws the battery level symbol
   static void drawBattery(uint8_t state) { drawSymbol(3 + (state > 10 ? 10 : state)); }
+  // Draws the battery in its 12px status column while using all 32 display rows.
+  static void drawBatteryFullHeight(uint8_t state);
   // Draws a checkbox
   static void drawCheckbox(bool state) { drawSymbol((state) ? 16 : 17); }
   inline static void drawUnavailableIcon() { drawArea(OLED_WIDTH - OLED_HEIGHT - 2, 0, OLED_HEIGHT, OLED_HEIGHT, UnavailableIcon); }
@@ -115,6 +117,8 @@ public:
   static void drawSymbolFullscreen(uint8_t symbolID);                                                 // Draw a 12x16 symbol scaled to 24x32
   static void drawArea(int16_t x, int8_t y, uint8_t wide, uint8_t height, const uint8_t *ptr);        // Draw an area, but y must be aligned on 0/8 offset
   static void drawAreaClipped(int16_t x, int16_t y, uint8_t width, uint8_t height, const uint8_t *ptr, uint8_t scale, uint8_t clipY0, uint8_t clipY1);
+  static void clearAreaMasked(int16_t x, int16_t y, uint8_t width, uint8_t height, const uint8_t *mask); // Clear only pixels selected by an unaligned page bitmap
+  static void invertAreaMasked(int16_t x, int8_t y, uint8_t width, uint8_t height, const uint8_t *mask); // XOR only pixels selected by a page-ordered mask
   static void drawAreaFullscreen(int16_t x, const uint8_t *ptr);                                      // Draw a 12x16 area scaled to 24x32
   static void drawAreaSwapped(int16_t x, int8_t y, uint8_t wide, uint8_t height, const uint8_t *ptr); // Draw an area, but y must be aligned on 0/8 offset
   static void fillArea(int16_t x, int8_t y, uint8_t wide, uint8_t height, const uint8_t value);       // Fill an area, but y must be aligned on 0/8 offset

@@ -33,6 +33,9 @@
     "WarningTipShorted": {
       "message": "!КЗ на жале!"
     },
+    "WarningTipMissing": {
+      "message": "Установите\nжало"
+    },
     "SettingsCalibrationWarning": {
       "message": "Пожалуйста, убедитесь, что жало и корпус имеют комнатную температуру при следующей загрузке!"
     },

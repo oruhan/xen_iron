@@ -87,7 +87,19 @@ I2C_CLASS::I2C_REG OLED_Setup_Array[] = {
  * Returns a new percentage value with ease in and ease out.
  * Original floating point formula: t * t * (3.0f - 2.0f * t);
  */
-static uint16_t easeInOutTiming(uint16_t t) { return t * t * (300 - 2 * t) / 10000; }
+static uint16_t easeInOutPosition(const uint16_t position, const uint16_t extent) {
+  if (extent == 0) {
+    return 0;
+  }
+  if (position >= extent) {
+    return extent;
+  }
+  const uint32_t denominator = uint32_t(extent) * extent * extent;
+  const uint32_t numerator   = uint32_t(extent) * position * position * (3U * extent - 2U * position);
+  return (numerator + denominator / 2U) / denominator;
+}
+
+static uint16_t easeInOutTiming(const uint16_t t) { return easeInOutPosition(t, 100); }
 
 /*
  * Returns the value between a and b, using a percentage value t.
@@ -416,33 +428,38 @@ void OLED::transitionScrollDown(const TickType_t viewEnterTime, const bool anima
   const uint32_t newScrollbar = animateScrollbar ? readPageColumn(stripBackPointers, OLED_WIDTH - 1) : 0;
   const uint8_t  contentWidth = animateScrollbar ? OLED_WIDTH - 1 : OLED_WIDTH;
 
-  for (uint8_t heightPos = 0; heightPos < OLED_HEIGHT; heightPos++) {
-    // For each line, we shuffle all bits up a row
-    for (uint8_t xPos = 0; xPos < contentWidth; xPos++) {
-      const uint16_t firstStripPos  = FRAMEBUFFER_START + xPos;
-      const uint16_t secondStripPos = firstStripPos + OLED_WIDTH;
-      // For 32 pixel high OLED's we have four strips to tailchain
-      const uint16_t thirdStripPos  = secondStripPos + OLED_WIDTH;
-      const uint16_t fourthStripPos = thirdStripPos + OLED_WIDTH;
-      // Move the MSB off the first strip, and pop MSB from second strip onto the first strip
-      screenBuffer[firstStripPos] = (screenBuffer[firstStripPos] >> 1) | ((screenBuffer[secondStripPos] & 0x01) << 7);
-      // Now shuffle off the second strip
-      screenBuffer[secondStripPos] = (screenBuffer[secondStripPos] >> 1) | ((screenBuffer[thirdStripPos] & 0x01) << 7);
-      // Now shuffle off the third strip
-      screenBuffer[thirdStripPos] = (screenBuffer[thirdStripPos] >> 1) | ((screenBuffer[fourthStripPos] & 0x01) << 7);
-      // Now forth strip gets the start of the new buffer
-      screenBuffer[fourthStripPos] = (screenBuffer[fourthStripPos] >> 1) | ((secondFrameBuffer[firstStripPos] & 0x01) << 7);
-      // Now cycle all the secondary buffers
+  uint8_t shiftedRows = 0;
+  for (uint8_t animationStep = 0; animationStep < OLED_HEIGHT; animationStep++) {
+    const uint8_t targetRows     = easeInOutPosition(animationStep + 1, OLED_HEIGHT);
+    const uint8_t easedProgress = (targetRows * 100U) / OLED_HEIGHT;
+    while (shiftedRows < targetRows) {
+      // Move as many scan lines as the in-out curve requires for this frame.
+      for (uint8_t xPos = 0; xPos < contentWidth; xPos++) {
+        const uint16_t firstStripPos  = FRAMEBUFFER_START + xPos;
+        const uint16_t secondStripPos = firstStripPos + OLED_WIDTH;
+        // For 32 pixel high OLED's we have four strips to tailchain
+        const uint16_t thirdStripPos  = secondStripPos + OLED_WIDTH;
+        const uint16_t fourthStripPos = thirdStripPos + OLED_WIDTH;
+        // Move the MSB off the first strip, and pop MSB from second strip onto the first strip
+        screenBuffer[firstStripPos] = (screenBuffer[firstStripPos] >> 1) | ((screenBuffer[secondStripPos] & 0x01) << 7);
+        // Now shuffle off the second strip
+        screenBuffer[secondStripPos] = (screenBuffer[secondStripPos] >> 1) | ((screenBuffer[thirdStripPos] & 0x01) << 7);
+        // Now shuffle off the third strip
+        screenBuffer[thirdStripPos] = (screenBuffer[thirdStripPos] >> 1) | ((screenBuffer[fourthStripPos] & 0x01) << 7);
+        // Now forth strip gets the start of the new buffer
+        screenBuffer[fourthStripPos] = (screenBuffer[fourthStripPos] >> 1) | ((secondFrameBuffer[firstStripPos] & 0x01) << 7);
+        // Now cycle all the secondary buffers
 
-      secondFrameBuffer[firstStripPos]  = (secondFrameBuffer[firstStripPos] >> 1) | ((secondFrameBuffer[secondStripPos] & 0x01) << 7);
-      secondFrameBuffer[secondStripPos] = (secondFrameBuffer[secondStripPos] >> 1) | ((secondFrameBuffer[thirdStripPos] & 0x01) << 7);
-      secondFrameBuffer[thirdStripPos]  = (secondFrameBuffer[thirdStripPos] >> 1) | ((secondFrameBuffer[fourthStripPos] & 0x01) << 7);
-      // Finally on the bottom row; we shuffle it up ready
-      secondFrameBuffer[fourthStripPos] >>= 1;
+        secondFrameBuffer[firstStripPos]  = (secondFrameBuffer[firstStripPos] >> 1) | ((secondFrameBuffer[secondStripPos] & 0x01) << 7);
+        secondFrameBuffer[secondStripPos] = (secondFrameBuffer[secondStripPos] >> 1) | ((secondFrameBuffer[thirdStripPos] & 0x01) << 7);
+        secondFrameBuffer[thirdStripPos]  = (secondFrameBuffer[thirdStripPos] >> 1) | ((secondFrameBuffer[fourthStripPos] & 0x01) << 7);
+        // Finally on the bottom row; we shuffle it up ready
+        secondFrameBuffer[fourthStripPos] >>= 1;
+      }
+      shiftedRows++;
     }
     if (animateScrollbar) {
-      const uint8_t progress = easeInOutTiming(((heightPos + 1) * 100) / OLED_HEIGHT);
-      writePageColumn(stripPointers, OLED_WIDTH - 1, interpolateScrollbar(oldScrollbar, newScrollbar, progress));
+      writePageColumn(stripPointers, OLED_WIDTH - 1, interpolateScrollbar(oldScrollbar, newScrollbar, easedProgress));
     }
     buttonsReleased |= getButtonState() == BUTTON_NONE;
     if (getButtonState() != BUTTON_NONE && buttonsReleased) {
@@ -452,7 +469,7 @@ void OLED::transitionScrollDown(const TickType_t viewEnterTime, const bool anima
       return;
     }
     // To keep things faster, only redraw every second line
-    if (heightPos % 2 == 0) {
+    if (animationStep % 2 == 0) {
       refresh(); // Now refresh to write out the contents to the new page
     }
     vTaskDelayUntil(&startDraw, TICKS_100MS / 7);
@@ -474,29 +491,34 @@ void OLED::transitionScrollUp(const TickType_t viewEnterTime, const bool animate
   const uint32_t newScrollbar = animateScrollbar ? readPageColumn(stripBackPointers, OLED_WIDTH - 1) : 0;
   const uint8_t  contentWidth = animateScrollbar ? OLED_WIDTH - 1 : OLED_WIDTH;
 
-  for (uint8_t heightPos = 0; heightPos < OLED_HEIGHT; heightPos++) {
-    // For each line, we shuffle all bits down a row
-    for (uint8_t xPos = 0; xPos < contentWidth; xPos++) {
-      const uint16_t firstStripPos  = FRAMEBUFFER_START + xPos;
-      const uint16_t secondStripPos = firstStripPos + OLED_WIDTH;
-      // For 32 pixel high OLED's we have four strips to tailchain
-      const uint16_t thirdStripPos  = secondStripPos + OLED_WIDTH;
-      const uint16_t fourthStripPos = thirdStripPos + OLED_WIDTH;
-      // We are shffling LSB's off the end and pushing bits down
-      screenBuffer[fourthStripPos] = (screenBuffer[fourthStripPos] << 1) | ((screenBuffer[thirdStripPos] & 0x80) >> 7);
-      screenBuffer[thirdStripPos]  = (screenBuffer[thirdStripPos] << 1) | ((screenBuffer[secondStripPos] & 0x80) >> 7);
-      screenBuffer[secondStripPos] = (screenBuffer[secondStripPos] << 1) | ((screenBuffer[firstStripPos] & 0x80) >> 7);
-      screenBuffer[firstStripPos]  = (screenBuffer[firstStripPos] << 1) | ((secondFrameBuffer[fourthStripPos] & 0x80) >> 7);
+  uint8_t shiftedRows = 0;
+  for (uint8_t animationStep = 0; animationStep < OLED_HEIGHT; animationStep++) {
+    const uint8_t targetRows     = easeInOutPosition(animationStep + 1, OLED_HEIGHT);
+    const uint8_t easedProgress = (targetRows * 100U) / OLED_HEIGHT;
+    while (shiftedRows < targetRows) {
+      // Move as many scan lines as the in-out curve requires for this frame.
+      for (uint8_t xPos = 0; xPos < contentWidth; xPos++) {
+        const uint16_t firstStripPos  = FRAMEBUFFER_START + xPos;
+        const uint16_t secondStripPos = firstStripPos + OLED_WIDTH;
+        // For 32 pixel high OLED's we have four strips to tailchain
+        const uint16_t thirdStripPos  = secondStripPos + OLED_WIDTH;
+        const uint16_t fourthStripPos = thirdStripPos + OLED_WIDTH;
+        // We are shffling LSB's off the end and pushing bits down
+        screenBuffer[fourthStripPos] = (screenBuffer[fourthStripPos] << 1) | ((screenBuffer[thirdStripPos] & 0x80) >> 7);
+        screenBuffer[thirdStripPos]  = (screenBuffer[thirdStripPos] << 1) | ((screenBuffer[secondStripPos] & 0x80) >> 7);
+        screenBuffer[secondStripPos] = (screenBuffer[secondStripPos] << 1) | ((screenBuffer[firstStripPos] & 0x80) >> 7);
+        screenBuffer[firstStripPos]  = (screenBuffer[firstStripPos] << 1) | ((secondFrameBuffer[fourthStripPos] & 0x80) >> 7);
 
-      secondFrameBuffer[fourthStripPos] = (secondFrameBuffer[fourthStripPos] << 1) | ((secondFrameBuffer[thirdStripPos] & 0x80) >> 7);
-      secondFrameBuffer[thirdStripPos]  = (secondFrameBuffer[thirdStripPos] << 1) | ((secondFrameBuffer[secondStripPos] & 0x80) >> 7);
-      secondFrameBuffer[secondStripPos] = (secondFrameBuffer[secondStripPos] << 1) | ((secondFrameBuffer[firstStripPos] & 0x80) >> 7);
-      // Finally on the bottom row; we shuffle it up ready
-      secondFrameBuffer[firstStripPos] <<= 1;
+        secondFrameBuffer[fourthStripPos] = (secondFrameBuffer[fourthStripPos] << 1) | ((secondFrameBuffer[thirdStripPos] & 0x80) >> 7);
+        secondFrameBuffer[thirdStripPos]  = (secondFrameBuffer[thirdStripPos] << 1) | ((secondFrameBuffer[secondStripPos] & 0x80) >> 7);
+        secondFrameBuffer[secondStripPos] = (secondFrameBuffer[secondStripPos] << 1) | ((secondFrameBuffer[firstStripPos] & 0x80) >> 7);
+        // Finally on the bottom row; we shuffle it up ready
+        secondFrameBuffer[firstStripPos] <<= 1;
+      }
+      shiftedRows++;
     }
     if (animateScrollbar) {
-      const uint8_t progress = easeInOutTiming(((heightPos + 1) * 100) / OLED_HEIGHT);
-      writePageColumn(stripPointers, OLED_WIDTH - 1, interpolateScrollbar(oldScrollbar, newScrollbar, progress));
+      writePageColumn(stripPointers, OLED_WIDTH - 1, interpolateScrollbar(oldScrollbar, newScrollbar, easedProgress));
     }
     buttonsReleased |= getButtonState() == BUTTON_NONE;
     if (getButtonState() != BUTTON_NONE && buttonsReleased) {
@@ -507,7 +529,7 @@ void OLED::transitionScrollUp(const TickType_t viewEnterTime, const bool animate
     }
 
     // To keep things faster, only redraw every second line
-    if (heightPos % 2 == 0) {
+    if (animationStep % 2 == 0) {
       refresh(); // Now refresh to write out the contents to the new page
     }
     vTaskDelayUntil(&startDraw, TICKS_100MS / 7);
@@ -723,6 +745,13 @@ void OLED::drawSymbol(uint8_t symbolID) {
   drawChar(symbolID, FontStyle::EXTRAS, 0);
 }
 
+void OLED::drawBatteryFullHeight(uint8_t state) {
+  constexpr uint8_t BatteryWidth = 12;
+  state                          = state > 10 ? 10 : state;
+  drawArea(cursor_x, 0, BatteryWidth, OLED_HEIGHT, FullHeightBatteryIcons[state]);
+  cursor_x += BatteryWidth;
+}
+
 void OLED::drawSymbolFullscreen(uint8_t symbolID) {
   const uint8_t *symbol = ExtraFontChars + (symbolID * 12 * 2);
   drawAreaFullscreen(cursor_x, symbol);
@@ -815,6 +844,38 @@ void OLED::drawArea(int16_t x, int8_t y, uint8_t width, uint8_t height, const ui
     }
     height -= 8;
     rowsDrawn++;
+  }
+}
+
+void OLED::invertAreaMasked(int16_t x, int8_t y, uint8_t width, uint8_t height, const uint8_t *mask) {
+  if ((y % 8) != 0 || y < 0 || y + height > OLED_HEIGHT || x <= -width || x >= OLED_WIDTH) {
+    return;
+  }
+  const uint8_t visibleStart = x < 0 ? -x : 0;
+  const uint8_t visibleEnd   = x + width > OLED_WIDTH ? OLED_WIDTH - x : width;
+  const uint8_t pages        = (height + 7) / 8;
+  for (uint8_t page = 0; page < pages; page++) {
+    for (uint8_t sourceX = visibleStart; sourceX < visibleEnd; sourceX++) {
+      stripPointers[(y / 8) + page][x + sourceX] ^= mask[page * width + sourceX];
+    }
+  }
+}
+
+void OLED::clearAreaMasked(int16_t x, int16_t y, uint8_t width, uint8_t height, const uint8_t *mask) {
+  for (uint8_t sourceY = 0; sourceY < height; sourceY++) {
+    const int16_t destinationY = y + sourceY;
+    if (destinationY < 0 || destinationY >= OLED_HEIGHT) {
+      continue;
+    }
+    for (uint8_t sourceX = 0; sourceX < width; sourceX++) {
+      if ((mask[(sourceY / 8) * width + sourceX] & (1U << (sourceY % 8))) == 0) {
+        continue;
+      }
+      const int16_t destinationX = x + sourceX;
+      if (destinationX >= 0 && destinationX < OLED_WIDTH) {
+        stripPointers[destinationY / 8][destinationX] &= ~(1U << (destinationY % 8));
+      }
+    }
   }
 }
 

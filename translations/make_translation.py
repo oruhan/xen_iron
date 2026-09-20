@@ -203,6 +203,13 @@ def test_is_small_font(msg: str) -> bool:
     return "\n" in msg and msg[0] != "\n"
 
 
+def force_small_font(definition: dict, language_code: str) -> bool:
+    setting = definition.get("forceSmallFont", False)
+    return setting is True or (
+        isinstance(setting, list) and language_code in setting
+    )
+
+
 def get_letter_counts(defs: dict, lang: dict, build_version: str) -> Dict:
     """From the source definitions, language file and build version; calculates the ranked symbol list
 
@@ -223,7 +230,7 @@ def get_letter_counts(defs: dict, lang: dict, build_version: str) -> Dict:
     for mod in defs["messagesWarn"]:
         eid = mod["id"]
         msg = obj[eid]["message"]
-        if test_is_small_font(msg):
+        if force_small_font(mod, lang["languageCode"]) or test_is_small_font(msg):
             small_font_messages.append(msg)
         else:
             big_font_messages.append(msg)
@@ -1103,10 +1110,13 @@ def get_translation_strings_and_indices_text(
         translated_string_lookups[translation_id] = record
 
     def encode_string_and_add(
-        message: str, translation_id: str, force_large_text: bool = False
+        message: str,
+        translation_id: str,
+        force_large_text: bool = False,
+        force_small_text: bool = False,
     ):
         encoded_data: bytes
-        if force_large_text is False and test_is_small_font(message):
+        if force_small_text or (force_large_text is False and test_is_small_font(message)):
             encoded_data = convert_string_bytes(
                 small_font_symbol_conversion_table, message
             )
@@ -1148,7 +1158,9 @@ def get_translation_strings_and_indices_text(
         lang_data = lang["messagesWarn"][record["id"]]
         # Add to translations the menu text and the description
         encode_string_and_add(
-            lang_data["message"], "messagesWarn" + record["id"] + "Message"
+            lang_data["message"],
+            "messagesWarn" + record["id"] + "Message",
+            force_small_text=force_small_font(record, lang["languageCode"]),
         )
 
     for index, record in enumerate(defs["characters"]):

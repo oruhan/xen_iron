@@ -33,6 +33,9 @@
     "WarningTipShorted": {
       "message": "Uçta kısa\ndevre!"
     },
+    "WarningTipMissing": {
+      "message": "Ucu takın"
+    },
     "SettingsCalibrationWarning": {
       "message": "Yeniden başlatmadan önce uç ve sapın oda sıcaklığında olduğundan emin olun!"
     },

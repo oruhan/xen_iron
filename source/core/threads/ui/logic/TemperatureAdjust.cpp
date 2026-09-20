@@ -1,6 +1,15 @@
 #include "OperatingModes.h"
 #include "ui_drawing.hpp"
 
+namespace {
+TransitionAnimation exitTransition(const guiContext *cxt) {
+  // Reverse the panel animation when returning to soldering. Temperature
+  // adjustment can also be opened from Home, whose existing horizontal return
+  // direction remains unchanged.
+  return cxt->previousMode == OperatingMode::Soldering ? TransitionAnimation::Up : TransitionAnimation::Right;
+}
+} // namespace
+
 OperatingMode gui_solderingTempAdjust(const ButtonState buttonIn, guiContext *cxt) {
 
   currentTempTargetDegC              = 0; // Turn off heater while adjusting temp
@@ -24,9 +33,12 @@ OperatingMode gui_solderingTempAdjust(const ButtonState buttonIn, guiContext *cx
     (*autoRepeatAcceleration) = 0;
     break;
   case BUTTON_BOTH:
-    // exit
+    // guiHandleDraw() clears the active framebuffer before dispatching this
+    // mode. Preserve a complete source frame for the exit animation instead
+    // of transitioning away from a blank screen.
+    ui_draw_temperature_change();
     saveSettings();
-    cxt->transitionMode = cxt->previousMode == OperatingMode::Soldering ? TransitionAnimation::None : TransitionAnimation::Right;
+    cxt->transitionMode = exitTransition(cxt);
     return cxt->previousMode;
   case BUTTON_B_LONG:
     if (xTaskGetTickCount() - (*autoRepeatTimer) + (*autoRepeatAcceleration) > PRESS_ACCEL_INTERVAL_MAX) {
@@ -86,7 +98,7 @@ OperatingMode gui_solderingTempAdjust(const ButtonState buttonIn, guiContext *cx
 
   if (xTaskGetTickCount() - lastButtonTime > (TICKS_SECOND * 3)) {
     saveSettings();
-    cxt->transitionMode = cxt->previousMode == OperatingMode::Soldering ? TransitionAnimation::None : TransitionAnimation::Right;
+    cxt->transitionMode = exitTransition(cxt);
     return cxt->previousMode; // exit if user just doesn't press anything for a bit
   }
   return OperatingMode::TemperatureAdjust; // Stay in temp adjust

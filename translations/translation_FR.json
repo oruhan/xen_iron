@@ -33,6 +33,9 @@
     "WarningTipShorted": {
       "message": "!Court-circuit Panne!"
     },
+    "WarningTipMissing": {
+      "message": "Insérez la\npanne"
+    },
     "SettingsCalibrationWarning": {
       "message": "Avant de redémarrer, assurez-vous que la panne et la poignée sont à température ambiante !"
     },

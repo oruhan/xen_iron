@@ -1,0 +1,11 @@
+P1
+# degree_small - edit 0/1 pixels; 1 is lit
+3 8
+0 0 0
+1 1 1
+1 0 1
+1 1 1
+0 0 0
+0 0 0
+0 0 0
+0 0 0

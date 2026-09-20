@@ -1,0 +1,465 @@
+{
+  "format": 1,
+  "notes": "Add standalone icons to standalone. Keep collection order stable because firmware indexes these arrays.",
+  "standalone": [
+    {
+      "name": "warning_triangle",
+      "file": "static/warning_triangle.pbm",
+      "width": 24,
+      "height": 16,
+      "cpp": "WarningBlock24"
+    },
+    {
+      "name": "home_solder_button",
+      "file": "static/home_solder_button.pbm",
+      "width": 56,
+      "height": 32,
+      "cpp": "buttonA"
+    },
+    {
+      "name": "tip_disconnected",
+      "file": "static/tip_disconnected.pbm",
+      "width": 56,
+      "height": 32,
+      "cpp": "disconnectedTip"
+    },
+    {
+      "name": "home_settings_button",
+      "file": "static/home_settings_button.pbm",
+      "width": 56,
+      "height": 32,
+      "cpp": "buttonB"
+    },
+    {
+      "name": "repeat_once",
+      "file": "static/repeat_once.pbm",
+      "width": 32,
+      "height": 32,
+      "cpp": "RepeatOnce"
+    },
+    {
+      "name": "repeat_forever",
+      "file": "static/repeat_forever.pbm",
+      "width": 32,
+      "height": 32,
+      "cpp": "RepeatInf"
+    },
+    {
+      "name": "unavailable",
+      "file": "static/unavailable.pbm",
+      "width": 32,
+      "height": 32,
+      "cpp": "UnavailableIcon"
+    },
+    {
+      "name": "degree_small",
+      "file": "static/degree_small.pbm",
+      "width": 3,
+      "height": 8,
+      "cpp": "DegreeSymbol"
+    },
+    {
+      "name": "home_button_outline",
+      "file": "custom/home_button_outline.pbm",
+      "width": 56,
+      "height": 32,
+      "cpp": "HomeButtonOutline"
+    },
+    {
+      "name": "home_button_mask",
+      "file": "custom/home_button_mask.pbm",
+      "width": 56,
+      "height": 32,
+      "cpp": "HomeButtonMask"
+    }
+  ],
+  "collections": {
+    "extra_font_chars": {
+      "cpp": "ExtraFontChars",
+      "items": [
+        {
+          "name": "degree_f",
+          "file": "symbols/degree_f.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "degree_c",
+          "file": "symbols/degree_c.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "arrow_up",
+          "file": "symbols/arrow_up.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_empty",
+          "file": "symbols/battery_empty.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_01",
+          "file": "symbols/battery_01.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_02",
+          "file": "symbols/battery_02.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_03",
+          "file": "symbols/battery_03.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_04",
+          "file": "symbols/battery_04.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_05",
+          "file": "symbols/battery_05.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_06",
+          "file": "symbols/battery_06.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_07",
+          "file": "symbols/battery_07.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_08",
+          "file": "symbols/battery_08.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_09",
+          "file": "symbols/battery_09.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "battery_10",
+          "file": "symbols/battery_10.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "heating",
+          "file": "symbols/heating.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "ac_power",
+          "file": "symbols/ac_power.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "checkbox_on",
+          "file": "symbols/checkbox_on.pbm",
+          "width": 12,
+          "height": 16
+        },
+        {
+          "name": "checkbox_off",
+          "file": "symbols/checkbox_off.pbm",
+          "width": 12,
+          "height": 16
+        }
+      ]
+    },
+    "settings_menu": {
+      "cpp": "SettingsMenuIcons",
+      "groups": 5,
+      "frames_per_group": 3,
+      "items": [
+        {
+          "name": "settings_power_0",
+          "file": "settings/power/frame_0.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_power_1",
+          "file": "settings/power/frame_1.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_power_2",
+          "file": "settings/power/frame_2.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_soldering_0",
+          "file": "settings/soldering/frame_0.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_soldering_1",
+          "file": "settings/soldering/frame_1.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_soldering_2",
+          "file": "settings/soldering/frame_2.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_sleep_0",
+          "file": "settings/sleep/frame_0.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_sleep_1",
+          "file": "settings/sleep/frame_1.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_sleep_2",
+          "file": "settings/sleep/frame_2.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_ui_0",
+          "file": "settings/ui/frame_0.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_ui_1",
+          "file": "settings/ui/frame_1.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_ui_2",
+          "file": "settings/ui/frame_2.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_advanced_0",
+          "file": "settings/advanced/frame_0.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_advanced_1",
+          "file": "settings/advanced/frame_1.pbm",
+          "width": 21,
+          "height": 32
+        },
+        {
+          "name": "settings_advanced_2",
+          "file": "settings/advanced/frame_2.pbm",
+          "width": 21,
+          "height": 32
+        }
+      ]
+    },
+    "home_solder_heat": {
+      "cpp": "HomeSolderHeatFrames",
+      "items": [
+        {
+          "name": "home_solder_heat_0",
+          "file": "animations/home_solder_heat/frame_0.pbm",
+          "width": 14,
+          "height": 9
+        },
+        {
+          "name": "home_solder_heat_1",
+          "file": "animations/home_solder_heat/frame_1.pbm",
+          "width": 14,
+          "height": 9
+        },
+        {
+          "name": "home_solder_heat_2",
+          "file": "animations/home_solder_heat/frame_2.pbm",
+          "width": 14,
+          "height": 9
+        },
+        {
+          "name": "home_solder_heat_3",
+          "file": "animations/home_solder_heat/frame_3.pbm",
+          "width": 14,
+          "height": 9
+        },
+        {
+          "name": "home_solder_heat_4",
+          "file": "animations/home_solder_heat/frame_4.pbm",
+          "width": 14,
+          "height": 9
+        },
+        {
+          "name": "home_solder_heat_5",
+          "file": "animations/home_solder_heat/frame_5.pbm",
+          "width": 14,
+          "height": 9
+        },
+        {
+          "name": "home_solder_heat_6",
+          "file": "animations/home_solder_heat/frame_6.pbm",
+          "width": 14,
+          "height": 9
+        },
+        {
+          "name": "home_solder_heat_7",
+          "file": "animations/home_solder_heat/frame_7.pbm",
+          "width": 14,
+          "height": 9
+        }
+      ]
+    },
+    "home_settings_sliders": {
+      "cpp": "HomeSettingsSlidersFrames",
+      "items": [
+        {
+          "name": "home_settings_sliders_0",
+          "file": "animations/home_settings_sliders/frame_0.pbm",
+          "width": 23,
+          "height": 24
+        },
+        {
+          "name": "home_settings_sliders_1",
+          "file": "animations/home_settings_sliders/frame_1.pbm",
+          "width": 23,
+          "height": 24
+        },
+        {
+          "name": "home_settings_sliders_2",
+          "file": "animations/home_settings_sliders/frame_2.pbm",
+          "width": 23,
+          "height": 24
+        },
+        {
+          "name": "home_settings_sliders_3",
+          "file": "animations/home_settings_sliders/frame_3.pbm",
+          "width": 23,
+          "height": 24
+        },
+        {
+          "name": "home_settings_sliders_4",
+          "file": "animations/home_settings_sliders/frame_4.pbm",
+          "width": 23,
+          "height": 24
+        },
+        {
+          "name": "home_settings_sliders_5",
+          "file": "animations/home_settings_sliders/frame_5.pbm",
+          "width": 23,
+          "height": 24
+        },
+        {
+          "name": "home_settings_sliders_6",
+          "file": "animations/home_settings_sliders/frame_6.pbm",
+          "width": 23,
+          "height": 24
+        },
+        {
+          "name": "home_settings_sliders_7",
+          "file": "animations/home_settings_sliders/frame_7.pbm",
+          "width": 23,
+          "height": 24
+        }
+      ]
+    },
+    "full_height_batteries": {
+      "cpp": "FullHeightBatteryIcons",
+      "items": [
+        {
+          "name": "battery_full_height_empty",
+          "file": "battery/full_height/battery_empty.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_01",
+          "file": "battery/full_height/battery_01.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_02",
+          "file": "battery/full_height/battery_02.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_03",
+          "file": "battery/full_height/battery_03.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_04",
+          "file": "battery/full_height/battery_04.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_05",
+          "file": "battery/full_height/battery_05.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_06",
+          "file": "battery/full_height/battery_06.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_07",
+          "file": "battery/full_height/battery_07.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_08",
+          "file": "battery/full_height/battery_08.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_09",
+          "file": "battery/full_height/battery_09.pbm",
+          "width": 12,
+          "height": 32
+        },
+        {
+          "name": "battery_full_height_10",
+          "file": "battery/full_height/battery_10.pbm",
+          "width": 12,
+          "height": 32
+        }
+      ]
+    }
+  }
+}

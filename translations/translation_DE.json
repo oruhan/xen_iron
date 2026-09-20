@@ -33,6 +33,9 @@
     "WarningTipShorted": {
       "message": "!Lötspitze\nkurzgeschlossen!"
     },
+    "WarningTipMissing": {
+      "message": "Spitze\neinsetzen"
+    },
     "SettingsCalibrationWarning": {
       "message": "Vor dem Neustart bitte sicherstellen, dass Lötspitze & Gerät Raumtemperatur haben!"
     },

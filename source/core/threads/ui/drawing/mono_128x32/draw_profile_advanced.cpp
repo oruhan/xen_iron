@@ -24,7 +24,6 @@ void drawWattage(const uint32_t wattageX10) {
 } // namespace
 
 void ui_draw_soldering_profile_advanced(TemperatureType_t tipTemp, TemperatureType_t profileCurrentTargetTemp, uint32_t phaseElapsedSeconds, uint32_t phase, const uint32_t phaseTimeGoal) {
-  static const uint8_t DegreeSymbol[] = {0x0E, 0x0A, 0x0E};
   const uint8_t  profilePhases = getSettingValue(SettingsOptions::ProfilePhases);
   const uint32_t voltageX10    = getInputVoltageX10(getSettingValue(SettingsOptions::VoltageDiv), 0);
   const uint32_t wattageX10    = x10WattHistory.average();

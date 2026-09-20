@@ -42,6 +42,11 @@
       "description": "Warning text shown when the software has detected that the users tip is likely shorted."
     },
     {
+      "id": "WarningTipMissing",
+      "forceSmallFont": ["EN", "TR"],
+      "description": "Prompt shown when the user tries to start soldering without a tip installed."
+    },
+    {
       "id": "SettingsCalibrationWarning",
       "description": "Confirmation message shown before performing an offset calibration. Should warn the user to make sure tip and handle are at the same temperature."
     },

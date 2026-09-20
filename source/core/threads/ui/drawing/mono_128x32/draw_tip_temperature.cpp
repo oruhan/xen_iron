@@ -17,23 +17,69 @@ struct TemperatureAnimationState {
 TemperatureAnimationState temperatureAnimations[3] = {};
 constexpr TickType_t TemperatureAnimationDuration  = TICKS_100MS * 2;
 constexpr TickType_t TemperatureAnimationResetGap  = TICKS_100MS * 5;
+constexpr uint8_t    TemperaturePanelWidth         = 80;
+constexpr uint8_t    FullscreenGlyphWidth          = 24;
+constexpr uint8_t    FullscreenGlyphVisibleWidth   = 22;
+constexpr uint8_t    FullscreenGlyphLeftPadding    = 2;
+constexpr uint8_t    FullscreenGlyphVerticalOffset = 2;
+constexpr uint8_t    DegreeWidth                   = sizeof(DegreeSymbol);
+constexpr uint8_t    UnitVisibleWidth              = 4;
+constexpr uint8_t    SymbolGap                     = 1;
+
+struct FullscreenTemperatureLayout {
+  int16_t digitX;
+  int16_t degreeX;
+  int16_t unitX;
+};
+
+uint8_t easeInOutPosition(const TickType_t elapsed, const TickType_t duration, const uint8_t distance) {
+  // Rounded integer smoothstep: slow at both ends and fastest halfway through.
+  if (duration == 0 || elapsed >= duration) {
+    return distance;
+  }
+  const uint32_t denominator = uint32_t(duration) * duration * duration;
+  const uint32_t numerator   = uint32_t(distance) * elapsed * elapsed * (3U * duration - 2U * elapsed);
+  return (numerator + denominator / 2U) / denominator;
+}
 
 uint8_t temperaturePlaces(const TemperatureType_t temperature) { return temperature >= 100 ? 3 : (temperature >= 10 ? 2 : 1); }
 
 uint16_t temperatureDivisor(const uint8_t places) { return places == 3 ? 100 : (places == 2 ? 10 : 1); }
 
+void fullscreenTemperatureLayout(const TemperatureType_t temperature, const int16_t panelX, FullscreenTemperatureLayout &layout) {
+  const uint8_t places            = temperaturePlaces(temperature);
+  const uint8_t digitsVisualWidth = (places - 1) * FullscreenGlyphWidth + FullscreenGlyphVisibleWidth;
+  const uint8_t contentWidth      = digitsVisualWidth + SymbolGap + DegreeWidth + SymbolGap + UnitVisibleWidth;
+  const int16_t visibleStart      = panelX + (TemperaturePanelWidth - contentWidth) / 2;
+  layout.digitX                 = visibleStart - FullscreenGlyphLeftPadding;
+  layout.degreeX                = visibleStart + digitsVisualWidth + SymbolGap;
+  layout.unitX                  = visibleStart + digitsVisualWidth + SymbolGap + DegreeWidth + SymbolGap;
+}
+
 void drawFullscreenDigit(const uint8_t digit, const int16_t x, const int8_t yOffset) {
   constexpr uint8_t SourceGlyphWidth  = 12;
   constexpr uint8_t SourceGlyphHeight = 16;
-  OLED::drawAreaClipped(x, yOffset, SourceGlyphWidth, SourceGlyphHeight, FontSectionInfo.font12_start_ptr + digit * 24, 2, 0, OLED_HEIGHT);
+  OLED::drawAreaClipped(x, FullscreenGlyphVerticalOffset + yOffset, SourceGlyphWidth, SourceGlyphHeight, FontSectionInfo.font12_start_ptr + digit * 24, 2, 0,
+                        OLED_HEIGHT);
+}
+
+void drawFullscreenUnit(const int16_t x) {
+  static constexpr uint8_t UnitColumns[] = {0, 1, 3, 4};
+  const char               *unitSymbol   = getSettingValue(SettingsOptions::TemperatureInF) ? SmallSymbolDegF : SmallSymbolDegC;
+  const uint8_t            *source       = FontSectionInfo.font06_start_ptr + (unitSymbol[0] - 2) * 6;
+  uint8_t                   compactUnit[sizeof(UnitColumns)];
+  for (uint8_t column = 0; column < sizeof(UnitColumns); column++) {
+    compactUnit[column] = source[UnitColumns[column]];
+  }
+  OLED::drawArea(x, FullscreenGlyphVerticalOffset, sizeof(compactUnit), 8, compactUnit);
 }
 
 void drawFullscreenDigits(const TemperatureType_t temperature, const int16_t x, const int8_t yOffset) {
-  constexpr uint8_t TemperatureDigitsWidth = 72;
-  constexpr uint8_t FullscreenGlyphWidth   = 24;
-  const uint8_t places                     = temperaturePlaces(temperature);
-  int16_t       cursorX                    = x + (TemperatureDigitsWidth - places * FullscreenGlyphWidth) / 2;
-  uint16_t      divisor                    = temperatureDivisor(places);
+  const uint8_t places = temperaturePlaces(temperature);
+  FullscreenTemperatureLayout layout;
+  fullscreenTemperatureLayout(temperature, x, layout);
+  int16_t  cursorX = layout.digitX;
+  uint16_t divisor = temperatureDivisor(places);
   for (uint8_t digitIndex = 0; digitIndex < places; digitIndex++) {
     const uint8_t digit = (temperature / divisor) % 10;
     drawFullscreenDigit(digit, cursorX, yOffset);
@@ -43,8 +89,6 @@ void drawFullscreenDigits(const TemperatureType_t temperature, const int16_t x, 
 }
 
 void drawFullscreenDigitTransition(const TemperatureType_t temperature, const int16_t x, const TemperatureSlideFrame &frame) {
-  constexpr uint8_t TemperatureDigitsWidth = 72;
-  constexpr uint8_t FullscreenGlyphWidth   = 24;
   const uint8_t currentPlaces              = temperaturePlaces(temperature);
   const uint8_t previousPlaces             = temperaturePlaces(frame.previousValue);
   if (!frame.active) {
@@ -57,8 +101,10 @@ void drawFullscreenDigitTransition(const TemperatureType_t temperature, const in
     return;
   }
 
-  int16_t  cursorX         = x + (TemperatureDigitsWidth - currentPlaces * FullscreenGlyphWidth) / 2;
-  uint16_t divisor        = temperatureDivisor(currentPlaces);
+  FullscreenTemperatureLayout layout;
+  fullscreenTemperatureLayout(temperature, x, layout);
+  int16_t  cursorX         = layout.digitX;
+  uint16_t divisor         = temperatureDivisor(currentPlaces);
   for (uint8_t digitIndex = 0; digitIndex < currentPlaces; digitIndex++) {
     const uint8_t previousDigit = (frame.previousValue / divisor) % 10;
     const uint8_t currentDigit  = (temperature / divisor) % 10;
@@ -97,11 +143,19 @@ void ui_get_temperature_slide_frame(const TemperatureType_t temperature, const T
     frame.active         = false;
     return;
   }
-  const uint8_t progress = (elapsed * height) / TemperatureAnimationDuration;
-  frame.previousValue  = state.previousValue;
-  frame.previousOffset = static_cast<int8_t>(progress);
-  frame.currentOffset  = static_cast<int8_t>(progress - height);
-  frame.active         = true;
+  const uint8_t progress = easeInOutPosition(elapsed, TemperatureAnimationDuration, height);
+  frame.previousValue = state.previousValue;
+  if (state.currentValue > state.previousValue) {
+    // Natural counter motion: increasing values roll upward, with the new
+    // digit entering from below.
+    frame.previousOffset = -static_cast<int8_t>(progress);
+    frame.currentOffset  = static_cast<int8_t>(height - progress);
+  } else {
+    // Decreasing values reverse the same motion instead of rolling down again.
+    frame.previousOffset = static_cast<int8_t>(progress);
+    frame.currentOffset  = static_cast<int8_t>(progress - height);
+  }
+  frame.active = true;
 }
 
 void ui_draw_tip_temperature(bool symbol, const FontStyle font) {
@@ -116,41 +170,26 @@ void ui_draw_tip_temperature(bool symbol, const FontStyle font) {
 }
 
 void ui_draw_temperature_fullscreen(const TemperatureType_t temperature, const uint8_t x) {
-  static const uint8_t DegreeSymbol[]       = {0x0E, 0x0A, 0x0E};
-  constexpr uint8_t TemperatureDigitsWidth = 72;
-  constexpr uint8_t FullscreenGlyphWidth   = 24;
-  constexpr uint8_t DegreeSymbolOffset     = 70;
-  constexpr uint8_t UnitSymbolOffset       = 74;
-  const uint8_t places                     = temperature >= 100 ? 3 : (temperature >= 10 ? 2 : 1);
-  const uint8_t horizontalOffset            = (TemperatureDigitsWidth - places * FullscreenGlyphWidth) / 2;
-
-  OLED::setCursor(x + horizontalOffset, 0);
-  OLED::printNumber(temperature, places, FontStyle::FULLSCREEN);
-
-  // A compact 3x3 degree ring fits into the last digit's blank right margin.
-  // Keep one empty pixel between the degree mark and the C/F glyph.
-  OLED::drawArea(x + DegreeSymbolOffset, 0, sizeof(DegreeSymbol), 8, DegreeSymbol);
-  OLED::setCursor(x + UnitSymbolOffset, 0);
-  OLED::printSymbolDeg(FontStyle::SMALL);
+  FullscreenTemperatureLayout layout;
+  fullscreenTemperatureLayout(temperature, x, layout);
+  drawFullscreenDigits(temperature, x, 0);
+  OLED::drawArea(layout.degreeX, FullscreenGlyphVerticalOffset, DegreeWidth, 8, DegreeSymbol);
+  drawFullscreenUnit(layout.unitX);
 }
 
 void ui_draw_temperature_fullscreen_animated(const TemperatureType_t temperature, const uint8_t x, const TemperatureAnimationSlot slot) {
-  static const uint8_t DegreeSymbol[]       = {0x0E, 0x0A, 0x0E};
-  constexpr uint8_t TemperaturePanelWidth  = 80;
-  constexpr uint8_t DegreeSymbolOffset     = 70;
-  constexpr uint8_t UnitSymbolOffset       = 74;
   TemperatureSlideFrame frame;
   ui_get_temperature_slide_frame(temperature, slot, OLED_HEIGHT, frame);
 
   OLED::fillArea(x, 0, TemperaturePanelWidth, OLED_HEIGHT, 0);
   drawFullscreenDigitTransition(temperature, x, frame);
-  OLED::drawArea(x + DegreeSymbolOffset, 0, sizeof(DegreeSymbol), 8, DegreeSymbol);
-  OLED::setCursor(x + UnitSymbolOffset, 0);
-  OLED::printSymbolDeg(FontStyle::SMALL);
+  FullscreenTemperatureLayout layout;
+  fullscreenTemperatureLayout(temperature, x, layout);
+  OLED::drawArea(layout.degreeX, FullscreenGlyphVerticalOffset, DegreeWidth, 8, DegreeSymbol);
+  drawFullscreenUnit(layout.unitX);
 }
 
 void ui_draw_temperature_small(const TemperatureType_t temperature, const uint8_t x, const uint8_t y) {
-  static const uint8_t DegreeSymbol[] = {0x0E, 0x0A, 0x0E};
   const uint8_t places                = temperature >= 100 ? 3 : (temperature >= 10 ? 2 : 1);
   const uint8_t degreeX               = x + places * 6;
 

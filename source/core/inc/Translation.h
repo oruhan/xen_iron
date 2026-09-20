@@ -122,6 +122,7 @@ struct TranslationIndexTable {
   uint16_t WarningKeysLockedString;
   uint16_t WarningThermalRunaway;
   uint16_t WarningTipShorted;
+  uint16_t WarningTipMissing;
 
   uint16_t SettingsCalibrationWarning;
   uint16_t CJCCalibrating;
